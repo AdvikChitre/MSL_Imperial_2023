@@ -1,7 +1,5 @@
 /* 
 TODO:
-- Add hysterisis to getFrequency function using standard deviation
-  - Add going above and below upper and lower hysteris limits for better accuracy (4 per cycle)
 - Create rolling average of motor frequencies (weighted?)
 - Add PID control loop
 - Add usbHandle()
@@ -92,22 +90,24 @@ float standardDeviation(uint16_t population[], uint16_t populationSize, uint16_t
   return populationStandardDeviation;
 }
 
-// Gets the frequency of a sinusoidal/sqare wave input as an array using its sampling frequency and average value
-float getFrequency(uint16_t signal[], uint16_t sampleNumber, uint16_t mean, uint16_t samplingFrequency) {
+// Gets the frequency of a sinusoidal/sqare wave input as an array using its sampling frequency, average value and standard deviation
+float getFrequency(uint16_t signal[], uint16_t sampleNumber, uint16_t mean, uint16_t samplingFrequency, float standardDeviation) {
 
   // Define local variables
   uint16_t previousSample = signal[0];
   uint16_t currentSample;
-  uint16_t totalCycles = 0;
+  uint16_t totalQuarterCycles = 0;
+  float lowerCrossing = mean - (2 * standardDeviation);
+  float upperCrossing = mean + (2 * standardDeviation);
   float frequency;
 
   // Goes through the samples
   for (uint16_t i = 1; i < sampleNumber; i++) {
     currentSample = signal[i];
 
-    // Check for crossing the mean
-    if ((currentSample > mean) && (previousSample < mean)) {
-      totalCycles += 1;
+    // Check for crossing the mean +- 2 standard devations
+    if (((currentSample > upperCrossing) && (previousSample < upperCrossing)) || ((currentSample < upperCrossing) && (previousSample > upperCrossing)) || ((currentSample > lowerCrossing) && (previousSample < lowerCrossing)) || ((currentSample < lowerCrossing) && (previousSample > lowerCrossing))) {
+      totalQuarterCycles += 1;
     }
 
     // Set the current sample to the previous sample and loop
@@ -115,7 +115,7 @@ float getFrequency(uint16_t signal[], uint16_t sampleNumber, uint16_t mean, uint
   }
 
   // Calculate frequency
-  frequency = (totalCycles * samplingFrequency) / sampleNumber;
+  frequency = (totalQuarterCycles * samplingFrequency) / (4 * sampleNumber);
 
   return frequency;
 }
@@ -189,12 +189,15 @@ void getMotorFrequencyTask(void* pvParameters) {
 
       // Loop through each motor and find frequencies
       for (uint8_t motor = 0; motor < numberOfMotors; motor++) {
+        
+        // Calculate standard deviation
+        standardDeviations[motor] = standardDeviation(data[motor], samples, (pwmRange + 1) / 2);
 
         // If standard deviation greater than threshold value then a signal is present
-        if (standardDeviation(data[motor], samples, (pwmRange + 1) / 2) > thresholdStandardDeviation) {
+        if (standardDeviations[motor] > thresholdStandardDeviation) {
 
           // If signal present, work out its frequency
-          actualMotorFrequency[motor] = getFrequency(data[motor], samples, (adcRange + 1) / 2, samplingFrequency);
+          actualMotorFrequency[motor] = getFrequency(data[motor], samples, (adcRange + 1) / 2, samplingFrequency, standardDeviations[motor]);
         }
 
         // Else it is just noise
