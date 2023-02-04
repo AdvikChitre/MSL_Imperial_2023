@@ -5,6 +5,7 @@ import time
 
 device_1_ID = "USB VID:PID=2E8A:F00A SER=E66164084356B639 LOCATION=1-1"
 device_2_ID = "USB VID:PID=2E8A:F00A SER=E661640843278B39 LOCATION=1-1"
+device_3_ID = "USB VID:PID=2E8A:F00A SER=E661640843323431 LOCATION=1-2.2.1.4.1"
 
 
 class mcu_serial():
@@ -222,6 +223,7 @@ class mcu_serial():
         code = b'110'
 
         # Tries to send byte
+#        print("sent", byte)
         try:
             self.device.write(bytes(str(byte)[0], 'utf-8'))
             code = b'210'
@@ -241,8 +243,9 @@ class mcu_serial():
 
         # Setup function code
         code = b'120'
-
+        
         # Tries to receive data
+        
         try:
             self.data_received = self.device.read(length)
             code = b'220'
@@ -255,6 +258,7 @@ class mcu_serial():
             # Attempts to reconnect
             self.reconnect()
 
+#        print("read", self.data_received)
         return code
 
     def read_code(self):
@@ -267,7 +271,8 @@ class mcu_serial():
         try:
             self.code_received = self.device.read(3)
             code = b'225'
-            print(self.code_received)
+            
+            
         
         # Fails to recieve code
         except serial.serialutil.SerialException:
@@ -277,6 +282,8 @@ class mcu_serial():
             # Attempts to reconnect
             self.reconnect()
 
+#        print("read", self.code_received)
+        
         return code
 
     def send_message(self, message):
@@ -291,7 +298,7 @@ class mcu_serial():
         done = False
 
         # Flush the input buffers so we can receive data
-        self.reset_input_buffer()
+#        self.reset_input_buffer()
 
         # Main loop to send message. Tries until a success
         while not done:
@@ -315,10 +322,11 @@ class mcu_serial():
 
             # Proceed to confirmation stage if no error in sending
             if not error:
-                
+#                self.read_data(1);
+
                 # Receive confirmation
                 self.read_code()
-#                print(self.code_received)
+
                 # If success received
                 if self.code_received == b'220':
                     print("Data sent successully")
@@ -474,7 +482,7 @@ class mcu_serial():
 
 
 
-mcu1 = mcu_serial(device_2_ID)
+mcu1 = mcu_serial(device_3_ID)
 
 """ while True:
     start = time.time()
