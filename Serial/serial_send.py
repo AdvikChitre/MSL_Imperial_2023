@@ -484,6 +484,8 @@ class mcu_serial():
 
 mcu1 = mcu_serial(device_4_ID)
 
+mcu1.led(1)
+
 """ while True:
     start = time.time()
     mcu1.led()
