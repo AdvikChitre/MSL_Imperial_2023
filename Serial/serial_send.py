@@ -6,7 +6,7 @@ import time
 device_1_ID = "USB VID:PID=2E8A:F00A SER=E66164084356B639 LOCATION=1-1"
 device_2_ID = "USB VID:PID=2E8A:F00A SER=E661640843278B39 LOCATION=1-1"
 device_3_ID = "USB VID:PID=2E8A:F00A SER=E661640843323431 LOCATION=1-2.2.1.4.1"
-
+device_4_ID = "USB VID:PID=2E8A:F00A SER=E661640843315C31 LOCATION=1-1"
 
 class mcu_serial():
     '''Object for sending an receiving data over a serial connection using a custom protocol'''
@@ -482,7 +482,7 @@ class mcu_serial():
 
 
 
-mcu1 = mcu_serial(device_3_ID)
+mcu1 = mcu_serial(device_4_ID)
 
 """ while True:
     start = time.time()
