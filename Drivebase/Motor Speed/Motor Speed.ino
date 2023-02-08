@@ -54,6 +54,7 @@ static const uint16_t pwmRange = pow(2, pwmResolution) - 1;  // Calculates the P
 static const uint8_t adcResolution = 10;                     // Sets the ADC resolution
 static const uint16_t adcRange = pow(2, adcResolution) - 1;  // Calculates the ADC range
 
+static const bool DEBUG_ENABLED = false;
 
 static const uint16_t samples = 64;                                    // Number of samples collected before processing
 static const uint16_t samplingFrequency = 1000;                        // Sampling frequency in Hz, default: 1000
@@ -73,16 +74,20 @@ static volatile bool samplesTransferred = false;  // Variable true when ADC data
 // Sample queue
 static QueueHandle_t sampleQueue;
 
-// Data ready semaphore
-//static SemaphoreHandle_t dataReadyBinSem;
-
 static const int8_t leds[3] = { LED_BUILTIN, LED1, LED2 };
 static volatile bool ledStatus[3] = { false, false, false };
 
 static const char startCharacter = '!';
-static char opcode[3];
-static char readwrite;
-static uint8_t data_length;
+
+// Create task handles
+static TaskHandle_t readHallSensorsHandle = nullptr;
+static TaskHandle_t getMotorFrequencyHandle = nullptr;
+static TaskHandle_t pidControllerHandle = nullptr;
+// static TaskHandle_t usbHandle = nullptr;
+static TaskHandle_t updateLedsHandle = nullptr;
+static TaskHandle_t debugHandle = nullptr;
+
+
 
 //-------------------------------- Functions --------------------------------------------
 
@@ -90,9 +95,9 @@ static uint8_t data_length;
 float standardDeviation(uint16_t population[], uint16_t populationSize, uint16_t populationMean) {
 
   // Define local variables
-  uint16_t currentSample;
-  uint32_t sampleSum = 0;
-  double populationStandardDeviation;
+  static uint16_t currentSample;
+  static uint32_t sampleSum = 0;
+  static double populationStandardDeviation;
 
   // Calculate the sum(xi-mew)^2 part of the standard deviation
   for (int i = 0; i < populationSize; i++) {
@@ -144,10 +149,10 @@ void ps() {
   TaskStatus_t* pxTaskStatusArray = new TaskStatus_t[tasks];
   unsigned long runtime;
   tasks = uxTaskGetSystemState(pxTaskStatusArray, tasks, &runtime);
-  Serial.printf("# Tasks: %d\n", tasks);
-  Serial.println("ID, NAME, STATE, PRIO, CYCLES");
+  Serial.printf("\n# Tasks: %d\n", tasks);
+  Serial.println("ID NAME,            STATE        PRIO     CYCLES           MEMORY REMAINING");
   for (int i = 0; i < tasks; i++) {
-    Serial.printf("%d: %-16s %-10s %d %lu\n", i, pxTaskStatusArray[i].pcTaskName, eTaskStateName[pxTaskStatusArray[i].eCurrentState], (int)pxTaskStatusArray[i].uxCurrentPriority, pxTaskStatusArray[i].ulRunTimeCounter);
+    Serial.printf("%d: %-16s %-12s %-8d %-16lu %d\n", i, pxTaskStatusArray[i].pcTaskName, eTaskStateName[pxTaskStatusArray[i].eCurrentState], (int)pxTaskStatusArray[i].uxCurrentPriority, pxTaskStatusArray[i].ulRunTimeCounter, pxTaskStatusArray[i].usStackHighWaterMark);
   }
   delete[] pxTaskStatusArray;
 }
@@ -205,6 +210,11 @@ uint16_t led(uint8_t status, uint8_t led = 0) {
 // Handle incoming serial data
 void handle_serial() {
 
+  // Create variables to store incoming mesage
+  char opcode[3];
+  char readwrite;
+  uint8_t data_length;
+
   // Reads the opcode, whether it is read or write, and the length of the data
   waitForSerialData((uint8_t)5);
   opcode[0] = Serial.read();
@@ -226,7 +236,7 @@ void handle_serial() {
       data[i] = Serial.read();
     }
   }
-  Serial.print(data);
+
   // Print successfully read code
   Serial.print(220);
 
@@ -291,17 +301,16 @@ void getMotorFrequencyTask(void* pvParameters) {
   (void)pvParameters;
 
   // Create local variables
-  uint16_t data[numberOfMotors][samples];    // Non-volatile array to store the sample data
-  float standardDeviations[numberOfMotors];  // Array to store standard deviations
+  static uint16_t data[numberOfMotors][samples];    // Non-volatile array to store the sample data
+  static float standardDeviations[numberOfMotors];  // Array to store standard deviations
 
   // Start the loop
   while (true) {
-    Serial.print(actualMotorFrequency[0]);
 
     // Read the samples from the sample queue into a non volatile 2D array so they can be processed without the data changing
     for (uint8_t motor = 0; motor < numberOfMotors; motor++) {
       for (uint16_t sampleNumber = 0; sampleNumber < samples; sampleNumber++) {
-        xQueueReceive(sampleQueue, (void*)&data[motor][sampleNumber], portMAX_DELAY);
+        xQueueReceive(sampleQueue, &data[motor][sampleNumber], portMAX_DELAY);
       }
     }
 
@@ -361,29 +370,17 @@ void pidControllerTask(void* pvParameters) {
 }
 
 
-void usbTask(void* pvParameters) {
+// void usbTask(void* pvParameters) {
 
-  (void)pvParameters;
+//   (void)pvParameters;
 
-  // Create local variables
-  static char serialData;
+//   // Create local variables
+//   static char serialData;
 
-  // Main loop
-  while (true) {
 
-    // Wait for any serial data
-    waitForSerialData();
+// }
 
-    // If there is data, read a character
-    serialData = Serial.read();
-
-    // If the first character is the start of a message then handle it
-    if (serialData == startCharacter) {
-      handle_serial();
-    }
-  }
-}
-
+// Task to update the LEDs
 void updateLedsTask(void* pvParameters) {
 
   (void)pvParameters;
@@ -410,6 +407,17 @@ void updateLedsTask(void* pvParameters) {
   }
 }
 
+// Task to print debug messages
+void debugTask(void* pvParameters) {
+
+  (void)pvParameters;
+
+  while (true) {
+    vTaskDelay(pdMS_TO_TICKS(500));
+    ps();
+  }
+}
+
 //-------------------------------- Setups -----------------------------------------------
 
 void setup() {
@@ -422,42 +430,42 @@ void setup() {
   analogWriteResolution(pwmResolution);
   analogReadResolution(adcResolution);
 
-  // Create task handles
-  // TaskHandle_t readHallSensorsHandle = nullptr;
-  // TaskHandle_t getMotorFrequencyHandle = nullptr;
-  // TaskHandle_t pidControllerHandle = nullptr;
-  TaskHandle_t usbHandle = nullptr;
-  TaskHandle_t updateLedsHandle = nullptr;
+  // Create queues
+  sampleQueue = xQueueCreate(samples * numberOfMotors, sizeof(uint16_t));  // Queue length is the number of samples, item size is 2 bytes (uint16_t)
 
   // Create tasks
-  // xTaskCreate(
-  //   readHallSensorsTask,     /* Function that implements the task */
-  //   "HALL_SAMP",           /* Text name for the task */
-  //   20000,                    /* Stack size in words, not bytes */
-  //   nullptr,                 /* Parameter passed into the task */
-  //   1,                       /* Task priority */
-  //   &readHallSensorsHandle); /* Pointer to store the task handle */
-  // xTaskCreate(
-  //   getMotorFrequencyTask,     /* Function that implements the task */
-  //   "GET_FREQ",                /* Text name for the task */
-  //   100000,                      /* Stack size in words, not bytes */
-  //   nullptr,                   /* Parameter passed into the task */
-  //   1,                         /* Task priority */
-  //   &getMotorFrequencyHandle); /* Pointer to store the task handle */
-  // xTaskCreate(
-  //   pidControllerTask,     /* Function that implements the task */
-  //   "PID_CTRL",            /* Text name for the task */
-  //   1000,                  /* Stack size in words, not bytes */
-  //   nullptr,               /* Parameter passed into the task */
-  //   1,                     /* Task priority */
-  //   &pidControllerHandle); /* Pointer to store the task handle */
   xTaskCreate(
-    usbTask,     /* Function that implements the task */
-    "SERIAL",    /* Text name for the task */
-    1000,        /* Stack size in words, not bytes */
-    nullptr,     /* Parameter passed into the task */
-    1,           /* Task priority */
-    &usbHandle); /* Pointer to store the task handle */
+    readHallSensorsTask,     /* Function that implements the task */
+    "HALL_SAMP",             /* Text name for the task */
+    1000,                    /* Stack size in words, not bytes */
+    nullptr,                 /* Parameter passed into the task */
+    1,                       /* Task priority */
+    &readHallSensorsHandle); /* Pointer to store the task handle */
+
+  xTaskCreate(
+    getMotorFrequencyTask,     /* Function that implements the task */
+    "GET_FREQ",                /* Text name for the task */
+    1000,                      /* Stack size in words, not bytes */
+    nullptr,                   /* Parameter passed into the task */
+    1,                         /* Task priority */
+    &getMotorFrequencyHandle); /* Pointer to store the task handle */
+
+  xTaskCreate(
+    pidControllerTask,     /* Function that implements the task */
+    "PID_CTRL",            /* Text name for the task */
+    1000,                  /* Stack size in words, not bytes */
+    nullptr,               /* Parameter passed into the task */
+    1,                     /* Task priority */
+    &pidControllerHandle); /* Pointer to store the task handle */
+
+  // xTaskCreate(
+  //   usbTask,     /* Function that implements the task */
+  //   "SERIAL",    /* Text name for the task */
+  //   1000,        /* Stack size in words, not bytes */
+  //   nullptr,     /* Parameter passed into the task */
+  //   1,           /* Task priority */
+  //   &usbHandle); /* Pointer to store the task handle */
+
   xTaskCreate(
     updateLedsTask,     /* Function that implements the task */
     "LED_UPDATE",       /* Text name for the task */
@@ -467,34 +475,55 @@ void setup() {
     &updateLedsHandle); /* Pointer to store the task handle */
 
   // Set task affinities (0x00 -> no cores, 0x01 -> C0, 0x02 -> C1, 0x03 -> C0 and C1)
-  // vTaskCoreAffinitySet(readHallSensorsHandle, (UBaseType_t)0x03);
-  // vTaskCoreAffinitySet(getMotorFrequencyHandle, (UBaseType_t)0x03);
-  // vTaskCoreAffinitySet(pidControllerHandle, (UBaseType_t)0x03);
+  vTaskCoreAffinitySet(readHallSensorsHandle, (UBaseType_t)0x03);
+  vTaskCoreAffinitySet(getMotorFrequencyHandle, (UBaseType_t)0x02);
+  vTaskCoreAffinitySet(pidControllerHandle, (UBaseType_t)0x03);
   // vTaskCoreAffinitySet(usbHandle, (UBaseType_t)0x01);
-  // vTaskCoreAffinitySet(updateLedsHandle, (UBaseType_t)0x03);
+  vTaskCoreAffinitySet(updateLedsHandle, (UBaseType_t)0x03);
 
-  // Create queues
-  sampleQueue = xQueueCreate(samples * numberOfMotors, sizeof(uint16_t));  // Queue length is the number of samples, item size is 2 bytes (uint16_t)
-
-  // Create semaphores
-  //  dataReadyBinSem = xSemaphoreCreateBinary();
+  // Enable the debug task if configured to do so
+  if (DEBUG_ENABLED) {
+    xTaskCreate(
+      debugTask,     /* Function that implements the task */
+      "DEBUG",       /* Text name for the task */
+      1000,          /* Stack size in words, not bytes */
+      nullptr,       /* Parameter passed into the task */
+      1,             /* Task priority */
+      &debugHandle); /* Pointer to store the task handle */
+    vTaskCoreAffinitySet(debugHandle, (UBaseType_t)0x01);
+  }
 
   // Delete "setup and loop" task
-//  vTaskDelete(NULL);
+  vTaskDelete(NULL);
 }
 
-void setup1() {}
+void setup1() {
+  // Delete "setup1 and loop1" task
+  vTaskDelete(NULL);
+}
 
 //-------------------------------- Loop ------------------------------------------------
 
 void loop() {
-  vTaskDelay(pdMS_TO_TICKS(500));
-//  ps();
   // Should never get to this point
 }
 
 void loop1() {
-  vTaskDelay(pdMS_TO_TICKS(500));
-//  ps();
   // Should never get to this point
 }
+
+//-------------------------------- Other -----------------------------------------------
+
+// Serial interrupt handler
+void onSerialEvent() {
+
+  // Loop while there is more serial data
+  while (Serial.available()) {
+
+    // Read a character, and if it is the start of a message then handle it
+    if (Serial.read() == startCharacter) {
+      handle_serial();
+    }
+  }
+}
+
