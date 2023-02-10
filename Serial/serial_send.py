@@ -22,7 +22,7 @@ class mcu_serial():
         # Setup
         self.serial_number  = self.get_serial_number(deviceID)
         self.datarate       = datarate
-        self.timeout        = 0
+        self.timeout        = 1
         self.device         = ""
         self.startCharacter = "!"
         self.connect()
@@ -271,7 +271,7 @@ class mcu_serial():
         try:
             self.code_received = self.device.read(3)
             code = b'225'
-            
+            print(self.code_received)
             
         
         # Fails to recieve code
@@ -347,8 +347,8 @@ class mcu_serial():
             
     # ------------------------ User Functions ------------------------
 
-    def led(self, status=2):
-        '''Writes status (0, 1, 2 for off, on, or toggle) to built in LED'''
+    def led(self, led_code=0, status=2):
+        '''Writes to LED 0, 1 or 2 a status (0, 1, 2 for off, on, or toggle)'''
 
         # Setup function code
         code = b'130'
@@ -356,17 +356,23 @@ class mcu_serial():
         # Setup function variables
         opcode = 'LED'
         readwrite = 'W'
-        length = '1'
+        length = '2'
         
-        # Converts the status into a string
-        data = str(status)
-
-        # If input is invalid end function and return failure
-        if data not in ("0", "1", "2"):
-            print("Invalid argument")
+        # If LED is invalid end function and return failure
+        if str(led_code) not in ("0", "1", "2"):
+            print("Invalid LED")
+            code = b'430'
+            return code
+        
+        # If status is invalid end function and return failure
+        if str(status) not in ("0", "1", "2"):
+            print("Invalid status")
             code = b'430'
             return code
 
+        # Converts the inputs into a string
+        data = str(led_code) + str(status)
+        
         # Create the message
         message = opcode+readwrite+length+data
 
@@ -484,7 +490,7 @@ class mcu_serial():
 
 mcu1 = mcu_serial(device_4_ID)
 
-mcu1.led(1)
+mcu1.led(1,1)
 
 """ while True:
     start = time.time()
