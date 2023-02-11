@@ -45,38 +45,53 @@ TODO:
 #define IMU_SCL 5
 #define IMU_SDA 4
 
-#define DEBUG_ENABLED false
+#define DEBUG_ENABLED true
 
 //-------------------------------- Global Variables -------------------------------------
 
+// Pin arrays
+static const uint8_t hallSensor[] = { HALL1, HALL2, HALL3 };   // Array of hall effect sensor pins
+static const uint8_t motorPWM[] = { PWM1, PWM2, PWM3, PWM4 };  // Array of motor PWM pins
+static const uint8_t motorDIR[] = { DIR1, DIR2, DIR3, DIR4 };  // Array of motor DIR pins
+static const uint8_t led[] = { LED_BUILTIN, LED1, LED2 };      // Array of LED pins
+
+static const uint8_t numberOfHallSensors = sizeof(hallSensor);  // Number of hall effect sensors
+static const uint8_t numberOfMotors = sizeof(motorPWM);         // Number of motors
+static const uint8_t numberOfLEDs = sizeof(led);                // Number of motors
+
+
+// Analogue constants
 static const uint32_t pwmFrequency = 20000;                  // Sets the PWM frequency (in Hz)
 static const uint8_t pwmResolution = 8;                      // Sets the PWM resolution (in bits), default is 8
 static const uint16_t pwmRange = pow(2, pwmResolution) - 1;  // Calculates the PWM range based on the resolution
 static const uint8_t adcResolution = 10;                     // Sets the ADC resolution
 static const uint16_t adcRange = pow(2, adcResolution) - 1;  // Calculates the ADC range
 
-static const uint16_t samplingFrequency = 200;                         // Sampling frequency in Hz, default: 1000
-static const uint8_t numberOfMotors = 3;                               // Number of motors, default: 3
-static const int8_t motors[numberOfMotors] = { HALL1, HALL2, HALL3 };  // Vector to store the pins to sample for each motor
-static const uint16_t threshold = 560;                                 // Threshold value that is compared to the analogRead() value to count the time interval between oscillations
-static const long timeout = 1000000;                                   // Time in milliseconds after which the motor speed is considerd to be 0
-static const uint8_t frequencyBufferSize = 10;                         // Number of data points that the rolling frequency average is calculated from
+// Sampling constants
+static const uint16_t samplingFrequency = 200;  // Sampling frequency in Hz, default: 1000
+static const uint16_t threshold = 560;          // Threshold value that is compared to the analogRead() value to count the time interval between oscillations
+static const long timeout = 1000000;            // Time in milliseconds after which the motor speed is considerd to be 0
+static const uint8_t frequencyBufferSize = 10;  // Number of data points that the rolling frequency average is calculated from
 
-static volatile uint16_t controlFrequency = 10;                                   // Control loop frequenct in Hz, default: 10
-static volatile float targetMotorFrequency[numberOfMotors] = { 0, 0, 0 };         // Array to store the target motor frequencies (in Hz)
-static volatile float instantaniousMotorFrequency[numberOfMotors] = { 0, 0, 0 };  // Array to store the instantanious motor frequencies (in Hz)
-static volatile float actualMotorFrequency[numberOfMotors] = { 0, 0, 0 };         // Array to store the rolling averages of motor frequencies (in Hz)
+// Control constants & variables
+static volatile uint16_t controlFrequency = 10;                                                     // Control loop frequenct in Hz, default: 10
+static const float kp = 0.3;                                                                         // Proportional gain of the pid controller (0.3 for 10Hz)
+static const float ki = 0.1;                                                                        // Integral gain of the pid controller (0.1 for 10Hz)
+static const float kd = 0.01;                                                                       // Derivative gain of the pid controller (0.001 for 10Hz)
+static volatile float targetMotorFrequency[numberOfMotors];                                          // Array to store the target motor frequencies (in Hz)
+static volatile float instantaniousMotorFrequency[numberOfHallSensors];                              // Array to store the instantanious motor frequencies (in Hz)
+static volatile float actualMotorFrequency[numberOfHallSensors];                                     // Array to store the rolling averages of motor frequencies (in Hz)
+static const uint8_t wheelDiameter = 100;                                                            // Wheel diameter in mm, used to convert speeds to frequencies
+static const float maxMotorFrequency = 2.93;                                                         // Max motor frequency in Hz, default : 13.02
+static const uint8_t maxAllowedSpeedPercent = 80;                                                    // Max allowed speed given as a percentage of actual max speed
+static const float maxAllowedMotorFrequency = maxMotorFrequency * (maxAllowedSpeedPercent / 100.0);  // Max allowed motor frequency in Hz
+static const uint16_t maxAllowedPWM = pwmRange * (maxAllowedSpeedPercent / 100.0);                   // Max allowed value in analogWrite()
 
-static const uint8_t wheelDiameter = 100;                                                          // Wheel diameter in mm, used to convert speeds to frequencies
-static const float maxMotorFrequency = 13.02;                                                      // Max motor frequency in Hz, default : 13.02
-static const uint8_t maxAllowedSpeedPercent = 30;                                                  // Max allowed speed given as a percentage of actual max speed
-static const float maxAllowedMotorFrequency = maxMotorFrequency * (maxAllowedSpeedPercent / 100);  // Max allowed motor frequency in Hz
-static const uint16_t maxAllowedPWM = adcRange * (maxAllowedSpeedPercent / 100);                   // Max allowed value in analogWrite()
+// LED constants & variables
+static volatile bool ledStatus[numberOfLEDs];  // Stores the state of each LED
 
-static const int8_t leds[3] = { LED_BUILTIN, LED1, LED2 };
-static volatile bool ledStatus[3] = { false, false, false };
-
-static const char startCharacter = '!';
+// USB constants & variables
+static const char startCharacter = '!';  // Sets the USB start character
 
 // Create task handles
 static TaskHandle_t getMotorFrequencyHandle = nullptr;
@@ -99,9 +114,13 @@ float speedToFrequency(float speed) {
   return (float)(speed / ((wheelDiameter / 1000) * PI));
 }
 
+int16_t frequencyToPWM(float frequency) {
+  return (int16_t)((frequency * pwmRange) / (maxMotorFrequency));
+}
+
 // Function to print the current status of each task, used for debugging
 std::map<eTaskState, const char*> eTaskStateName{ { eReady, "Ready" }, { eRunning, "Running" }, { eBlocked, "Blocked" }, { eSuspended, "Suspended" }, { eDeleted, "Deleted" } };
-void ps() {
+void taskStatusUpdate() {
   int tasks = uxTaskGetNumberOfTasks();
   TaskStatus_t* pxTaskStatusArray = new TaskStatus_t[tasks];
   unsigned long runtime;
@@ -134,7 +153,7 @@ bool waitForSerialData(uint8_t bufferSize = 1) {
 }
 
 // LED function
-uint16_t led(uint8_t led = 0, uint8_t status = 0) {
+uint16_t ledWrite(uint8_t led = 0, uint8_t status = 0) {
 
   uint16_t code = 130;
 
@@ -201,7 +220,7 @@ void handleSerial() {
 
   // LED command
   if (strcmp(opcode, "LED") == 0) {
-    Serial.print(led((data[0] - 48), (data[1] - 48)));
+    Serial.print(ledWrite((data[0] - 48), (data[1] - 48)));
   }
 
   // Motor command
@@ -218,32 +237,32 @@ void getMotorFrequencyTask(void* pvParameters) {
 
   (void)pvParameters;
 
-  // Set input pins
-  pinMode(HALL1, INPUT);
-  pinMode(HALL2, INPUT);
-  pinMode(HALL3, INPUT);
-
   // Create local variables
-  static bool previousSampleUnderThreshold[numberOfMotors];           //
-  static uint16_t currentSample;                                      // Stores the current sample
-  static unsigned long timePrevious[numberOfMotors];                  // Stores the previous time a peak occured for each hall sensor
-  static unsigned long timeCurrent;                                   // The time when the current sample was taken
-  static float timeSinceLastPeak;                                     // Stores the time since the last peak (float because floating point arithmatic is done with it)
-  static float frequencyBuffer[numberOfMotors][frequencyBufferSize];  // Array to store the previous samples used to calculate the rolling average
-  static uint8_t frequencyBufferIndex = 0;                            // Index in the frequencyBuffer that will be read and then written next
-  static float totalFrequency;                                        // Stores the sum of frequencies used to calculate the rolling average
-  static bool frequencyUpdate = false;                                // true when an update to a frequency has occured
+  static bool previousSampleUnderThreshold[numberOfHallSensors];           // Stores whether the previous sample was under the threshold or not
+  static uint16_t currentSample;                                           // Stores the current sample
+  static unsigned long timePrevious[numberOfHallSensors];                  // Stores the previous time a peak occured for each hall sensor
+  static unsigned long timeCurrent;                                        // The time when the current sample was taken
+  static float timeSinceLastPeak;                                          // Stores the time since the last peak (float because floating point arithmatic is done with it)
+  static float frequencyBuffer[numberOfHallSensors][frequencyBufferSize];  // Array to store the previous samples used to calculate the rolling average
+  static uint8_t frequencyBufferIndex = 0;                                 // Index in the frequencyBuffer that will be read and then written next
+  static float totalFrequency;                                             // Stores the sum of frequencies used to calculate the rolling average
+  static bool frequencyUpdate = false;                                     // true when an update to a frequency has occured
 
   // Setup timer so this task executes at the frequency specified in samplingFrequency
   const TickType_t xFrequency = configTICK_RATE_HZ / samplingFrequency;
   TickType_t xLastWakeTime = xTaskGetTickCount();
 
-  // Inititalise arrays
-  for (uint8_t i = 0; i < numberOfMotors; i++) {
+  // Inititalise arrays and pins
+  for (uint8_t i = 0; i < numberOfHallSensors; i++) {
 
     // Initialise 1D arrays
     previousSampleUnderThreshold[i] = true;
     timePrevious[i] = 0;
+    instantaniousMotorFrequency[i] = 0;
+    actualMotorFrequency[i] = 0;
+
+    // Initialise pins
+    pinMode(hallSensor[i], INPUT);
 
     // Initialise 2D arrays
     for (uint8_t j = 0; j < frequencyBufferSize; j++) {
@@ -257,12 +276,12 @@ void getMotorFrequencyTask(void* pvParameters) {
     // Pause the task until enough time has passed
     vTaskDelayUntil(&xLastWakeTime, xFrequency);
 
-    // Loop through each motor
-    for (uint8_t i = 0; i < numberOfMotors; i++) {
+    // Loop through each hall sensor
+    for (uint8_t i = 0; i < numberOfHallSensors; i++) {
 
       // Sample the ADC and calculate the time since the last peak (this is a critical section since we don't want an interruption between the sample and recording the time it was taken)
       taskENTER_CRITICAL();
-      currentSample = analogRead(motors[i]);
+      currentSample = analogRead(hallSensor[i]);
       timeCurrent = micros();
       taskEXIT_CRITICAL();
       timeSinceLastPeak = timeCurrent - timePrevious[i];
@@ -291,24 +310,24 @@ void getMotorFrequencyTask(void* pvParameters) {
       }
 
       // If an update to the frequency occured, recalculate the rolling average
-      if (frequencyUpdate) {
+      // if (frequencyUpdate) {
 
-        // Update the total frequency and frequency buffer
-        totalFrequency = totalFrequency - frequencyBuffer[i][frequencyBufferIndex];
-        frequencyBuffer[i][frequencyBufferIndex] = instantaniousMotorFrequency[i];
-        totalFrequency = totalFrequency + instantaniousMotorFrequency[i];
+      //   // Update the total frequency and frequency buffer
+      //   totalFrequency = totalFrequency - frequencyBuffer[i][frequencyBufferIndex];
+      //   frequencyBuffer[i][frequencyBufferIndex] = instantaniousMotorFrequency[i];
+      //   totalFrequency = totalFrequency + instantaniousMotorFrequency[i];
 
-        // Calculate the average and update actualMotorFrequency
-        actualMotorFrequency[i] = totalFrequency / frequencyBufferSize;
+      //   // Calculate the average and update actualMotorFrequency
+      //   actualMotorFrequency[i] = totalFrequency / frequencyBufferSize;
 
-        // Increment frequencyBufferIndex and reset if it has reached the end of the array
-        if (frequencyBufferIndex++ >= frequencyBufferSize) {
-          frequencyBufferIndex = 0;
-        }
+      //   // Increment frequencyBufferIndex and reset if it has reached the end of the array
+      //   if (++frequencyBufferIndex >= frequencyBufferSize) {
+      //     frequencyBufferIndex = 0;
+      //   }
 
-        // Reset the frequencyUpdate flag
-        frequencyUpdate = false;
-      }
+      //   // Reset the frequencyUpdate flag
+      //   frequencyUpdate = false;
+      // }
 
       // Update variables for next loop
       if (currentSample > threshold) {
@@ -325,15 +344,33 @@ void pidControllerTask(void* pvParameters) {
 
   (void)pvParameters;
 
+
   // Create local variables
-  static float previousError[numberOfMotors] = { 0, 0, 0 };
-  static float currentError[numberOfMotors] = { 0, 0, 0 };
-  static float totalError[numberOfMotors] = { 0, 0, 0 };
-  static float changeInError[numberOfMotors] = { 0, 0, 0 };
+  static float previousError[numberOfHallSensors];
+  static float currentError[numberOfHallSensors];
+  static float totalError[numberOfHallSensors];
+  static float changeInError[numberOfHallSensors];
+  static float u[numberOfHallSensors];
+  signed int p[numberOfHallSensors];
+  signed int deltaP[numberOfHallSensors];
+  signed int pDash[numberOfHallSensors];
 
   // Make the task execute at a specified frequency
   const TickType_t xFrequency = configTICK_RATE_HZ / controlFrequency;
   TickType_t xLastWakeTime = xTaskGetTickCount();
+
+  // Inititalise arrays and pins
+  for (uint8_t i = 0; i < numberOfHallSensors; i++) {
+    previousError[i] = 0;
+    currentError[i] = 0;
+    totalError[i] = 0;
+    changeInError[i] = 0;
+    u[i] = 0;
+    p[i] = 0;
+    deltaP[i] = 0;
+    pDash[i] = 0;
+    pinMode(motorPWM[i], OUTPUT);
+  }
 
   // Start the loop
   while (true) {
@@ -342,11 +379,42 @@ void pidControllerTask(void* pvParameters) {
     vTaskDelayUntil(&xLastWakeTime, xFrequency);
 
     // Loops through each motor
-    for (uint8_t motor = 0; motor < numberOfMotors; motor++) {
+    for (uint8_t i = 0; i < numberOfHallSensors; i++) {
 
-      currentError[motor] = targetMotorFrequency[motor] - actualMotorFrequency[motor];
-      totalError[motor] += currentError[motor];
-      changeInError[motor] = (currentError[motor] - previousError[motor]) * controlFrequency;
+      // Calculate error terms
+      currentError[i] = targetMotorFrequency[i] - instantaniousMotorFrequency[i];
+      totalError[i] += currentError[i];
+      changeInError[i] = (currentError[i] - previousError[i]) * controlFrequency;
+
+      // Calculate u, the PID controller output
+      u[i] = (kp * currentError[i]) + (ki * totalError[i]) + (kd * changeInError[i]);
+
+      // Calculate the PWM value
+      p[i] = frequencyToPWM(targetMotorFrequency[i]);
+      deltaP[i] = frequencyToPWM(u[i]);
+      pDash[i] = p[i] + deltaP[i];
+
+      // Limit the PWM value
+      if (pDash[i] > maxAllowedPWM) {
+        pDash[i] = maxAllowedPWM;
+      } else if (pDash[i] < 0) {
+        pDash[i] = 0;
+      }
+
+      if (i == 0) {
+        Serial.print(instantaniousMotorFrequency[i]);
+        Serial.print(", ");
+        // Serial.print(p[i]);
+        // Serial.print(", ");
+        // Serial.print(deltaP[i]);
+        // Serial.print(", ");
+        Serial.println(targetMotorFrequency[i]);
+      }
+
+
+      //      Serial.println(pDash[i]);
+      // Write the PWM value
+      analogWrite(motorPWM[i], pDash[i]);
     }
   }
 }
@@ -379,20 +447,21 @@ void updateLedsTask(void* pvParameters) {
 
   (void)pvParameters;
 
-  // Set pins
-  pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(LED1, OUTPUT);
-  pinMode(LED2, OUTPUT);
+  // Initialise all LEDs as off and set the pins as outputs
+  for (uint8_t i = 0; i < numberOfLEDs; i++) {
+    ledStatus[i] = false;
+    pinMode(led[i], OUTPUT);
+  }
 
   // Main loop
   while (true) {
 
     // Check status of each LED and update accordingly
-    for (uint8_t i = 0; i < sizeof(leds); i++) {
+    for (uint8_t i = 0; i < numberOfLEDs; i++) {
       if (ledStatus[i]) {
-        digitalWrite(leds[i], HIGH);
+        digitalWrite(led[i], HIGH);
       } else {
-        digitalWrite(leds[i], LOW);
+        digitalWrite(led[i], LOW);
       }
     }
 
@@ -406,9 +475,31 @@ void debugTask(void* pvParameters) {
 
   (void)pvParameters;
 
+  pinMode(BTN, INPUT);
+
   while (true) {
-    vTaskDelay(pdMS_TO_TICKS(500));
-    ps();
+    targetMotorFrequency[0] = 0;
+    ledStatus[2] = false;
+    vTaskDelay(pdMS_TO_TICKS(5000));
+    targetMotorFrequency[0] = 1;
+    ledStatus[2] = true;
+    vTaskDelay(pdMS_TO_TICKS(5000));
+
+    // if (!digitalRead(BTN)) {
+    //   targetMotorFrequency[0] = 1;
+
+    //   ledStatus[2] = true;
+    //   vTaskDelay(pdMS_TO_TICKS(100));
+
+    // } else {
+    //   targetMotorFrequency[0] = 0;
+    //   ledStatus[2] = false;
+    //   vTaskDelay(pdMS_TO_TICKS(100));
+    // }
+
+    // vTaskDelay(pdMS_TO_TICKS(50));
+    // Serial.println(actualMotorFrequency[0]);
+    //   taskStatusUpdate();
   }
 }
 
@@ -420,12 +511,15 @@ void setup() {
   Serial.begin(115200);
   delay(1000);
 
-  pinMode(LED_BUILTIN, OUTPUT);
-
   // Define analogue parameters
   // analogWriteFreq(pwmFrequency);
   // analogWriteResolution(pwmResolution);
   // analogReadResolution(adcResolution);
+
+  // Initialise arrays
+  for (uint8_t i = 0; i < numberOfMotors; i++) {
+    targetMotorFrequency[i] = 0;
+  }
 
   // Create tasks
   xTaskCreate(
@@ -455,16 +549,16 @@ void setup() {
   xTaskCreate(
     updateLedsTask,     /* Function that implements the task */
     "LED_UPDATE",       /* Text name for the task */
-    10000,              /* Stack size in words, not bytes */
+    1000,               /* Stack size in words, not bytes */
     nullptr,            /* Parameter passed into the task */
     1,                  /* Task priority */
     &updateLedsHandle); /* Pointer to store the task handle */
 
   // Set task affinities (0x00 -> no cores, 0x01 -> C0, 0x02 -> C1, 0x03 -> C0 and C1)
-  vTaskCoreAffinitySet(getMotorFrequencyHandle, (UBaseType_t)0x03);
-  vTaskCoreAffinitySet(pidControllerHandle, (UBaseType_t)0x03);
-  vTaskCoreAffinitySet(usbHandle, (UBaseType_t)0x03);
-  vTaskCoreAffinitySet(updateLedsHandle, (UBaseType_t)0x03);
+  // vTaskCoreAffinitySet(getMotorFrequencyHandle, (UBaseType_t)0x03);
+  // vTaskCoreAffinitySet(pidControllerHandle, (UBaseType_t)0x03);
+  // vTaskCoreAffinitySet(usbHandle, (UBaseType_t)0x03);
+  // vTaskCoreAffinitySet(updateLedsHandle, (UBaseType_t)0x03);
 
   // Enable the debug task if configured to do so
   if (DEBUG_ENABLED) {
@@ -475,27 +569,25 @@ void setup() {
       nullptr,       /* Parameter passed into the task */
       1,             /* Task priority */
       &debugHandle); /* Pointer to store the task handle */
-    vTaskCoreAffinitySet(debugHandle, (UBaseType_t)0x01);
+    // vTaskCoreAffinitySet(debugHandle, (UBaseType_t)0x01);
   }
 
+  // Starts the scheduler (may be unecessary? delete if buggy)
+  //vTaskStartScheduler();
 
-
-  // Delete "setup and loop" task
+  // Delete "setup" and "loop" task
   vTaskDelete(NULL);
 }
 
 void setup1() {
-  // Delete "setup1 and loop1" task
+  // Delete "setup1" and "loop1" task
   vTaskDelete(NULL);
 }
 
-//-------------------------------- Loop ------------------------------------------------
+//-------------------------------- Loops -----------------------------------------------
 
 void loop() {
   // Should never get to this point
-
-  // Serial.println(actualMotorFrequency[2]);
-  // vTaskDelay(pdMS_TO_TICKS(1000));
 }
 
 void loop1() {
