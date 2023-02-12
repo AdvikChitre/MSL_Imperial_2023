@@ -1,6 +1,9 @@
 /* 
 TODO:
-- Finish PID control loop
+- Add negative speeds
+- Check for integral term saturation and clamp
+- Add more magnets to wheel
+- Tidy up code
 - Continue usbHandle()
 - Add IMU over I2C and process data
 */
@@ -68,16 +71,17 @@ static const uint8_t adcResolution = 10;                     // Sets the ADC res
 static const uint16_t adcRange = pow(2, adcResolution) - 1;  // Calculates the ADC range
 
 // Sampling constants
-static const uint16_t samplingFrequency = 200;  // Sampling frequency in Hz, default: 1000
-static const uint16_t threshold = 560;          // Threshold value that is compared to the analogRead() value to count the time interval between oscillations
-static const long timeout = 1000000;            // Time in milliseconds after which the motor speed is considerd to be 0
-static const uint8_t frequencyBufferSize = 10;  // Number of data points that the rolling frequency average is calculated from
+static const uint16_t samplingFrequency = 200;        // Sampling frequency in Hz, default: 1000
+static const uint16_t upperThreshold = 570;           // Upper threshold value that is compared to the analogRead() value to count the time interval between oscillations
+static const uint16_t lowerThreshold = 490;           // Lower threshold value that is compared to the analogRead() value to count the time interval between oscillations
+static const unsigned long timeoutConstant = 500000;  // timeout = timeoutConstant / instantaniousFrequency
+static const uint8_t frequencyBufferSize = 10;        // Number of data points that the rolling frequency average is calculated from
 
 // Control constants & variables
-static volatile uint16_t controlFrequency = 10;                                                     // Control loop frequenct in Hz, default: 10
-static const float kp = 0.3;                                                                         // Proportional gain of the pid controller (0.3 for 10Hz)
-static const float ki = 0.1;                                                                        // Integral gain of the pid controller (0.1 for 10Hz)
-static const float kd = 0.01;                                                                       // Derivative gain of the pid controller (0.001 for 10Hz)
+static volatile uint16_t controlFrequency = 50;                                                      // Control loop frequenct in Hz, default: 10                                                                      // Proportional gain of the pid controller (0.3 for 10Hz)
+static const float kp = 0.4;                                                                         //0.3;                                                                        // Proportional gain of the pid controller (0.3 for 10Hz)
+static const float ki = 0.04;                                                                        //0.1;                                                                         // Integral gain of the pid controller (0.1 for 10Hz)
+static const float kd = 0.0;                                                                         //0.0;                                                                          // Derivative gain of the pid controller (0.001 for 10Hz)
 static volatile float targetMotorFrequency[numberOfMotors];                                          // Array to store the target motor frequencies (in Hz)
 static volatile float instantaniousMotorFrequency[numberOfHallSensors];                              // Array to store the instantanious motor frequencies (in Hz)
 static volatile float actualMotorFrequency[numberOfHallSensors];                                     // Array to store the rolling averages of motor frequencies (in Hz)
@@ -238,15 +242,18 @@ void getMotorFrequencyTask(void* pvParameters) {
   (void)pvParameters;
 
   // Create local variables
-  static bool previousSampleUnderThreshold[numberOfHallSensors];           // Stores whether the previous sample was under the threshold or not
+  static bool previousSampleUnderUpperThreshold[numberOfHallSensors];      // Stores whether the previous sample was under the threshold or not
+  static bool previousSampleAboveLowerThreshold[numberOfHallSensors];      // Stores whether the previous sample was above the lower threshold or not
   static uint16_t currentSample;                                           // Stores the current sample
-  static unsigned long timePrevious[numberOfHallSensors];                  // Stores the previous time a peak occured for each hall sensor
+  static unsigned long timePrevious[numberOfHallSensors][4];               // Stores the previous time a peak occured for each hall sensor
   static unsigned long timeCurrent;                                        // The time when the current sample was taken
-  static float timeSinceLastPeak;                                          // Stores the time since the last peak (float because floating point arithmatic is done with it)
+  static unsigned long timeSinceLastPeak[4];                                       // Stores the time since the last peak (float because floating point arithmatic is done with it)
   static float frequencyBuffer[numberOfHallSensors][frequencyBufferSize];  // Array to store the previous samples used to calculate the rolling average
   static uint8_t frequencyBufferIndex = 0;                                 // Index in the frequencyBuffer that will be read and then written next
   static float totalFrequency;                                             // Stores the sum of frequencies used to calculate the rolling average
   static bool frequencyUpdate = false;                                     // true when an update to a frequency has occured
+  static unsigned long timeout;
+  static bool updated = false;
 
   // Setup timer so this task executes at the frequency specified in samplingFrequency
   const TickType_t xFrequency = configTICK_RATE_HZ / samplingFrequency;
@@ -256,8 +263,9 @@ void getMotorFrequencyTask(void* pvParameters) {
   for (uint8_t i = 0; i < numberOfHallSensors; i++) {
 
     // Initialise 1D arrays
-    previousSampleUnderThreshold[i] = true;
-    timePrevious[i] = 0;
+    previousSampleUnderUpperThreshold[i] = true;
+    previousSampleAboveLowerThreshold[i] = true;
+    //    timePrevious[i] = 0;
     instantaniousMotorFrequency[i] = 0;
     actualMotorFrequency[i] = 0;
 
@@ -284,29 +292,107 @@ void getMotorFrequencyTask(void* pvParameters) {
       currentSample = analogRead(hallSensor[i]);
       timeCurrent = micros();
       taskEXIT_CRITICAL();
-      timeSinceLastPeak = timeCurrent - timePrevious[i];
+      if (i == 0) {
+        // Serial.print(upperThreshold);
+        // Serial.print(", ");
+        // Serial.print(lowerThreshold);
+        // Serial.print(", ");
+        // Serial.print(1000);
+        // Serial.print(", ");
+        // Serial.print(0);
+        // Serial.print(", ");
+        // Serial.println(currentSample);
+      }
+      timeSinceLastPeak[0] = timeCurrent - timePrevious[i][0];
+      timeSinceLastPeak[1] = timeCurrent - timePrevious[i][1];
+      timeSinceLastPeak[2] = timeCurrent - timePrevious[i][2];
+      timeSinceLastPeak[3] = timeCurrent - timePrevious[i][3];
 
-      // Check if the current sample is above the threshold and the previous sample was below, if true there is a peak
-      if ((currentSample > threshold) && (previousSampleUnderThreshold[i])) {
+      // Check if the current sample is above the upper threshold and the previous sample was below, if true there is a peak
+      if ((currentSample > upperThreshold) && (previousSampleUnderUpperThreshold[i])) {
 
         // Work out the instantanious frequency based on the time since last peak
-        instantaniousMotorFrequency[i] = 250000 / (timeSinceLastPeak);
+        instantaniousMotorFrequency[i] = 250000 / ((float) timeSinceLastPeak[0]);
 
         // Set the frequencyUpdate flag
         frequencyUpdate = true;
 
         // Update variables for next loop
-        timePrevious[i] = timeCurrent;
+        timePrevious[i][0] = timeCurrent;
+        updated = true;
+      }
+      // Check if the current sample is above the upper threshold and the previous sample was below, if true there is a peak
+      else if ((currentSample < upperThreshold) && (!previousSampleUnderUpperThreshold[i])) {
+
+        // Work out the instantanious frequency based on the time since last peak
+        instantaniousMotorFrequency[i] = 250000 / ((float)timeSinceLastPeak[1]);
+
+        // Set the frequencyUpdate flag
+        frequencyUpdate = true;
+
+        // Update variables for next loop
+        timePrevious[i][1] = timeCurrent;
+        updated = true;
+      }
+      // Check if the current sample is above the upper threshold and the previous sample was below, if true there is a peak
+      else if ((currentSample < lowerThreshold) && (previousSampleAboveLowerThreshold[i])) {
+
+        // Work out the instantanious frequency based on the time since last peak
+        instantaniousMotorFrequency[i] = 250000 / ((float)timeSinceLastPeak[2]);
+
+        // Set the frequencyUpdate flag
+        frequencyUpdate = true;
+
+        // Update variables for next loop
+        timePrevious[i][2] = timeCurrent;
+        updated = true;
+      }
+      // Check if the current sample is above the upper threshold and the previous sample was below, if true there is a peak
+      else if ((currentSample > lowerThreshold) && (!previousSampleAboveLowerThreshold[i])) {
+
+        // Work out the instantanious frequency based on the time since last peak
+        instantaniousMotorFrequency[i] = 250000 / ((float)timeSinceLastPeak[3]);
+
+        // Set the frequencyUpdate flag
+        frequencyUpdate = true;
+
+        // Update variables for next loop
+        timePrevious[i][3] = timeCurrent;
+        updated = true;
       }
 
-      // If no peak after timeout time, or previous frequency 0 then frequency is considered to be 0
-      else if ((timeSinceLastPeak > timeout) || (instantaniousMotorFrequency[i] == 0)) {
+      // if (instantaniousMotorFrequency[i] != 0.0) {
+        timeout = timeoutConstant / instantaniousMotorFrequency[i];
+      // }
+      // else {
+      //   timeout = timeoutConstant;
+      // }
 
+      if (i == 0) {
+        // Serial.print(timeout / 1024);
+        // Serial.print(", ");
+        // Serial.print(instantaniousMotorFrequency[i] * 100.0);
+        // Serial.print(", ");
+        // Serial.print(upperThreshold);
+        // Serial.print(", ");
+        // Serial.print(lowerThreshold);
+        // Serial.print(", ");
+        // Serial.print(1000);
+        // Serial.print(", ");
+        // Serial.print(0);
+        // Serial.print(", ");
+        // Serial.println(currentSample);
+      }
+      // If no peak after timeout time, or previous frequency 0 then frequency is considered to be 0
+      if (((timeSinceLastPeak[0] > timeout) || (timeSinceLastPeak[1] > timeout) || (timeSinceLastPeak[2] > timeout) || (timeSinceLastPeak[3] > timeout)) && !updated) {
+        // Serial.println(1500);
         // Set the frequency to 0
         instantaniousMotorFrequency[i] = 0;
 
         // Set the frequencyUpdate flag
         frequencyUpdate = true;
+      } else {
+        updated = false;
       }
 
       // If an update to the frequency occured, recalculate the rolling average
@@ -330,10 +416,15 @@ void getMotorFrequencyTask(void* pvParameters) {
       // }
 
       // Update variables for next loop
-      if (currentSample > threshold) {
-        previousSampleUnderThreshold[i] = false;
+      if (currentSample > upperThreshold) {
+        previousSampleUnderUpperThreshold[i] = false;
+        previousSampleAboveLowerThreshold[i] = true;
+      } else if (currentSample < lowerThreshold) {
+        previousSampleUnderUpperThreshold[i] = true;
+        previousSampleAboveLowerThreshold[i] = false;
       } else {
-        previousSampleUnderThreshold[i] = true;
+        previousSampleUnderUpperThreshold[i] = true;
+        previousSampleAboveLowerThreshold[i] = true;
       }
     }
   }
@@ -386,11 +477,18 @@ void pidControllerTask(void* pvParameters) {
       totalError[i] += currentError[i];
       changeInError[i] = (currentError[i] - previousError[i]) * controlFrequency;
 
+      // If the error is large use controller 1 for
+      // if ((currentError[i] > 0.3) || (currentError[i] < 0.3)) {
+      //   u[i] = kp1 * currentError[i];
+      // }
+      // // Else use controller 1 for good static precision
+      // else {
       // Calculate u, the PID controller output
       u[i] = (kp * currentError[i]) + (ki * totalError[i]) + (kd * changeInError[i]);
+      // }
 
       // Calculate the PWM value
-      p[i] = frequencyToPWM(targetMotorFrequency[i]);
+      // p[i] = frequencyToPWM(targetMotorFrequency[i]);
       deltaP[i] = frequencyToPWM(u[i]);
       pDash[i] = p[i] + deltaP[i];
 
@@ -402,12 +500,14 @@ void pidControllerTask(void* pvParameters) {
       }
 
       if (i == 0) {
+        // Serial.print(changeInError[i]);
+        // Serial.print(", ");
+        // Serial.print(currentError[i]);
+        // Serial.print(", ");
+        // Serial.print(totalError[i]);
+        // Serial.print(", ");
         Serial.print(instantaniousMotorFrequency[i]);
         Serial.print(", ");
-        // Serial.print(p[i]);
-        // Serial.print(", ");
-        // Serial.print(deltaP[i]);
-        // Serial.print(", ");
         Serial.println(targetMotorFrequency[i]);
       }
 
@@ -466,7 +566,10 @@ void updateLedsTask(void* pvParameters) {
     }
 
     // Delay
-    vTaskDelay(pdMS_TO_TICKS(50));
+    vTaskDelay(pdMS_TO_TICKS(10));
+    // Serial.print(instantaniousMotorFrequency[0]);
+    // Serial.print(", ");
+    // Serial.println(targetMotorFrequency[0]);
   }
 }
 
@@ -476,28 +579,29 @@ void debugTask(void* pvParameters) {
   (void)pvParameters;
 
   pinMode(BTN, INPUT);
+  pinMode(motorPWM[0], OUTPUT);
 
   while (true) {
-    targetMotorFrequency[0] = 0;
-    ledStatus[2] = false;
-    vTaskDelay(pdMS_TO_TICKS(5000));
-    targetMotorFrequency[0] = 1;
-    ledStatus[2] = true;
-    vTaskDelay(pdMS_TO_TICKS(5000));
+    // analogWrite(motorPWM[0], 0);
+    // ledStatus[2] = false;
+    // vTaskDelay(pdMS_TO_TICKS(5000));
+    // analogWrite(motorPWM[0], 35);
+    // ledStatus[2] = true;
+    // vTaskDelay(pdMS_TO_TICKS(5000));
 
-    // if (!digitalRead(BTN)) {
-    //   targetMotorFrequency[0] = 1;
+    if (!digitalRead(BTN)) {
+      targetMotorFrequency[0] = 0.3;
 
-    //   ledStatus[2] = true;
-    //   vTaskDelay(pdMS_TO_TICKS(100));
+      ledStatus[2] = true;
+      vTaskDelay(pdMS_TO_TICKS(100));
 
-    // } else {
-    //   targetMotorFrequency[0] = 0;
-    //   ledStatus[2] = false;
-    //   vTaskDelay(pdMS_TO_TICKS(100));
-    // }
+    } else {
+      targetMotorFrequency[0] = 0;
+      ledStatus[2] = false;
+      vTaskDelay(pdMS_TO_TICKS(100));
+    }
 
-    // vTaskDelay(pdMS_TO_TICKS(50));
+    vTaskDelay(pdMS_TO_TICKS(50));
     // Serial.println(actualMotorFrequency[0]);
     //   taskStatusUpdate();
   }
@@ -527,7 +631,7 @@ void setup() {
     "GET_FREQ",                /* Text name for the task */
     1000,                      /* Stack size in words, not bytes */
     nullptr,                   /* Parameter passed into the task */
-    1,                         /* Task priority */
+    5,                         /* Task priority */
     &getMotorFrequencyHandle); /* Pointer to store the task handle */
 
   xTaskCreate(
@@ -535,7 +639,7 @@ void setup() {
     "PID_CTRL",            /* Text name for the task */
     1000,                  /* Stack size in words, not bytes */
     nullptr,               /* Parameter passed into the task */
-    1,                     /* Task priority */
+    5,                     /* Task priority */
     &pidControllerHandle); /* Pointer to store the task handle */
 
   xTaskCreate(
