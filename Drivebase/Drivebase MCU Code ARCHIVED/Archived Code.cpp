@@ -171,4 +171,183 @@ void getMotorFrequencyTask(void* pvParameters) {
 
 
 
+
+
+
+
+// Task function to calculate the motor frequencies
+void getMotorFrequencyTask(void* pvParameters) {
+
+  (void)pvParameters;
+
+  // Create local variables
+  static bool previousSampleUnderUpperThreshold[numberOfHallSensors];      // Stores whether the previous sample was under the threshold or not
+  static bool previousSampleAboveLowerThreshold[numberOfHallSensors];      // Stores whether the previous sample was above the lower threshold or not
+  static uint16_t currentSample;                                           // Stores the current sample
+  static unsigned long timePrevious[numberOfHallSensors][4];               // Stores the previous time a peak occured for each hall sensor
+  static unsigned long timeCurrent;                                        // The time when the current sample was taken
+  static unsigned long timeSinceLastPeak[4];                               // Stores the time since the last peak (float because floating point arithmatic is done with it)
+  static float frequencyBuffer[numberOfHallSensors][frequencyBufferSize];  // Array to store the previous samples used to calculate the rolling average
+  static uint8_t frequencyBufferIndex = 0;                                 // Index in the frequencyBuffer that will be read and then written next
+  static float totalFrequency;                                             // Stores the sum of frequencies used to calculate the rolling average
+  static bool frequencyUpdate = false;                                     // true when an update to a frequency has occured
+  static unsigned long timeout;
+  static bool updated = false;
+
+  // Setup timer so this task executes at the frequency specified in samplingFrequency
+  const TickType_t xFrequency = configTICK_RATE_HZ / samplingFrequency;
+  TickType_t xLastWakeTime = xTaskGetTickCount();
+
+  // Inititalise arrays and pins
+  for (uint8_t i = 0; i < numberOfHallSensors; i++) {
+
+    // Initialise 1D arrays
+    previousSampleUnderUpperThreshold[i] = true;
+    previousSampleAboveLowerThreshold[i] = true;
+    //    timePrevious[i] = 0;
+    instantaniousMotorFrequency[i] = 0;
+
+    // Initialise pins
+    pinMode(hallSensor[i], INPUT);
+
+    // Initialise 2D arrays
+    for (uint8_t j = 0; j < frequencyBufferSize; j++) {
+      frequencyBuffer[i][j] = 0;
+    }
+  }
+
+  // Start the loop
+  while (true) {
+
+    // Pause the task until enough time has passed
+    vTaskDelayUntil(&xLastWakeTime, xFrequency);
+
+    // Loop through each hall sensor
+    for (uint8_t i = 0; i < numberOfHallSensors; i++) {
+
+      // Sample the ADC and calculate the time since the last peak (this is a critical section since we don't want an interruption between the sample and recording the time it was taken)
+      taskENTER_CRITICAL();
+      currentSample = analogRead(hallSensor[i]);
+      timeCurrent = micros();
+      taskEXIT_CRITICAL();
+      if (i == 0) {
+        // Serial.print(upperThreshold);
+        // Serial.print(", ");
+        // Serial.print(lowerThreshold);
+        // Serial.print(", ");
+        // Serial.print(1000);
+        // Serial.print(", ");
+        // Serial.print(0);
+        // Serial.print(", ");
+        // Serial.println(currentSample);
+      }
+      timeSinceLastPeak[0] = timeCurrent - timePrevious[i][0];
+      timeSinceLastPeak[1] = timeCurrent - timePrevious[i][1];
+      timeSinceLastPeak[2] = timeCurrent - timePrevious[i][2];
+      timeSinceLastPeak[3] = timeCurrent - timePrevious[i][3];
+
+      // Check if the current sample is above the upper threshold and the previous sample was below, if true there is a peak
+      if ((currentSample > upperThreshold) && (previousSampleUnderUpperThreshold[i])) {
+
+        // Work out the instantanious frequency based on the time since last peak
+        instantaniousMotorFrequency[i] = 250000 / ((float)timeSinceLastPeak[0]);
+
+        // Set the frequencyUpdate flag
+        frequencyUpdate = true;
+
+        // Update variables for next loop
+        timePrevious[i][0] = timeCurrent;
+        updated = true;
+      }
+      // Check if the current sample is above the upper threshold and the previous sample was below, if true there is a peak
+      else if ((currentSample < upperThreshold) && (!previousSampleUnderUpperThreshold[i])) {
+
+        // Work out the instantanious frequency based on the time since last peak
+        instantaniousMotorFrequency[i] = 250000 / ((float)timeSinceLastPeak[1]);
+
+        // Set the frequencyUpdate flag
+        frequencyUpdate = true;
+
+        // Update variables for next loop
+        timePrevious[i][1] = timeCurrent;
+        updated = true;
+      }
+      // Check if the current sample is above the upper threshold and the previous sample was below, if true there is a peak
+      else if ((currentSample < lowerThreshold) && (previousSampleAboveLowerThreshold[i])) {
+
+        // Work out the instantanious frequency based on the time since last peak
+        instantaniousMotorFrequency[i] = 250000 / ((float)timeSinceLastPeak[2]);
+
+        // Set the frequencyUpdate flag
+        frequencyUpdate = true;
+
+        // Update variables for next loop
+        timePrevious[i][2] = timeCurrent;
+        updated = true;
+      }
+      // Check if the current sample is above the upper threshold and the previous sample was below, if true there is a peak
+      else if ((currentSample > lowerThreshold) && (!previousSampleAboveLowerThreshold[i])) {
+
+        // Work out the instantanious frequency based on the time since last peak
+        instantaniousMotorFrequency[i] = 250000 / ((float)timeSinceLastPeak[3]);
+
+        // Set the frequencyUpdate flag
+        frequencyUpdate = true;
+
+        // Update variables for next loop
+        timePrevious[i][3] = timeCurrent;
+        updated = true;
+      }
+
+      timeout = timeoutConstant / instantaniousMotorFrequency[i];
+
+      if (i == 0) {
+        // Serial.print(timeout / 1024);
+        // Serial.print(", ");
+        // Serial.print(instantaniousMotorFrequency[i] * 100.0);
+        // Serial.print(", ");
+        // Serial.print(upperThreshold);
+        // Serial.print(", ");
+        // Serial.print(lowerThreshold);
+        // Serial.print(", ");
+        Serial.print(1023);
+        Serial.print(", ");
+        Serial.print(0);
+        Serial.print(", ");
+        Serial.print(currentSample);
+        Serial.print(", ");
+        Serial.println(targetMotorFrequency[i] * 100.0);
+      }
+      // If no peak after timeout time, or previous frequency 0 then frequency is considered to be 0
+      if (((timeSinceLastPeak[0] > timeout) || (timeSinceLastPeak[1] > timeout) || (timeSinceLastPeak[2] > timeout) || (timeSinceLastPeak[3] > timeout)) && !updated) {
+        // Serial.println(1500);
+        // Set the frequency to 0
+        instantaniousMotorFrequency[i] = 0;
+
+        // Set the frequencyUpdate flag
+        frequencyUpdate = true;
+      } else {
+        updated = false;
+      }
+
+      // Update variables for next loop
+      if (currentSample > upperThreshold) {
+        previousSampleUnderUpperThreshold[i] = false;
+        previousSampleAboveLowerThreshold[i] = true;
+      } else if (currentSample < lowerThreshold) {
+        previousSampleUnderUpperThreshold[i] = true;
+        previousSampleAboveLowerThreshold[i] = false;
+      } else {
+        previousSampleUnderUpperThreshold[i] = true;
+        previousSampleAboveLowerThreshold[i] = true;
+      }
+    }
+  }
+}
+
+
+
+
+
+
 sampleQueue = xQueueCreate(samples * numberOfMotors, sizeof(uint16_t));  // Queue length is the number of samples, item size is 2 bytes (uint16_t)
