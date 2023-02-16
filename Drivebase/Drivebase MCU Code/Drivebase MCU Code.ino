@@ -1,11 +1,11 @@
 /* 
 TODO:
-- Add negative speeds
-- Check for integral term saturation and clamp
-- Add more magnets to wheel
+- Implement FIR filter on sampled signal
 - Tidy up code
 - Continue usbHandle()
 - Add IMU over I2C and process data
+- Add hysterisis to PID controller
+- Remove offset from PID controlelr
 */
 
 //-------------------------------- Includes ---------------------------------------------
@@ -22,6 +22,10 @@ TODO:
 #include <map>
 
 #include <math.h>
+
+#include "AS5600.h"
+
+AS5600 as5600;
 
 //-------------------------------- Defines ----------------------------------------------
 
@@ -48,7 +52,8 @@ TODO:
 #define IMU_SCL 5
 #define IMU_SDA 4
 
-#define DEBUG_ENABLED true
+#define DEBUG_OUTPUT true
+#define DEBUG_INPUT true
 
 //-------------------------------- Global Variables -------------------------------------
 
@@ -62,7 +67,6 @@ static const uint8_t numberOfHallSensors = sizeof(hallSensor);  // Number of hal
 static const uint8_t numberOfMotors = sizeof(motorPWM);         // Number of motors
 static const uint8_t numberOfLEDs = sizeof(led);                // Number of motors
 
-
 // Analogue constants
 static const uint32_t pwmFrequency = 20000;                  // Sets the PWM frequency (in Hz)
 static const uint8_t pwmResolution = 8;                      // Sets the PWM resolution (in bits), default is 8
@@ -71,23 +75,21 @@ static const uint8_t adcResolution = 10;                     // Sets the ADC res
 static const uint16_t adcRange = pow(2, adcResolution) - 1;  // Calculates the ADC range
 
 // Sampling constants
-static const uint16_t samplingFrequency = 200;        // Sampling frequency in Hz, default: 1000
-static const uint16_t upperThreshold = 570;           // Upper threshold value that is compared to the analogRead() value to count the time interval between oscillations
-static const uint16_t lowerThreshold = 490;           // Lower threshold value that is compared to the analogRead() value to count the time interval between oscillations
-static const unsigned long timeoutConstant = 500000;  // timeout = timeoutConstant / instantaniousFrequency
-static const uint8_t frequencyBufferSize = 10;        // Number of data points that the rolling frequency average is calculated from
+static const uint16_t samplingFrequency = 50;   // Sampling frequency in Hz, default: 1000
+static const unsigned long timeout = 200000;    // Amount of time with no new data before frequency is considered to be 0
+static const uint8_t frequencyBufferSize = 20;  // Number of data points that the rolling frequency average is calculated from
 
 // Control constants & variables
-static volatile uint16_t controlFrequency = 50;                                                      // Control loop frequenct in Hz, default: 10                                                                      // Proportional gain of the pid controller (0.3 for 10Hz)
-static const float kp = 0.4;                                                                         //0.3;                                                                        // Proportional gain of the pid controller (0.3 for 10Hz)
-static const float ki = 0.04;                                                                        //0.1;                                                                         // Integral gain of the pid controller (0.1 for 10Hz)
-static const float kd = 0.001;                                                                         //0.0;                                                                          // Derivative gain of the pid controller (0.001 for 10Hz)
+static volatile uint16_t controlFrequency = 50;                                                      // Control loop frequenct in Hz, default: 10
+static const float kp = 0.4;                                                                         // Proportional gain of the pid controller (0.3 for 10Hz)
+static const float ki = 0.02;                                                                        // Integral gain of the pid controller (0.1 for 10Hz)
+static const float kd = 0.0;                                                                         // Derivative gain of the pid controller (0.001 for 10Hz)
 static volatile float targetMotorFrequency[numberOfMotors];                                          // Array to store the target motor frequencies (in Hz)
-static volatile float instantaniousMotorFrequency[numberOfHallSensors];                              // Array to store the instantanious motor frequencies (in Hz)
-static volatile float actualMotorFrequency[numberOfHallSensors];                                     // Array to store the rolling averages of motor frequencies (in Hz)
+static volatile bool motorDirection[numberOfMotors];                                                 // Array to store the direction of the motor (true = +ve, false = -ve)
+static volatile float actualMotorFrequency[numberOfHallSensors];                                     // Array to store the average motor frequencies (in Hz) across a number of samples
 static const uint8_t wheelDiameter = 100;                                                            // Wheel diameter in mm, used to convert speeds to frequencies
 static const float maxMotorFrequency = 2.93;                                                         // Max motor frequency in Hz, default : 13.02
-static const uint8_t maxAllowedSpeedPercent = 80;                                                    // Max allowed speed given as a percentage of actual max speed
+static const uint8_t maxAllowedSpeedPercent = 30;                                                    // Max allowed speed given as a percentage of actual max speed
 static const float maxAllowedMotorFrequency = maxMotorFrequency * (maxAllowedSpeedPercent / 100.0);  // Max allowed motor frequency in Hz
 static const uint16_t maxAllowedPWM = pwmRange * (maxAllowedSpeedPercent / 100.0);                   // Max allowed value in analogWrite()
 
@@ -218,7 +220,9 @@ void handleSerial() {
   }
 
   // Print successfully read code
-  Serial.print(220);
+  if (!DEBUG_INPUT) {
+    Serial.print(220);
+  }
 
   // Decoding the instruction, and calling the appropriate function
 
@@ -230,7 +234,8 @@ void handleSerial() {
   // Motor command
   if (opcode[0] == 'M') {
     if (opcode[2] == 'T') {
-    }
+      targetMotorFrequency[opcode[1] - 49] = atof(data);
+    }  //!M1TW4+0.3
   }
 }
 
@@ -242,18 +247,19 @@ void getMotorFrequencyTask(void* pvParameters) {
   (void)pvParameters;
 
   // Create local variables
-  static bool previousSampleUnderUpperThreshold[numberOfHallSensors];      // Stores whether the previous sample was under the threshold or not
-  static bool previousSampleAboveLowerThreshold[numberOfHallSensors];      // Stores whether the previous sample was above the lower threshold or not
-  static uint16_t currentSample;                                           // Stores the current sample
-  static unsigned long timePrevious[numberOfHallSensors][4];               // Stores the previous time a peak occured for each hall sensor
-  static unsigned long timeCurrent;                                        // The time when the current sample was taken
-  static unsigned long timeSinceLastPeak[4];                                       // Stores the time since the last peak (float because floating point arithmatic is done with it)
+
+  static uint16_t previousSample[numberOfHallSensors];     // Stores the previous samples
+  static uint16_t currentSample;                           // Stores the current sample
+  static unsigned long previousTime[numberOfHallSensors];  // Stores the time when previous samples were taken
+  static unsigned long currentTime;                        // Stores the time when the current sample was taken
+  static unsigned long interval[numberOfHallSensors];      // Time between samples
+
+  static float instantaniousMotorFrequency[numberOfHallSensors];           // Array to store the instantanious motor frequencies (in Hz)
+  static bool frequencyUpdated[numberOfHallSensors];                       //
   static float frequencyBuffer[numberOfHallSensors][frequencyBufferSize];  // Array to store the previous samples used to calculate the rolling average
-  static uint8_t frequencyBufferIndex = 0;                                 // Index in the frequencyBuffer that will be read and then written next
-  static float totalFrequency;                                             // Stores the sum of frequencies used to calculate the rolling average
-  static bool frequencyUpdate = false;                                     // true when an update to a frequency has occured
-  static unsigned long timeout;
-  static bool updated = false;
+  static uint8_t frequencyBufferIndex[numberOfHallSensors];                // Index in the frequencyBuffer that will be read and then written next
+  static float totalFrequency[numberOfHallSensors];                        // Stores the sum of frequencies used to calculate the rolling average
+
 
   // Setup timer so this task executes at the frequency specified in samplingFrequency
   const TickType_t xFrequency = configTICK_RATE_HZ / samplingFrequency;
@@ -262,11 +268,18 @@ void getMotorFrequencyTask(void* pvParameters) {
   // Inititalise arrays and pins
   for (uint8_t i = 0; i < numberOfHallSensors; i++) {
 
-    // Initialise 1D arrays
-    previousSampleUnderUpperThreshold[i] = true;
-    previousSampleAboveLowerThreshold[i] = true;
-    //    timePrevious[i] = 0;
+    // Initialise 1D sampling arrays
+    previousSample[i] = 0;
+    previousTime[i] = 0;
+    interval[i] = 0;
+
+    // Initialise 1D frequency array
     instantaniousMotorFrequency[i] = 0;
+    frequencyUpdated[i] = false;
+
+    // Initialise 1D rolling average arrays
+    frequencyBufferIndex[i] = 0;
+    totalFrequency[i] = 0;
     actualMotorFrequency[i] = 0;
 
     // Initialise pins
@@ -287,144 +300,79 @@ void getMotorFrequencyTask(void* pvParameters) {
     // Loop through each hall sensor
     for (uint8_t i = 0; i < numberOfHallSensors; i++) {
 
-      // Sample the ADC and calculate the time since the last peak (this is a critical section since we don't want an interruption between the sample and recording the time it was taken)
+      // Sample the ADC (this is a critical section since we don't want an interrupt between the sample and recording the time it was taken)
       taskENTER_CRITICAL();
       currentSample = analogRead(hallSensor[i]);
-      timeCurrent = micros();
+      currentTime = micros();
       taskEXIT_CRITICAL();
+
+      // Calculate the time since the last valid sample
+      interval[i] = currentTime - previousTime[i];
+
+      //
+      if ((currentSample < 1000) && (currentSample > 30)) {
+
+        instantaniousMotorFrequency[i] = ((currentSample - previousSample[i]) * 1000000.0) / ((float)(interval[i] * adcRange));
+
+        // // Round to 0 if below
+        // if (instantaniousMotorFrequency[i] < 0.5){
+        //   instantaniousMotorFrequency[i] = 0.0;
+        // }
+
+        previousSample[i] = currentSample;
+        previousTime[i] = currentTime;
+        frequencyUpdated[i] = true;
+
+      } else if (interval[i] > timeout) {
+        instantaniousMotorFrequency[i] = 0.0;
+        // previousTime[i] = currentTime;
+        frequencyUpdated[i] = true;
+      }
+
+      else {
+        // previousTime[i] = currentTime;
+        frequencyUpdated[i] = false;
+      }
+
+
+      //
+      if ((instantaniousMotorFrequency[i] > maxMotorFrequency) || (instantaniousMotorFrequency[i] < -maxMotorFrequency)) {
+        instantaniousMotorFrequency[i] = 0.0;
+        frequencyUpdated[i] = false;
+      }
+
+      // If the calculated frequency is valid, work out the rolling average
+      if (frequencyUpdated[i]) {
+
+
+
+        // Update the total frequency array
+        totalFrequency[i] += instantaniousMotorFrequency[i];
+        totalFrequency[i] -= frequencyBuffer[i][frequencyBufferIndex[i]];
+
+        // Add the current frequency to the buffer array
+        frequencyBuffer[i][frequencyBufferIndex[i]] = instantaniousMotorFrequency[i];
+
+        // Calculate the new average
+        actualMotorFrequency[i] = totalFrequency[i] / frequencyBufferSize;
+
+        // Increment the frequencyBufferIndex and reset if needed
+        if (++frequencyBufferIndex[i] >= frequencyBufferSize) {
+          frequencyBufferIndex[i] = 0;
+        }
+      }
       if (i == 0) {
-        // Serial.print(upperThreshold);
+        Serial.print(0);
+        Serial.print(", ");
+        Serial.print(1023);
+        Serial.print(", ");
+        Serial.print(currentSample);
+        Serial.print(", ");
+        Serial.println(instantaniousMotorFrequency[i] * 1000);
         // Serial.print(", ");
-        // Serial.print(lowerThreshold);
+        // Serial.print(frequencyBuffer[i][frequencyBufferIndex[i]] * 1000);
         // Serial.print(", ");
-        // Serial.print(1000);
-        // Serial.print(", ");
-        // Serial.print(0);
-        // Serial.print(", ");
-        // Serial.println(currentSample);
-      }
-      timeSinceLastPeak[0] = timeCurrent - timePrevious[i][0];
-      timeSinceLastPeak[1] = timeCurrent - timePrevious[i][1];
-      timeSinceLastPeak[2] = timeCurrent - timePrevious[i][2];
-      timeSinceLastPeak[3] = timeCurrent - timePrevious[i][3];
-
-      // Check if the current sample is above the upper threshold and the previous sample was below, if true there is a peak
-      if ((currentSample > upperThreshold) && (previousSampleUnderUpperThreshold[i])) {
-
-        // Work out the instantanious frequency based on the time since last peak
-        instantaniousMotorFrequency[i] = 250000 / ((float) timeSinceLastPeak[0]);
-
-        // Set the frequencyUpdate flag
-        frequencyUpdate = true;
-
-        // Update variables for next loop
-        timePrevious[i][0] = timeCurrent;
-        updated = true;
-      }
-      // Check if the current sample is above the upper threshold and the previous sample was below, if true there is a peak
-      else if ((currentSample < upperThreshold) && (!previousSampleUnderUpperThreshold[i])) {
-
-        // Work out the instantanious frequency based on the time since last peak
-        instantaniousMotorFrequency[i] = 250000 / ((float)timeSinceLastPeak[1]);
-
-        // Set the frequencyUpdate flag
-        frequencyUpdate = true;
-
-        // Update variables for next loop
-        timePrevious[i][1] = timeCurrent;
-        updated = true;
-      }
-      // Check if the current sample is above the upper threshold and the previous sample was below, if true there is a peak
-      else if ((currentSample < lowerThreshold) && (previousSampleAboveLowerThreshold[i])) {
-
-        // Work out the instantanious frequency based on the time since last peak
-        instantaniousMotorFrequency[i] = 250000 / ((float)timeSinceLastPeak[2]);
-
-        // Set the frequencyUpdate flag
-        frequencyUpdate = true;
-
-        // Update variables for next loop
-        timePrevious[i][2] = timeCurrent;
-        updated = true;
-      }
-      // Check if the current sample is above the upper threshold and the previous sample was below, if true there is a peak
-      else if ((currentSample > lowerThreshold) && (!previousSampleAboveLowerThreshold[i])) {
-
-        // Work out the instantanious frequency based on the time since last peak
-        instantaniousMotorFrequency[i] = 250000 / ((float)timeSinceLastPeak[3]);
-
-        // Set the frequencyUpdate flag
-        frequencyUpdate = true;
-
-        // Update variables for next loop
-        timePrevious[i][3] = timeCurrent;
-        updated = true;
-      }
-
-      // if (instantaniousMotorFrequency[i] != 0.0) {
-        timeout = timeoutConstant / instantaniousMotorFrequency[i];
-      // }
-      // else {
-      //   timeout = timeoutConstant;
-      // }
-
-      if (i == 0) {
-        // Serial.print(timeout / 1024);
-        // Serial.print(", ");
-        // Serial.print(instantaniousMotorFrequency[i] * 100.0);
-        // Serial.print(", ");
-        // Serial.print(upperThreshold);
-        // Serial.print(", ");
-        // Serial.print(lowerThreshold);
-        // Serial.print(", ");
-        // Serial.print(1000);
-        // Serial.print(", ");
-        // Serial.print(0);
-        // Serial.print(", ");
-        // Serial.println(currentSample);
-      }
-      // If no peak after timeout time, or previous frequency 0 then frequency is considered to be 0
-      if (((timeSinceLastPeak[0] > timeout) || (timeSinceLastPeak[1] > timeout) || (timeSinceLastPeak[2] > timeout) || (timeSinceLastPeak[3] > timeout)) && !updated) {
-        // Serial.println(1500);
-        // Set the frequency to 0
-        instantaniousMotorFrequency[i] = 0;
-
-        // Set the frequencyUpdate flag
-        frequencyUpdate = true;
-      } else {
-        updated = false;
-      }
-
-      // If an update to the frequency occured, recalculate the rolling average
-      // if (frequencyUpdate) {
-
-      //   // Update the total frequency and frequency buffer
-      //   totalFrequency = totalFrequency - frequencyBuffer[i][frequencyBufferIndex];
-      //   frequencyBuffer[i][frequencyBufferIndex] = instantaniousMotorFrequency[i];
-      //   totalFrequency = totalFrequency + instantaniousMotorFrequency[i];
-
-      //   // Calculate the average and update actualMotorFrequency
-      //   actualMotorFrequency[i] = totalFrequency / frequencyBufferSize;
-
-      //   // Increment frequencyBufferIndex and reset if it has reached the end of the array
-      //   if (++frequencyBufferIndex >= frequencyBufferSize) {
-      //     frequencyBufferIndex = 0;
-      //   }
-
-      //   // Reset the frequencyUpdate flag
-      //   frequencyUpdate = false;
-      // }
-
-      // Update variables for next loop
-      if (currentSample > upperThreshold) {
-        previousSampleUnderUpperThreshold[i] = false;
-        previousSampleAboveLowerThreshold[i] = true;
-      } else if (currentSample < lowerThreshold) {
-        previousSampleUnderUpperThreshold[i] = true;
-        previousSampleAboveLowerThreshold[i] = false;
-      } else {
-        previousSampleUnderUpperThreshold[i] = true;
-        previousSampleAboveLowerThreshold[i] = true;
+        // Serial.println(actualMotorFrequency[i] * 1000);
       }
     }
   }
@@ -435,16 +383,15 @@ void pidControllerTask(void* pvParameters) {
 
   (void)pvParameters;
 
-
   // Create local variables
   static float previousError[numberOfHallSensors];
   static float currentError[numberOfHallSensors];
   static float totalError[numberOfHallSensors];
   static float changeInError[numberOfHallSensors];
   static float u[numberOfHallSensors];
-  signed int p[numberOfHallSensors];
-  signed int deltaP[numberOfHallSensors];
-  signed int pDash[numberOfHallSensors];
+  static uint16_t p[numberOfHallSensors];
+  static bool saturated[numberOfHallSensors];
+  static uint16_t offset = 256;
 
   // Make the task execute at a specified frequency
   const TickType_t xFrequency = configTICK_RATE_HZ / controlFrequency;
@@ -458,9 +405,9 @@ void pidControllerTask(void* pvParameters) {
     changeInError[i] = 0;
     u[i] = 0;
     p[i] = 0;
-    deltaP[i] = 0;
-    pDash[i] = 0;
+    saturated[i] = false;
     pinMode(motorPWM[i], OUTPUT);
+    pinMode(motorDIR[i], OUTPUT);
   }
 
   // Start the loop
@@ -473,48 +420,62 @@ void pidControllerTask(void* pvParameters) {
     for (uint8_t i = 0; i < numberOfHallSensors; i++) {
 
       // Calculate error terms
-      currentError[i] = targetMotorFrequency[i] - instantaniousMotorFrequency[i];
-      totalError[i] += currentError[i];
+      if (motorDirection[i]) {
+        currentError[i] = targetMotorFrequency[i] - actualMotorFrequency[i];
+      } else {
+        currentError[i] = targetMotorFrequency[i] + actualMotorFrequency[i];
+      }
+      if (!saturated[i]) {
+        totalError[i] += currentError[i];
+      }
       changeInError[i] = (currentError[i] - previousError[i]) * controlFrequency;
 
-      // If the error is large use controller 1 for
-      // if ((currentError[i] > 0.3) || (currentError[i] < 0.3)) {
-      //   u[i] = kp1 * currentError[i];
-      // }
-      // // Else use controller 1 for good static precision
-      // else {
-      // Calculate u, the PID controller output
+      // Calculate the PID control variable "u"
       u[i] = (kp * currentError[i]) + (ki * totalError[i]) + (kd * changeInError[i]);
-      // }
 
-      // Calculate the PWM value
-      // p[i] = frequencyToPWM(targetMotorFrequency[i]);
-      deltaP[i] = frequencyToPWM(u[i]);
-      pDash[i] = p[i] + deltaP[i];
+      // Convert u into a PWM value with an offset
+      p[i] = offset + frequencyToPWM(u[i]);
 
       // Limit the PWM value
-      if (pDash[i] > maxAllowedPWM) {
-        pDash[i] = maxAllowedPWM;
-      } else if (pDash[i] < 0) {
-        pDash[i] = 0;
+      if (p[i] > (offset + maxAllowedPWM)) {
+        p[i] = offset + maxAllowedPWM;
+        saturated[i] = true;
+      } else if (p[i] < (offset - maxAllowedPWM)) {
+        p[i] = offset - maxAllowedPWM;
+        saturated[i] = true;
+      } else {
+        saturated[i] = false;
       }
 
-      if (i == 0) {
-        // Serial.print(changeInError[i]);
-        // Serial.print(", ");
-        // Serial.print(currentError[i]);
-        // Serial.print(", ");
-        // Serial.print(totalError[i]);
-        // Serial.print(", ");
-        Serial.print(instantaniousMotorFrequency[i]);
-        Serial.print(", ");
-        Serial.println(targetMotorFrequency[i]);
+      // Write the direction
+      if (p[i] >= offset) {
+        digitalWrite(motorDIR[i], HIGH);
+        motorDirection[i] = true;
+        p[i] = p[i] - offset;
+      } else {
+        digitalWrite(motorDIR[i], LOW);
+        motorDirection[i] = false;
+        p[i] = offset - p[i];
       }
 
-
-      //      Serial.println(pDash[i]);
       // Write the PWM value
-      analogWrite(motorPWM[i], pDash[i]);
+      // analogWrite(motorPWM[i], p[i]);
+      analogWrite(motorPWM[i], frequencyToPWM(targetMotorFrequency[i]));
+
+      // Print debug signals
+      // if (i == 0) {
+      //   // Serial.print(changeInError[i]);
+      //   // Serial.print(", ");
+      //   // Serial.print(currentError[i]);
+      //   // Serial.print(", ");
+      //   // Serial.print(totalError[i]/10.0);
+      //   // Serial.print(", ");
+      //   // Serial.print(u[i]);
+      //   // Serial.print(", ");
+      // Serial.print(instantaniousMotorFrequency[i]);
+      // Serial.print(", ");
+      // Serial.println(targetMotorFrequency[i]);
+      // }
     }
   }
 }
@@ -566,10 +527,7 @@ void updateLedsTask(void* pvParameters) {
     }
 
     // Delay
-    vTaskDelay(pdMS_TO_TICKS(10));
-    // Serial.print(instantaniousMotorFrequency[0]);
-    // Serial.print(", ");
-    // Serial.println(targetMotorFrequency[0]);
+    vTaskDelay(pdMS_TO_TICKS(50));
   }
 }
 
@@ -601,8 +559,14 @@ void debugTask(void* pvParameters) {
       vTaskDelay(pdMS_TO_TICKS(100));
     }
 
+    // Wire.beginTransmission(0x3C);
+    // // sprintf(b, "pass %d", p++);
+    // Wire.write(0x05);
+    // Wire.write(0x0F);
+    // Wire.write(0xFF);
+    // Wire.endTransmission();
+
     vTaskDelay(pdMS_TO_TICKS(50));
-    // Serial.println(actualMotorFrequency[0]);
     //   taskStatusUpdate();
   }
 }
@@ -616,13 +580,14 @@ void setup() {
   delay(1000);
 
   // Define analogue parameters
-  // analogWriteFreq(pwmFrequency);
-  // analogWriteResolution(pwmResolution);
-  // analogReadResolution(adcResolution);
+  analogWriteFreq(pwmFrequency);
+  analogWriteResolution(pwmResolution);
+  analogReadResolution(adcResolution);
 
   // Initialise arrays
   for (uint8_t i = 0; i < numberOfMotors; i++) {
     targetMotorFrequency[i] = 0;
+    motorDirection[i] = false;
   }
 
   // Create tasks
@@ -665,7 +630,7 @@ void setup() {
   // vTaskCoreAffinitySet(updateLedsHandle, (UBaseType_t)0x03);
 
   // Enable the debug task if configured to do so
-  if (DEBUG_ENABLED) {
+  if (DEBUG_OUTPUT) {
     xTaskCreate(
       debugTask,     /* Function that implements the task */
       "DEBUG",       /* Text name for the task */
