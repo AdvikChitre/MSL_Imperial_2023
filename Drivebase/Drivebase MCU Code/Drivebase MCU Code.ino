@@ -51,8 +51,10 @@ TODO:
 #define IMU_SCL 5
 #define IMU_SDA 4
 
-#define DEBUG_OUTPUT true
+#define DEBUG_OUTPUT false
 #define DEBUG_INPUT true
+
+#define CLOSED_LOOP_CONTROL false
 
 //-------------------------------- Global Variables -------------------------------------
 
@@ -78,13 +80,14 @@ static const uint16_t samplingFrequency = 50;  // Sampling frequency in Hz, defa
 static const unsigned long timeout = 200000;   // Amount of time with no new data before frequency is considered to be 0
 static const uint8_t frequencyBufferSize = 5;  // Number of data points that the rolling frequency average is calculated from
 
+//!M1TW4+0.3
+
 // Control constants & variables
 static volatile uint16_t controlFrequency = 50;                                                      // Control loop frequenct in Hz, default: 10
-static const float kp = 0.4;                                                                         // Proportional gain of the pid controller (0.3 for 10Hz)
-static const float ki = 0.02;                                                                        // Integral gain of the pid controller (0.1 for 10Hz)
-static const float kd = 0.0;                                                                         // Derivative gain of the pid controller (0.001 for 10Hz)
+static const float kp = 0.08;                                                                         // Proportional gain of the pid controller (0.08 for 50Hz)
+static const float ki = 0.06;                                                                        // Integral gain of the pid controller (0.06 for 50Hz)
+static const float kd = 0.00;                                                                         // Derivative gain of the pid controller (0.004 for 50Hz)
 static volatile float targetMotorFrequency[numberOfMotors];                                          // Array to store the target motor frequencies (in Hz)
-static volatile bool motorDirection[numberOfMotors];                                                 // Array to store the direction of the motor (true = +ve, false = -ve)
 static volatile float actualMotorFrequency[numberOfHallSensors];                                     // Array to store the average motor frequencies (in Hz) across a number of samples
 static const uint8_t wheelDiameter = 100;                                                            // Wheel diameter in mm, used to convert speeds to frequencies
 static const float maxMotorFrequency = 2.93;                                                         // Max motor frequency in Hz, default : 13.02
@@ -103,6 +106,7 @@ static const uint8_t sampleQueueLength = 20;
 static QueueHandle_t sampleQueue;
 
 // Create task handles
+static TaskHandle_t sampleADCsHandle = nullptr;
 static TaskHandle_t getMotorFrequencyHandle = nullptr;
 static TaskHandle_t pidControllerHandle = nullptr;
 static TaskHandle_t usbHandle = nullptr;
@@ -245,7 +249,7 @@ void handleSerial() {
 //-------------------------------- Task Functions ----------------------------------------
 
 // Task function to sample the ADCs at regular intervals, and stream the data to a queue
-void sampleADCs(void* pvParameters) {
+void sampleADCsTask(void* pvParameters) {
 
   (void)pvParameters;
 
@@ -288,125 +292,97 @@ void getMotorFrequencyTask(void* pvParameters) {
   (void)pvParameters;
 
   // Create local variables
+  static uint16_t previousSample[numberOfHallSensors];            // Stores the previous samples
+  static uint16_t currentSample[numberOfHallSensors];             // Stores the current sample
+  static unsigned long timeFirstOutOfRange[numberOfHallSensors];  // Store the time since the sample left the valid range (used in timeout)
+  static float instantaniousMotorFrequency[numberOfHallSensors];  // Array to store the instantanious motor frequencies (in Hz)
+  static bool frequencyUpdated[numberOfHallSensors];              //
 
-  static uint16_t previousSample[numberOfHallSensors];     // Stores the previous samples
-  static uint16_t currentSample;                           // Stores the current sample
-  static unsigned long previousTime[numberOfHallSensors];  // Stores the time when previous samples were taken
-  static unsigned long currentTime;                        // Stores the time when the current sample was taken
-  static unsigned long interval[numberOfHallSensors];      // Time between samples
-
-  static float instantaniousMotorFrequency[numberOfHallSensors];           // Array to store the instantanious motor frequencies (in Hz)
-  static bool frequencyUpdated[numberOfHallSensors];                       //
-  static float frequencyBuffer[numberOfHallSensors][frequencyBufferSize];  // Array to store the previous samples used to calculate the rolling average
-  static uint8_t frequencyBufferIndex[numberOfHallSensors];                // Index in the frequencyBuffer that will be read and then written next
-  static float totalFrequency[numberOfHallSensors];                        // Stores the sum of frequencies used to calculate the rolling average
-
+  // Create low pass filters
   FIRFilter lpf[numberOfHallSensors];
-
-  // Setup timer so this task executes at the frequency specified in samplingFrequency
-  const TickType_t xFrequency = configTICK_RATE_HZ / samplingFrequency;
-  TickType_t xLastWakeTime = xTaskGetTickCount();
 
   // Inititalise arrays and pins
   for (uint8_t i = 0; i < numberOfHallSensors; i++) {
 
     // Initialise 1D sampling arrays
     previousSample[i] = 0;
-    previousTime[i] = 0;
-    interval[i] = 0;
+
+    timeFirstOutOfRange[i] = 0;
 
     // Initialise 1D frequency array
-    instantaniousMotorFrequency[i] = 0;
+    instantaniousMotorFrequency[i] = 0.0;
     frequencyUpdated[i] = false;
 
-    // Initialise 1D rolling average arrays
-    frequencyBufferIndex[i] = 0;
-    totalFrequency[i] = 0;
-    actualMotorFrequency[i] = 0;
 
     // Initialise low pass filters
     FIRFilterInit(&lpf[i]);
-
-    // Initialise pins
-    pinMode(hallSensor[i], INPUT);
-
-    // Initialise 2D arrays
-    for (uint8_t j = 0; j < frequencyBufferSize; j++) {
-      frequencyBuffer[i][j] = 0;
-    }
   }
 
   // Start the loop
   while (true) {
 
-    // Pause the task until enough time has passed
-    vTaskDelayUntil(&xLastWakeTime, xFrequency);
+    // Recieve new samples from the queue
+    xQueueReceive(sampleQueue, &currentSample, portMAX_DELAY);
 
-    // Loop through each hall sensor
+    // Loop through each data stream
     for (uint8_t i = 0; i < numberOfHallSensors; i++) {
 
-      // Sample the ADC (this is a critical section since we don't want an interrupt between the sample and recording the time it was taken)
-      taskENTER_CRITICAL();
-      currentSample = analogRead(hallSensor[i]);
-      currentTime = micros();
-      taskEXIT_CRITICAL();
+      // Calculate the instantanious frequency if the data is in range
+      if ((currentSample[i] < 1000) && (currentSample[i] > 30)) {
 
-      // Calculate the time since the last valid sample
-      interval[i] = currentTime - previousTime[i];
-
-      //
-      if ((currentSample < 1000) && (currentSample > 30)) {
-
-        instantaniousMotorFrequency[i] = ((currentSample - previousSample[i]) * 1000000.0) / ((float)(interval[i] * adcRange));
-
-        previousSample[i] = currentSample;
-        previousTime[i] = currentTime;
+        instantaniousMotorFrequency[i] = ((currentSample[i] - previousSample[i]) * ((float)samplingFrequency)) / ((float)adcRange);
         frequencyUpdated[i] = true;
 
-      } else if (interval[i] > timeout) {
-        instantaniousMotorFrequency[i] = 0.0;
-        // previousTime[i] = currentTime;
-        frequencyUpdated[i] = true;
+        timeFirstOutOfRange[i] = micros();
       }
 
+      // If out of range and timed out: set frequency to 0
+      else if (micros() - timeFirstOutOfRange[i] > timeout) {
+        instantaniousMotorFrequency[i] = 0.0;
+        frequencyUpdated[i] = true;
+
+      }
+
+      // Else out of range but not timed out: if just left range, set ti
       else {
-        // previousTime[i] = currentTime;
         frequencyUpdated[i] = false;
       }
 
-
-      //
+      // Reject impossible values
       if ((instantaniousMotorFrequency[i] > maxMotorFrequency) || (instantaniousMotorFrequency[i] < -maxMotorFrequency)) {
         instantaniousMotorFrequency[i] = 0.0;
         frequencyUpdated[i] = false;
       }
 
-      // If the calculated frequency is valid, work out the rolling average
+      // If frequency updated, apply FIR filter and output to actualMotorFrequency
       if (frequencyUpdated[i]) {
-
         actualMotorFrequency[i] = FIRFilterUpdate(&lpf[i], instantaniousMotorFrequency[i]);
-
-        if (i == 0) {
-          Serial.print(0);
-          Serial.print(", ");
-          // Serial.print(1023);
-          // Serial.print(", ");
-          // Serial.print(currentSample);
-          // Serial.print(", ");
-          // Serial.println(lpf[i].output);
-          // Serial.print(", ");
-          // Serial.print(instantaniousMotorFrequency[i] * 1000);
-          // Serial.print(", ");
-          // Serial.print(frequencyBuffer[i][frequencyBufferIndex[i]] * 1000);
-          // Serial.print(", ");
-          Serial.print(targetMotorFrequency[i]);
-          Serial.print(", ");
-          Serial.println(actualMotorFrequency[i]);
-        }
       }
+
+      // Set the previous sample to the current one before the next loop
+      previousSample[i] = currentSample[i];
+
+      // if (i == 0) {
+      //   Serial.print(0);
+      //   Serial.print(", ");
+      //   Serial.print(1023);
+      //   Serial.print(", ");
+      //   Serial.print(currentSample[i]);
+      //   Serial.print(", ");
+      //   // Serial.println(lpf[i].output);
+      //   // Serial.print(", ");
+      //   // Serial.print(instantaniousMotorFrequency[i] * 1000);
+      //   // Serial.print(", ");
+      //   // Serial.print(frequencyBuffer[i][frequencyBufferIndex[i]] * 1000);
+      //   // Serial.print(", ");
+      //   Serial.print(targetMotorFrequency[i]*1000);
+      //   Serial.print(", ");
+      //   Serial.println(actualMotorFrequency[i]*1000);
+      // }
     }
   }
 }
+
 
 // Task function to run the pid control loop
 void pidControllerTask(void* pvParameters) {
@@ -419,9 +395,8 @@ void pidControllerTask(void* pvParameters) {
   static float totalError[numberOfHallSensors];
   static float changeInError[numberOfHallSensors];
   static float u[numberOfHallSensors];
-  static uint16_t p[numberOfHallSensors];
+  static int16_t p[numberOfHallSensors];
   static bool saturated[numberOfHallSensors];
-  static uint16_t offset = 256;
 
   // Make the task execute at a specified frequency
   const TickType_t xFrequency = configTICK_RATE_HZ / controlFrequency;
@@ -429,11 +404,11 @@ void pidControllerTask(void* pvParameters) {
 
   // Inititalise arrays and pins
   for (uint8_t i = 0; i < numberOfHallSensors; i++) {
-    previousError[i] = 0;
-    currentError[i] = 0;
-    totalError[i] = 0;
-    changeInError[i] = 0;
-    u[i] = 0;
+    previousError[i] = 0.0;
+    currentError[i] = 0.0;
+    totalError[i] = 0.0;
+    changeInError[i] = 0.0;
+    u[i] = 0.0;
     p[i] = 0;
     saturated[i] = false;
     pinMode(motorPWM[i], OUTPUT);
@@ -449,66 +424,78 @@ void pidControllerTask(void* pvParameters) {
     // Loops through each motor
     for (uint8_t i = 0; i < numberOfHallSensors; i++) {
 
-      // Calculate error terms
-      if (motorDirection[i]) {
-        currentError[i] = targetMotorFrequency[i] - actualMotorFrequency[i];
-      } else {
-        currentError[i] = targetMotorFrequency[i] + actualMotorFrequency[i];
-      }
-      if (!saturated[i]) {
-        totalError[i] += currentError[i];
-      }
-      changeInError[i] = (currentError[i] - previousError[i]) * controlFrequency;
+      // If using closed loop control
+      if (CLOSED_LOOP_CONTROL) {
 
-      // Calculate the PID control variable "u"
-      u[i] = (kp * currentError[i]) + (ki * totalError[i]) + (kd * changeInError[i]);
+        // Calculate error terms
+        currentError[i] = targetMotorFrequency[i] - actualMotorFrequency[i];
+
+        // Turn integrator off when saturated
+
+        if (!saturated[i]) {
+          totalError[i] += currentError[i];
+        }
+
+        changeInError[i] = (currentError[i] - previousError[i]) * controlFrequency;
+
+        // Calculate the PID control variable "u"
+        u[i] = (kp * currentError[i]) + (ki * totalError[i]) + (kd * changeInError[i]);
+      }
+
+      // Else open loop control
+      else {
+        u[i] = targetMotorFrequency[i];
+      }
+
+      // Hysteresis to prevent oscillating around 0 when stopping
+      if (((u[i] < 0.05) && (u[i] > -0.05)) && ((targetMotorFrequency[i] < 0.05) && (targetMotorFrequency[i] > -0.05))) {
+        u[i] = 0.0;
+      }
 
       // Convert u into a PWM value with an offset
-      p[i] = offset + frequencyToPWM(u[i]);
+      p[i] = frequencyToPWM(u[i]);
 
       // Limit the PWM value
-      if (p[i] > (offset + maxAllowedPWM)) {
-        p[i] = offset + maxAllowedPWM;
+      if (p[i] > (maxAllowedPWM)) {
+        p[i] = maxAllowedPWM;
         saturated[i] = true;
-      } else if (p[i] < (offset - maxAllowedPWM)) {
-        p[i] = offset - maxAllowedPWM;
-        saturated[i] = true;
-      } else {
+      } else if (p[i] < -maxAllowedPWM) {
+          p[i] = -maxAllowedPWM;
+          saturated[i] = true;
+        }
+      else {
         saturated[i] = false;
       }
 
       // Write the direction
-      if (p[i] >= offset) {
+      if (p[i] >= 0) {
         digitalWrite(motorDIR[i], HIGH);
-        motorDirection[i] = true;
-        p[i] = p[i] - offset;
       } else {
         digitalWrite(motorDIR[i], LOW);
-        motorDirection[i] = false;
-        p[i] = offset - p[i];
+        p[i] = -p[i];
       }
 
       // Write the PWM value
-      // analogWrite(motorPWM[i], p[i]);
-      analogWrite(motorPWM[i], frequencyToPWM(targetMotorFrequency[i]));
+      analogWrite(motorPWM[i], p[i]);
 
       // Print debug signals
-      // if (i == 0) {
-      //   // Serial.print(changeInError[i]);
-      //   // Serial.print(", ");
-      //   // Serial.print(currentError[i]);
-      //   // Serial.print(", ");
-      //   // Serial.print(totalError[i]/10.0);
-      //   // Serial.print(", ");
-      //   // Serial.print(u[i]);
-      //   // Serial.print(", ");
-      // Serial.print(instantaniousMotorFrequency[i]);
-      // Serial.print(", ");
-      // Serial.println(targetMotorFrequency[i]);
-      // }
+      if (i == 0) {
+        // Serial.print(changeInError[i]);
+        // Serial.print(", ");
+        // Serial.print(currentError[i]);
+        // Serial.print(", ");
+        // Serial.print(totalError[i]/10.0);
+        // Serial.print(", ");
+        // Serial.print(u[i]);
+        // Serial.print(", ");
+      Serial.print(actualMotorFrequency[i]);
+      Serial.print(", ");
+      Serial.println(targetMotorFrequency[i]);
+      }
     }
   }
 }
+
 
 // Task to handle serial communication with host
 void usbTask(void* pvParameters) {
@@ -617,13 +604,21 @@ void setup() {
   // Initialise arrays
   for (uint8_t i = 0; i < numberOfMotors; i++) {
     targetMotorFrequency[i] = 0;
-    motorDirection[i] = false;
   }
 
-  // Create queue
-  sampleQueue = xQueueCreate(sampleQueueLength, sizeof(uint16_t[numberOfHallSensors]));  // Queue length is the number of samples, item size is 2 bytes (uint16_t)
+  // Create queues
+  sampleQueue = xQueueCreate(sampleQueueLength, sizeof(uint16_t[numberOfHallSensors]));  // Queue length is the number of samples, item size uint16_t)
 
   // Create tasks
+
+  xTaskCreate(
+    sampleADCsTask,     /* Function that implements the task */
+    "GET_SAMP",         /* Text name for the task */
+    1000,               /* Stack size in words, not bytes */
+    nullptr,            /* Parameter passed into the task */
+    5,                  /* Task priority */
+    &sampleADCsHandle); /* Pointer to store the task handle */
+
   xTaskCreate(
     getMotorFrequencyTask,     /* Function that implements the task */
     "GET_FREQ",                /* Text name for the task */
@@ -650,13 +645,14 @@ void setup() {
 
   xTaskCreate(
     updateLedsTask,     /* Function that implements the task */
-    "LED_UPDATE",       /* Text name for the task */
+    "LED",              /* Text name for the task */
     1000,               /* Stack size in words, not bytes */
     nullptr,            /* Parameter passed into the task */
     1,                  /* Task priority */
     &updateLedsHandle); /* Pointer to store the task handle */
 
   // Set task affinities (0x00 -> no cores, 0x01 -> C0, 0x02 -> C1, 0x03 -> C0 and C1)
+  // vTaskCoreAffinitySet(sampleADCsHandle, (UBaseType_t)0x03);
   // vTaskCoreAffinitySet(getMotorFrequencyHandle, (UBaseType_t)0x03);
   // vTaskCoreAffinitySet(pidControllerHandle, (UBaseType_t)0x03);
   // vTaskCoreAffinitySet(usbHandle, (UBaseType_t)0x03);
