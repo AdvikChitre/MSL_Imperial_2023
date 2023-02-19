@@ -1,30 +1,25 @@
 /* 
 TODO:
-- Implement FIR filter on sampled signal
 - Tidy up code
 - Continue usbHandle()
 - Add IMU over I2C and process data
-- Add hysterisis to PID controller
-- Remove offset from PID controlelr
 */
 
 //-------------------------------- Includes ---------------------------------------------
 
+// FreeRTOS
 #include <FreeRTOS.h>
 #include <task.h>
 #include <queue.h>
-#include <semphr.h>
 
-#include <Adafruit_MPU6050.h>
-#include <Adafruit_Sensor.h>
-#include <Wire.h>
-
+// Other
+// #include <Wire.h>
 #include <map>
-
 #include <math.h>
 
 // Personal Files
 #include "FIRFilter.h"
+#include "MPU6050.h"
 
 //-------------------------------- Defines ----------------------------------------------
 
@@ -51,10 +46,10 @@ TODO:
 #define IMU_SCL 5
 #define IMU_SDA 4
 
-#define DEBUG_OUTPUT false
+#define DEBUG_OUTPUT true
 #define DEBUG_INPUT true
 
-#define CLOSED_LOOP_CONTROL false
+#define CLOSED_LOOP_CONTROL true
 
 //-------------------------------- Global Variables -------------------------------------
 
@@ -75,18 +70,18 @@ static const uint16_t pwmRange = pow(2, pwmResolution) - 1;  // Calculates the P
 static const uint8_t adcResolution = 10;                     // Sets the ADC resolution
 static const uint16_t adcRange = pow(2, adcResolution) - 1;  // Calculates the ADC range
 
-// Sampling constants
-static const uint16_t samplingFrequency = 50;  // Sampling frequency in Hz, default: 1000
-static const unsigned long timeout = 200000;   // Amount of time with no new data before frequency is considered to be 0
-static const uint8_t frequencyBufferSize = 5;  // Number of data points that the rolling frequency average is calculated from
+// ADC Sampling constants
+static const uint16_t samplingFrequencyADC = 50;  // Sampling frequency in Hz, default: 50
+static const unsigned long timeout = 200000;      // Amount of time with no new data before frequency is considered to be 0
+static const uint8_t frequencyBufferSize = 5;     // Number of data points that the rolling frequency average is calculated from
 
 //!M1TW4+0.3
 
 // Control constants & variables
-static volatile uint16_t controlFrequency = 50;                                                      // Control loop frequenct in Hz, default: 10
-static const float kp = 0.08;                                                                         // Proportional gain of the pid controller (0.08 for 50Hz)
+static const uint16_t controlFrequency = 50;                                                         // Control loop frequenct in Hz, default: 10
+static const float kp = 0.08;                                                                        // Proportional gain of the pid controller (0.08 for 50Hz)
 static const float ki = 0.06;                                                                        // Integral gain of the pid controller (0.06 for 50Hz)
-static const float kd = 0.00;                                                                         // Derivative gain of the pid controller (0.004 for 50Hz)
+static const float kd = 0.00;                                                                        // Derivative gain of the pid controller (0.004 for 50Hz)
 static volatile float targetMotorFrequency[numberOfMotors];                                          // Array to store the target motor frequencies (in Hz)
 static volatile float actualMotorFrequency[numberOfHallSensors];                                     // Array to store the average motor frequencies (in Hz) across a number of samples
 static const uint8_t wheelDiameter = 100;                                                            // Wheel diameter in mm, used to convert speeds to frequencies
@@ -101,19 +96,23 @@ static volatile bool ledStatus[numberOfLEDs];  // Stores the state of each LED
 // USB constants & variables
 static const char startCharacter = '!';  // Sets the USB start character
 
+// IMU
+static MPU6050 mpu(Wire);
+static const uint16_t samplingFrequencyIMU = 100;  // IMU Sampling frequency in Hz, default: 100
+
 // Create Queue
 static const uint8_t sampleQueueLength = 20;
 static QueueHandle_t sampleQueue;
 
 // Create task handles
+static TaskHandle_t sampleIMUHandle = nullptr;
 static TaskHandle_t sampleADCsHandle = nullptr;
 static TaskHandle_t getMotorFrequencyHandle = nullptr;
 static TaskHandle_t pidControllerHandle = nullptr;
 static TaskHandle_t usbHandle = nullptr;
+static TaskHandle_t movementHandle = nullptr;
 static TaskHandle_t updateLedsHandle = nullptr;
 static TaskHandle_t debugHandle = nullptr;
-
-
 
 //-------------------------------- Functions --------------------------------------------
 
@@ -246,7 +245,31 @@ void handleSerial() {
   }
 }
 
+
+//--------------------------- Interrupt Servce Routines ----------------------------------
+
+
 //-------------------------------- Task Functions ----------------------------------------
+
+// Task function to samplet the IMU
+void sampleIMUTask(void* pvParameters) {
+
+  (void)pvParameters;
+
+  // Setup timer so this task executes at the frequency specified in samplingFrequencyIMU
+  const TickType_t xFrequency = configTICK_RATE_HZ / samplingFrequencyIMU;
+  TickType_t xLastWakeTime = xTaskGetTickCount();
+
+  // Start the loop
+  while (true) {
+
+    // Pause the task until enough time has passed
+    vTaskDelayUntil(&xLastWakeTime, xFrequency);
+
+    // Retrieve and process data from the IMU
+    mpu.update();
+  }
+}
 
 // Task function to sample the ADCs at regular intervals, and stream the data to a queue
 void sampleADCsTask(void* pvParameters) {
@@ -256,8 +279,8 @@ void sampleADCsTask(void* pvParameters) {
   // Create local variables
   static uint16_t samples[numberOfHallSensors];  // Stores the samples
 
-  // Setup timer so this task executes at the frequency specified in samplingFrequency
-  const TickType_t xFrequency = configTICK_RATE_HZ / samplingFrequency;
+  // Setup timer so this task executes at the frequency specified in samplingFrequencyADC
+  const TickType_t xFrequency = configTICK_RATE_HZ / samplingFrequencyADC;
   TickType_t xLastWakeTime = xTaskGetTickCount();
 
   // Initialise variables and pins
@@ -330,7 +353,7 @@ void getMotorFrequencyTask(void* pvParameters) {
       // Calculate the instantanious frequency if the data is in range
       if ((currentSample[i] < 1000) && (currentSample[i] > 30)) {
 
-        instantaniousMotorFrequency[i] = ((currentSample[i] - previousSample[i]) * ((float)samplingFrequency)) / ((float)adcRange);
+        instantaniousMotorFrequency[i] = ((currentSample[i] - previousSample[i]) * ((float)samplingFrequencyADC)) / ((float)adcRange);
         frequencyUpdated[i] = true;
 
         timeFirstOutOfRange[i] = micros();
@@ -460,10 +483,9 @@ void pidControllerTask(void* pvParameters) {
         p[i] = maxAllowedPWM;
         saturated[i] = true;
       } else if (p[i] < -maxAllowedPWM) {
-          p[i] = -maxAllowedPWM;
-          saturated[i] = true;
-        }
-      else {
+        p[i] = -maxAllowedPWM;
+        saturated[i] = true;
+      } else {
         saturated[i] = false;
       }
 
@@ -479,19 +501,19 @@ void pidControllerTask(void* pvParameters) {
       analogWrite(motorPWM[i], p[i]);
 
       // Print debug signals
-      if (i == 0) {
-        // Serial.print(changeInError[i]);
-        // Serial.print(", ");
-        // Serial.print(currentError[i]);
-        // Serial.print(", ");
-        // Serial.print(totalError[i]/10.0);
-        // Serial.print(", ");
-        // Serial.print(u[i]);
-        // Serial.print(", ");
-      Serial.print(actualMotorFrequency[i]);
-      Serial.print(", ");
-      Serial.println(targetMotorFrequency[i]);
-      }
+      // if (i == 0) {
+      //   // Serial.print(changeInError[i]);
+      //   // Serial.print(", ");
+      //   // Serial.print(currentError[i]);
+      //   // Serial.print(", ");
+      //   // Serial.print(totalError[i]/10.0);
+      //   // Serial.print(", ");
+      //   // Serial.print(u[i]);
+      //   // Serial.print(", ");
+      // Serial.print(actualMotorFrequency[i]);
+      // Serial.print(", ");
+      // Serial.println(targetMotorFrequency[i]);
+      // }
     }
   }
 }
@@ -517,6 +539,23 @@ void usbTask(void* pvParameters) {
     if (serialData == startCharacter) {
       handleSerial();
     }
+  }
+}
+
+// Task to calculate movement
+void movementTask(void* pvParameters) {
+
+  (void)pvParameters;
+
+  while (true) {
+    Serial.print("X : ");
+    Serial.print(mpu.getAngleX());
+    Serial.print("\tY : ");
+    Serial.print(mpu.getAngleY());
+    Serial.print("\tZ : ");
+    Serial.println(mpu.getAngleZ());
+
+    vTaskDelay(pdMS_TO_TICKS(50));
   }
 }
 
@@ -583,8 +622,10 @@ void debugTask(void* pvParameters) {
     // Wire.write(0xFF);
     // Wire.endTransmission();
 
-    vTaskDelay(pdMS_TO_TICKS(50));
-    //   taskStatusUpdate();
+    vTaskDelay(pdMS_TO_TICKS(500));
+
+    // taskStatusUpdate();
+    // Serial.println("4");
   }
 }
 
@@ -592,9 +633,18 @@ void debugTask(void* pvParameters) {
 
 void setup() {
 
-  // Setup USB
+  // Begin USB
   Serial.begin(115200);
   delay(1000);
+
+  // Begin I2C
+  Wire.setSCL(IMU_SCL);
+  Wire.setSDA(IMU_SDA);
+  Wire.begin();
+
+  // Begin MPU6050
+  mpu.begin();
+  mpu.calcOffsets();
 
   // Define analogue parameters
   analogWriteFreq(pwmFrequency);
@@ -612,11 +662,19 @@ void setup() {
   // Create tasks
 
   xTaskCreate(
+    sampleIMUTask,     /* Function that implements the task */
+    "SAMP_IMU",        /* Text name for the task */
+    1000,              /* Stack size in words, not bytes */
+    nullptr,           /* Parameter passed into the task */
+    6,                 /* Task priority */
+    &sampleIMUHandle); /* Pointer to store the task handle */
+
+  xTaskCreate(
     sampleADCsTask,     /* Function that implements the task */
-    "GET_SAMP",         /* Text name for the task */
+    "SAMP_ADC",         /* Text name for the task */
     1000,               /* Stack size in words, not bytes */
     nullptr,            /* Parameter passed into the task */
-    5,                  /* Task priority */
+    6,                  /* Task priority */
     &sampleADCsHandle); /* Pointer to store the task handle */
 
   xTaskCreate(
@@ -642,6 +700,14 @@ void setup() {
     nullptr,     /* Parameter passed into the task */
     1,           /* Task priority */
     &usbHandle); /* Pointer to store the task handle */
+
+  xTaskCreate(
+    movementTask,     /* Function that implements the task */
+    "MOVE",           /* Text name for the task */
+    1000,             /* Stack size in words, not bytes */
+    nullptr,          /* Parameter passed into the task */
+    1,                /* Task priority */
+    &movementHandle); /* Pointer to store the task handle */
 
   xTaskCreate(
     updateLedsTask,     /* Function that implements the task */
