@@ -5,7 +5,7 @@ def nothing(x):
     pass
 
 
-cam = cv2.VideoCapture(1)
+cam = cv2.VideoCapture(0)
 
 
 detalization = 10
