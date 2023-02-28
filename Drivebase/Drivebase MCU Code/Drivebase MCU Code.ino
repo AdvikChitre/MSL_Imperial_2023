@@ -46,10 +46,10 @@ TODO:
 #define IMU_SCL 5
 #define IMU_SDA 4
 
-#define DEBUG_OUTPUT true
-#define DEBUG_INPUT true
+#define DEBUG_OUTPUT false
+#define DEBUG_INPUT false
 
-#define CLOSED_LOOP_CONTROL true
+#define CLOSED_LOOP_CONTROL false
 
 //-------------------------------- Global Variables -------------------------------------
 
@@ -241,6 +241,7 @@ void handleSerial() {
   if (opcode[0] == 'M') {
     if (opcode[2] == 'T') {
       targetMotorFrequency[opcode[1] - 49] = atof(data);
+      Serial.print(241);
     }  //!M1TW4+0.3
   }
 }
@@ -548,12 +549,12 @@ void movementTask(void* pvParameters) {
   (void)pvParameters;
 
   while (true) {
-    Serial.print("X : ");
-    Serial.print(mpu.getAngleX());
-    Serial.print("\tY : ");
-    Serial.print(mpu.getAngleY());
-    Serial.print("\tZ : ");
-    Serial.println(mpu.getAngleZ());
+    // Serial.print("X : ");
+    // Serial.print(mpu.getAngleX());
+    // Serial.print("\tY : ");
+    // Serial.print(mpu.getAngleY());
+    // Serial.print("\tZ : ");
+    // Serial.println(mpu.getAngleZ());
 
     vTaskDelay(pdMS_TO_TICKS(50));
   }
