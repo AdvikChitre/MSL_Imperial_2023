@@ -23,13 +23,13 @@ TODO:
 
 //-------------------------------- Defines ----------------------------------------------
 
-#define PWM1 9
-#define PWM2 8
+#define PWM1 0  //9
+#define PWM2 2  //8
 #define PWM3 13
 #define PWM4 12
 
-#define DIR1 10
-#define DIR2 11
+#define DIR1 1  //10
+#define DIR2 3  //11
 #define DIR3 3
 #define DIR4 7
 
@@ -85,8 +85,8 @@ static const float kd = 0.00;                                                   
 static volatile float targetMotorFrequency[numberOfMotors];                                          // Array to store the target motor frequencies (in Hz)
 static volatile float actualMotorFrequency[numberOfHallSensors];                                     // Array to store the average motor frequencies (in Hz) across a number of samples
 static const uint8_t wheelDiameter = 100;                                                            // Wheel diameter in mm, used to convert speeds to frequencies
-static const float maxMotorFrequency = 2.93;                                                         // Max motor frequency in Hz, default : 13.02
-static const uint8_t maxAllowedSpeedPercent = 30;                                                    // Max allowed speed given as a percentage of actual max speed
+static const float maxMotorFrequency = 13.02;                                                        // Max motor frequency in Hz, default : 13.02
+static const uint8_t maxAllowedSpeedPercent = 20;                                                    // Max allowed speed given as a percentage of actual max speed
 static const float maxAllowedMotorFrequency = maxMotorFrequency * (maxAllowedSpeedPercent / 100.0);  // Max allowed motor frequency in Hz
 static const uint16_t maxAllowedPWM = pwmRange * (maxAllowedSpeedPercent / 100.0);                   // Max allowed value in analogWrite()
 
@@ -741,7 +741,7 @@ void setup() {
   //vTaskStartScheduler();
 
   // Delete "setup" and "loop" task
-  vTaskDelete(NULL);
+  //vTaskDelete(NULL);
 }
 
 void setup1() {
@@ -753,6 +753,19 @@ void setup1() {
 
 void loop() {
   // Should never get to this point
+  delay(10000);
+  targetMotorFrequency[0] = 0.3;
+  targetMotorFrequency[1] = 0.3;
+  delay(2000);
+  targetMotorFrequency[0] = 0.0;
+  delay(2000);
+  targetMotorFrequency[0] = 0.3;
+  targetMotorFrequency[1] = 0.3;
+  delay(2000);
+  targetMotorFrequency[1] = 0.0;
+  delay(2000);
+  targetMotorFrequency[0] = 0.0;
+  while (true) {}
 }
 
 void loop1() {

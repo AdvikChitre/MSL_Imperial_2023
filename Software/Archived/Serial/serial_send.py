@@ -494,7 +494,7 @@ mcu1 = mcu_serial(device_5_ID)
 #mcu1.led(1,1)
 
 while True:
-    mcu1.led()
+    mcu1.motor(1,0.5,"w","t")
     time.sleep(1)
 
 
