@@ -1,5 +1,0 @@
-| Part | Description | Quantity | Price/unit | Link |
-| - | - | - | - | - |
-| Motor | 15,000 rpm, 12V brushed DC motor | 3 |  | [AliExpress](https://www.aliexpress.com/item/32954455244.html?spm=a2g0o.order_list.order_list_main.20.1d711802th9Ssq) |
-| Gearbox | 19.2:1 Gearbox, 8mm shaft | 3 |  | [AliExpress](https://www.aliexpress.com/item/1005003541761017.html?spm=a2g0o.detail.1000060.1.260548cbCXANjJ&gps-id=pcDetailBottomMoreThisSeller&scm=1007.13339.291025.0&scm_id=1007.13339.291025.0&scm-url=1007.13339.291025.0&pvid=0d0957fe-c93b-4b9c-8259-159b7b653e6b&_t=gps-id:pcDetailBottomMoreThisSeller,scm-url:1007.13339.291025.0,pvid:0d0957fe-c93b-4b9c-8259-159b7b653e6b,tpp_buckets:668%232846%238114%231999&pdp_ext_f=%7B%22sku_id%22%3A%2212000026227996675%22%2C%22sceneId%22%3A%223339%22%7D&pdp_npi=2%40dis%21GBP%218.51%216.89%21%21%21%21%21%40211b43e416706069246636949e6657%2112000026227996675%21rec) |
-| Bracket | Motor mounting bracket | 3 |  | AliExpress |

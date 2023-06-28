@@ -1,7 +1,0 @@
-{
-  "servertype": "jlink",
-  "device": "RP2040_M0_0",
-  "interface": "swd",
-  "serverpath": "C:/Program Files (x86)/SEGGER/JLink_V786/JLinkGDBServerCL.exe"
-}
-
