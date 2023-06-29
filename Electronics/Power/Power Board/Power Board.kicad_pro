@@ -326,6 +326,14 @@
     [
       "d8843e0a-fd8a-4193-ba57-f0164156e030",
       ""
+    ],
+    [
+      "fbb389ee-fd5d-4b29-9eb9-957bc83e8c9f",
+      "Power"
+    ],
+    [
+      "fab43204-4de8-48e9-a4c9-80bcd4a9c27a",
+      "Control"
     ]
   ],
   "text_variables": {}
