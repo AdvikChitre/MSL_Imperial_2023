@@ -103,7 +103,7 @@
   (symbol (lib_id "power:GND") (at 34.29 121.92 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 24032cde-5f6a-44d0-98b4-c1653cd02439)
-    (property "Reference" "#PWR03" (at 34.29 128.27 0)
+    (property "Reference" "#PWR02" (at 34.29 128.27 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 34.29 127 0)
@@ -119,7 +119,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030"
-          (reference "#PWR03") (unit 1)
+          (reference "#PWR02") (unit 1)
         )
       )
     )
@@ -128,7 +128,7 @@
   (symbol (lib_id "Mechanical:MountingHole_Pad") (at 34.29 116.84 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4b48ae75-7f79-4ebd-bacb-fd89f7a5f827)
-    (property "Reference" "H3" (at 36.83 114.935 0)
+    (property "Reference" "H2" (at 36.83 114.935 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "MountingHole_Pad" (at 36.83 117.475 0)
@@ -144,7 +144,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030"
-          (reference "H3") (unit 1)
+          (reference "H2") (unit 1)
         )
       )
     )
@@ -228,7 +228,7 @@
   (symbol (lib_id "power:GND") (at 58.42 104.14 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5ad8e308-1969-4da8-83ee-d09812f8cee8)
-    (property "Reference" "#PWR02" (at 58.42 110.49 0)
+    (property "Reference" "#PWR03" (at 58.42 110.49 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 58.42 109.22 0)
@@ -244,7 +244,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030"
-          (reference "#PWR02") (unit 1)
+          (reference "#PWR03") (unit 1)
         )
       )
     )
@@ -278,7 +278,7 @@
   (symbol (lib_id "Mechanical:MountingHole_Pad") (at 58.42 99.06 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c03dcaeb-230b-415d-9a46-bc11e00f2d0e)
-    (property "Reference" "H2" (at 60.96 97.155 0)
+    (property "Reference" "H3" (at 60.96 97.155 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "MountingHole_Pad" (at 60.96 99.695 0)
@@ -294,7 +294,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030"
-          (reference "H2") (unit 1)
+          (reference "H3") (unit 1)
         )
       )
     )

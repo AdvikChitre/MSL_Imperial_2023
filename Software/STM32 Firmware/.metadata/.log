@@ -298,3 +298,21 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data C:\Users\bens1\D
 
 !ENTRY org.eclipse.cdt.core 1 0 2023-06-29 00:08:59.978
 !MESSAGE Indexed 'Gateway Firmware' (24 sources, 85 headers) in 8.38 sec: 7,691 declarations; 52,945 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0033%)
+!SESSION 2023-06-29 23:49:40.623 -----------------------------------------------
+eclipse.buildId=Version 1.12.0
+java.version=11.0.17
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_GB
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-06-29 23:49:53.999
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-06-29 23:49:54.005
+!MESSAGE Log4j2 initialized with config file C:\Users\bens1\Documents\Uni\Robotics\MSL\MSL_Imperial_2023\Software\STM32 Firmware\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-06-29 23:50:05.297
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-06-29 23:52:10.091
+!MESSAGE Indexed 'Motor Driver Board Firmware' (51 sources, 129 headers) in 6 sec: 15,128 declarations; 108,820 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0016%)
