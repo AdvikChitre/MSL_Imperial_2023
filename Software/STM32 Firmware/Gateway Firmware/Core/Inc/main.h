@@ -57,6 +57,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define SDMMC1_CD_Pin GPIO_PIN_8
+#define SDMMC1_CD_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 

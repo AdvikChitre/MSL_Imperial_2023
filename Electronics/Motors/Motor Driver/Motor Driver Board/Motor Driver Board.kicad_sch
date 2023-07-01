@@ -378,7 +378,7 @@
     (stroke (width 0.1524) (type solid))
     (fill (color 0 0 194 1.0000))
     (uuid eac1bb94-ca61-4d80-916e-a7f6d96905e1)
-    (property "Sheetname" "Motor Driver" (at 83.82 37.3884 0)
+    (property "Sheetname" "Motor Drivers" (at 83.82 37.3884 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
     (property "Sheetfile" "motor_driver.kicad_sch" (at 83.82 79.3246 0)
