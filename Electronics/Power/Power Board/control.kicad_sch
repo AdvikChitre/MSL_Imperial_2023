@@ -1582,7 +1582,7 @@
   (junction (at 345.44 105.41) (diameter 0) (color 0 0 0 0)
     (uuid 7eb6bddf-c80f-4f75-a686-751f003cd686)
   )
-  (junction (at 128.27 257.81) (diameter 0) (color 0 0 0 0)
+  (junction (at 132.08 257.81) (diameter 0) (color 0 0 0 0)
     (uuid 86b51427-aba6-4d47-bf76-7bbaadc4ea67)
   )
   (junction (at 337.82 95.25) (diameter 0) (color 0 0 0 0)
@@ -1832,7 +1832,7 @@
     (stroke (width 0) (type default))
     (uuid 23d73154-6a2e-4b10-8145-991aaf3fc67c)
   )
-  (wire (pts (xy 137.16 257.81) (xy 128.27 257.81))
+  (wire (pts (xy 140.97 257.81) (xy 132.08 257.81))
     (stroke (width 0) (type default))
     (uuid 2412b298-49dc-40fe-b2c0-3f6341f13c95)
   )
@@ -2148,7 +2148,7 @@
     (uuid 6b8dc0ed-db9e-49ce-88fa-2ad68a00bc3a)
   )
 
-  (wire (pts (xy 128.27 267.97) (xy 128.27 265.43))
+  (wire (pts (xy 132.08 267.97) (xy 132.08 265.43))
     (stroke (width 0) (type default))
     (uuid 6c4312d4-f8d8-4462-838d-49f660fcc7b4)
   )
@@ -2210,7 +2210,7 @@
     (stroke (width 0) (type default))
     (uuid 76cf83c8-ed0e-47e6-bc24-66e9e7935059)
   )
-  (wire (pts (xy 128.27 257.81) (xy 128.27 260.35))
+  (wire (pts (xy 132.08 257.81) (xy 132.08 260.35))
     (stroke (width 0) (type default))
     (uuid 79362e51-c08c-4fce-940c-fcb945efab76)
   )
@@ -2252,7 +2252,7 @@
     (uuid 80dd8f97-24cc-4108-a8db-b88d0811ee8c)
   )
 
-  (wire (pts (xy 137.16 260.35) (xy 137.16 257.81))
+  (wire (pts (xy 140.97 260.35) (xy 140.97 257.81))
     (stroke (width 0) (type default))
     (uuid 831b2c85-f35a-4fc5-8242-0efbb303302e)
   )
@@ -2281,7 +2281,7 @@
     (stroke (width 0) (type default))
     (uuid 8a14b28f-4eb1-4efa-a48f-0a611b82bd44)
   )
-  (wire (pts (xy 137.16 270.51) (xy 137.16 265.43))
+  (wire (pts (xy 140.97 270.51) (xy 140.97 265.43))
     (stroke (width 0) (type default))
     (uuid 8b36cbbc-b0ad-4e2d-9cb7-3ed41927d2e9)
   )
@@ -2587,7 +2587,7 @@
     (stroke (width 0) (type default))
     (uuid cbeb4379-ddde-4f88-a79a-ab2ae2810a42)
   )
-  (wire (pts (xy 125.73 267.97) (xy 128.27 267.97))
+  (wire (pts (xy 129.54 267.97) (xy 132.08 267.97))
     (stroke (width 0) (type default))
     (uuid cc6ff6f9-46a4-4d53-93ef-1892d5fb6b80)
   )
@@ -2632,7 +2632,7 @@
     (stroke (width 0) (type default))
     (uuid ddd59181-e340-4974-85a2-4ccb41657878)
   )
-  (wire (pts (xy 128.27 255.27) (xy 128.27 257.81))
+  (wire (pts (xy 132.08 255.27) (xy 132.08 257.81))
     (stroke (width 0) (type default))
     (uuid de9d9c29-4c54-447c-b22a-a5940d8d0a58)
   )
@@ -2717,7 +2717,7 @@
     (stroke (width 0) (type default))
     (uuid f26149e0-d9c9-4bcb-b11c-3e30e8deaa0b)
   )
-  (wire (pts (xy 125.73 270.51) (xy 137.16 270.51))
+  (wire (pts (xy 129.54 270.51) (xy 140.97 270.51))
     (stroke (width 0) (type default))
     (uuid f4409703-6fc3-4156-be43-4c7e5a685f17)
   )
@@ -2775,7 +2775,7 @@
     (uuid ffec32dc-e020-41bf-830d-e30f2e92b60c)
   )
 
-  (rectangle (start 111.76 247.65) (end 149.86 276.86)
+  (rectangle (start 115.57 247.65) (end 153.67 276.86)
     (stroke (width 0) (type default))
     (fill (type none))
     (uuid 92b1a94b-626f-4533-9e66-d04abb163294)
@@ -2810,7 +2810,7 @@
     (effects (font (size 2.54 2.54)) (justify left bottom))
     (uuid 6eb21339-b8fd-4713-be79-6b5998ac2790)
   )
-  (text "I2C Pullups" (at 113.03 246.38 0)
+  (text "I2C Pullups" (at 116.84 246.38 0)
     (effects (font (size 2.54 2.54)) (justify left bottom))
     (uuid 859ab33d-a96b-4812-817a-483d23f1531d)
   )
@@ -2963,10 +2963,10 @@
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
-  (global_label "SDA" (shape bidirectional) (at 125.73 270.51 180) (fields_autoplaced)
+  (global_label "SDA" (shape bidirectional) (at 129.54 270.51 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 494d037e-735b-404e-8445-1c77260fc024)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 118.1448 270.51 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 121.9548 270.51 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
@@ -3131,10 +3131,10 @@
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
-  (global_label "SCL" (shape input) (at 125.73 267.97 180) (fields_autoplaced)
+  (global_label "SCL" (shape input) (at 129.54 267.97 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid e74a271b-bf33-42bf-ba79-6d0e5f84bb54)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 119.3166 267.97 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 123.1266 267.97 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
@@ -3195,7 +3195,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "R27") (unit 1)
+          (reference "R303") (unit 1)
         )
       )
     )
@@ -3204,7 +3204,7 @@
   (symbol (lib_id "power:+3V3") (at 52.07 256.54 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 034933dc-8a64-4107-b60a-b69d7d838702)
-    (property "Reference" "#PWR047" (at 52.07 260.35 0)
+    (property "Reference" "#PWR0308" (at 52.07 260.35 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (at 52.07 252.73 0)
@@ -3220,7 +3220,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR047") (unit 1)
+          (reference "#PWR0308") (unit 1)
         )
       )
     )
@@ -3280,7 +3280,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "J16") (unit 1)
+          (reference "J302") (unit 1)
         )
       )
     )
@@ -3289,7 +3289,7 @@
   (symbol (lib_id "MSL_Symbols:25MHz_Clock") (at 49.53 147.32 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 06c58196-0e48-46d6-8bc8-3b99b687b222)
-    (property "Reference" "X1" (at 49.53 139.7 0)
+    (property "Reference" "X301" (at 49.53 139.7 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "25MHz_Clock" (at 49.53 142.24 0)
@@ -3308,7 +3308,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "X1") (unit 1)
+          (reference "X301") (unit 1)
         )
       )
     )
@@ -3317,7 +3317,7 @@
   (symbol (lib_id "Device:C_Small") (at 330.2 166.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 07eb9c62-c717-4b96-a8e3-d3446d0cc24c)
-    (property "Reference" "C30" (at 332.74 165.1062 0)
+    (property "Reference" "C311" (at 332.74 165.1062 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 332.74 167.6462 0)
@@ -3334,7 +3334,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C30") (unit 1)
+          (reference "C311") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -3348,7 +3348,7 @@
   (symbol (lib_id "Device:C_Small") (at 350.52 166.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 09b6fc37-39a6-4692-8352-e0f81db15f91)
-    (property "Reference" "C32" (at 353.06 165.1062 0)
+    (property "Reference" "C313" (at 353.06 165.1062 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 353.06 167.64 0)
@@ -3365,7 +3365,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C32") (unit 1)
+          (reference "C313") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -3379,7 +3379,7 @@
   (symbol (lib_id "power:GND") (at 223.52 181.61 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0c45f733-ea6e-4d0b-9e98-2bfcd48bf0af)
-    (property "Reference" "#PWR073" (at 223.52 187.96 0)
+    (property "Reference" "#PWR0326" (at 223.52 187.96 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 223.52 186.69 0)
@@ -3395,7 +3395,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR073") (unit 1)
+          (reference "#PWR0326") (unit 1)
         )
       )
     )
@@ -3404,7 +3404,7 @@
   (symbol (lib_id "Device:C_Small") (at 129.54 143.51 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0f0679e4-efcb-4f20-ad7b-310e94e5ffa3)
-    (property "Reference" "C38" (at 132.08 142.8813 0)
+    (property "Reference" "C306" (at 132.08 142.8813 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1u" (at 132.08 145.4213 0)
@@ -3421,7 +3421,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C38") (unit 1)
+          (reference "C306") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -3435,7 +3435,7 @@
   (symbol (lib_id "power:GND") (at 172.72 55.88 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 18880270-d980-493d-8b07-4c4ad62617a3)
-    (property "Reference" "#PWR045" (at 172.72 62.23 0)
+    (property "Reference" "#PWR0324" (at 172.72 62.23 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 172.72 60.96 0)
@@ -3451,7 +3451,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR045") (unit 1)
+          (reference "#PWR0324") (unit 1)
         )
       )
     )
@@ -3460,7 +3460,7 @@
   (symbol (lib_id "power:GND") (at 226.06 167.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1a73a340-37b1-4fdb-aa87-6c20e374be73)
-    (property "Reference" "#PWR049" (at 226.06 173.99 0)
+    (property "Reference" "#PWR0327" (at 226.06 173.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 226.06 172.72 0)
@@ -3476,7 +3476,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR049") (unit 1)
+          (reference "#PWR0327") (unit 1)
         )
       )
     )
@@ -3516,7 +3516,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "R21") (unit 1)
+          (reference "R301") (unit 1)
         )
       )
     )
@@ -3525,7 +3525,7 @@
   (symbol (lib_id "Device:C_Small") (at 340.36 166.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2603b002-ec23-4e7e-ae07-f46ef1675c34)
-    (property "Reference" "C31" (at 342.9 165.1062 0)
+    (property "Reference" "C312" (at 342.9 165.1062 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 342.9 167.6462 0)
@@ -3542,7 +3542,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C31") (unit 1)
+          (reference "C312") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -3556,7 +3556,7 @@
   (symbol (lib_id "power:+3V3") (at 26.67 158.75 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2c8e5d63-4fa4-493b-97c9-71819d1a6e01)
-    (property "Reference" "#PWR064" (at 26.67 162.56 0)
+    (property "Reference" "#PWR0301" (at 26.67 162.56 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (at 26.67 153.67 0)
@@ -3572,7 +3572,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR064") (unit 1)
+          (reference "#PWR0301") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -3586,7 +3586,7 @@
   (symbol (lib_id "power:+5V") (at 326.39 43.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2d53268c-310c-4026-a78c-ea8ad59ebe7a)
-    (property "Reference" "#PWR055" (at 326.39 46.99 0)
+    (property "Reference" "#PWR0335" (at 326.39 46.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 326.39 39.37 0)
@@ -3602,7 +3602,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR055") (unit 1)
+          (reference "#PWR0335") (unit 1)
         )
       )
     )
@@ -3611,7 +3611,7 @@
   (symbol (lib_id "TS20-42-25-WT-160-SMT-TR-MSL:TS20-42-25-WT-160-SMT-TR") (at 27.94 55.88 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2eab8dd4-1eea-4438-9350-5e60ac9955f2)
-    (property "Reference" "S2" (at 45.72 49.53 0)
+    (property "Reference" "S301" (at 45.72 49.53 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TS20-42-25-WT-160-SMT-TR" (at 45.72 52.07 0)
@@ -3648,7 +3648,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "S2") (unit 1)
+          (reference "S301") (unit 1)
         )
       )
     )
@@ -3657,7 +3657,7 @@
   (symbol (lib_id "Device:C_Small") (at 223.52 176.53 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2ed03a8b-247d-4f2d-9077-3f06df08ed18)
-    (property "Reference" "C36" (at 226.06 175.9013 0)
+    (property "Reference" "C309" (at 226.06 175.9013 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "4u7" (at 226.06 178.4413 0)
@@ -3674,7 +3674,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C36") (unit 1)
+          (reference "C309") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -3688,7 +3688,7 @@
   (symbol (lib_id "MSL_Symbols:32.768kHz_Clock") (at 49.53 162.56 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 36d9925d-5c64-43a3-8d7d-abc16cc7e48f)
-    (property "Reference" "X2" (at 49.53 154.94 0)
+    (property "Reference" "X302" (at 49.53 154.94 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "32.768kHz_Clock" (at 49.53 157.48 0)
@@ -3707,7 +3707,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "X2") (unit 1)
+          (reference "X302") (unit 1)
         )
       )
     )
@@ -3716,7 +3716,7 @@
   (symbol (lib_id "Device:C_Small") (at 119.38 143.51 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 37524fd3-3e4f-46e4-b0c1-b84ba69713cb)
-    (property "Reference" "C37" (at 121.92 142.8813 0)
+    (property "Reference" "C305" (at 121.92 142.8813 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 121.92 145.4213 0)
@@ -3733,7 +3733,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C37") (unit 1)
+          (reference "C305") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -3747,7 +3747,7 @@
   (symbol (lib_id "Device:C_Small") (at 370.84 166.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3a9669d5-7fb9-4687-9a96-6739c489b3bd)
-    (property "Reference" "C34" (at 373.38 165.1062 0)
+    (property "Reference" "C315" (at 373.38 165.1062 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 373.38 167.6462 0)
@@ -3764,7 +3764,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C34") (unit 1)
+          (reference "C315") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -3778,7 +3778,7 @@
   (symbol (lib_id "power:GND") (at 241.3 101.6 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3b22f906-401e-49ae-8f14-83a7cbf36903)
-    (property "Reference" "#PWR052" (at 241.3 107.95 0)
+    (property "Reference" "#PWR0330" (at 241.3 107.95 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 241.3 106.68 0)
@@ -3794,7 +3794,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR052") (unit 1)
+          (reference "#PWR0330") (unit 1)
         )
       )
     )
@@ -3803,7 +3803,7 @@
   (symbol (lib_id "power:GND") (at 157.48 152.4 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3d8fa41a-808e-4eba-a875-2f8af3fcc9a9)
-    (property "Reference" "#PWR075" (at 157.48 158.75 0)
+    (property "Reference" "#PWR0321" (at 157.48 158.75 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 157.48 157.48 0)
@@ -3819,7 +3819,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR075") (unit 1)
+          (reference "#PWR0321") (unit 1)
         )
       )
     )
@@ -3854,7 +3854,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "U1") (unit 1)
+          (reference "U302") (unit 1)
         )
       )
     )
@@ -3863,7 +3863,7 @@
   (symbol (lib_id "power:GND") (at 320.04 173.99 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 41cd028f-7d8d-4b8e-84ea-2416a0dd9271)
-    (property "Reference" "#PWR072" (at 320.04 180.34 0)
+    (property "Reference" "#PWR0334" (at 320.04 180.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 320.04 179.07 0)
@@ -3879,25 +3879,25 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR072") (unit 1)
+          (reference "#PWR0334") (unit 1)
         )
       )
     )
   )
 
-  (symbol (lib_id "Device:R_Small") (at 137.16 262.89 0) (mirror y) (unit 1)
+  (symbol (lib_id "Device:R_Small") (at 140.97 262.89 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 424d04f2-9b5f-4355-8a83-2565616cf8d2)
-    (property "Reference" "R6" (at 139.7 262.255 0)
+    (property "Reference" "R6" (at 143.51 262.255 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "2k2" (at 139.7 264.795 0)
+    (property "Value" "2k2" (at 143.51 264.795 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 137.16 262.89 0)
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 140.97 262.89 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 137.16 262.89 0)
+    (property "Datasheet" "~" (at 140.97 262.89 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 646f3b4b-f001-49f5-b9d1-4fa65cb971e9))
@@ -3919,7 +3919,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "R26") (unit 1)
+          (reference "R306") (unit 1)
         )
       )
     )
@@ -3928,7 +3928,7 @@
   (symbol (lib_id "Device:C_Small") (at 26.67 166.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4d1991e6-90d3-4c66-8772-4f0e65ef179b)
-    (property "Reference" "C27" (at 29.21 165.1062 0)
+    (property "Reference" "C301" (at 29.21 165.1062 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 29.21 167.6462 0)
@@ -3945,7 +3945,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C27") (unit 1)
+          (reference "C301") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -3984,7 +3984,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C26") (unit 1)
+          (reference "C304") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -3998,7 +3998,7 @@
   (symbol (lib_id "Device:C_Small") (at 35.56 166.37 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 52e11523-1ad1-4065-8998-65fe0459038c)
-    (property "Reference" "C28" (at 38.1 166.37 0)
+    (property "Reference" "C302" (at 38.1 166.37 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "100n" (at 38.1 168.91 0)
@@ -4015,7 +4015,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C28") (unit 1)
+          (reference "C302") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -4029,7 +4029,7 @@
   (symbol (lib_id "Device:C_Small") (at 320.04 166.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5b403350-f2b9-4ea9-8c2c-ccc62f73c7db)
-    (property "Reference" "C29" (at 322.58 165.1062 0)
+    (property "Reference" "C310" (at 322.58 165.1062 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 322.58 167.6462 0)
@@ -4046,7 +4046,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C29") (unit 1)
+          (reference "C310") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -4084,7 +4084,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR063") (unit 1)
+          (reference "#PWR0314") (unit 1)
         )
       )
     )
@@ -4123,7 +4123,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR048") (unit 1)
+          (reference "#PWR0315") (unit 1)
         )
       )
     )
@@ -4132,7 +4132,7 @@
   (symbol (lib_id "power:+3V3") (at 35.56 143.51 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 63042931-f2e7-4948-b0f8-d731f8ba79e0)
-    (property "Reference" "#PWR065" (at 35.56 147.32 0)
+    (property "Reference" "#PWR0306" (at 35.56 147.32 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (at 35.56 138.43 0)
@@ -4148,7 +4148,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR065") (unit 1)
+          (reference "#PWR0306") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -4197,7 +4197,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR0100") (unit 1)
+          (reference "#PWR0336") (unit 1)
         )
       )
     )
@@ -4206,7 +4206,7 @@
   (symbol (lib_id "Connector:Screw_Terminal_01x02") (at 379.73 48.26 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 65a28dea-900c-440f-b5fb-c79ffeb27698)
-    (property "Reference" "J5" (at 374.65 54.61 0)
+    (property "Reference" "J303" (at 374.65 54.61 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Screw_Terminal_01x02" (at 367.03 57.15 0)
@@ -4223,7 +4223,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "J5") (unit 1)
+          (reference "J303") (unit 1)
         )
       )
     )
@@ -4268,7 +4268,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "R33") (unit 1)
+          (reference "R308") (unit 1)
         )
       )
     )
@@ -4416,7 +4416,7 @@
           (reference "IC1") (unit 1)
         )
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "IC6") (unit 1)
+          (reference "IC301") (unit 1)
         )
       )
     )
@@ -4425,7 +4425,7 @@
   (symbol (lib_id "power:+3V3") (at 139.7 134.62 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6813d604-118e-4263-b09a-4ad68afad988)
-    (property "Reference" "#PWR074" (at 139.7 138.43 0)
+    (property "Reference" "#PWR0318" (at 139.7 138.43 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (at 139.7 130.81 0)
@@ -4441,7 +4441,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR074") (unit 1)
+          (reference "#PWR0318") (unit 1)
         )
       )
     )
@@ -4474,7 +4474,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR062") (unit 1)
+          (reference "#PWR0310") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -4488,7 +4488,7 @@
   (symbol (lib_id "power:GND") (at 35.56 173.99 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6b147cba-9d2b-4ab4-9eb4-1ad125e11e55)
-    (property "Reference" "#PWR066" (at 35.56 180.34 0)
+    (property "Reference" "#PWR0307" (at 35.56 180.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 35.56 179.07 0)
@@ -4504,7 +4504,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR066") (unit 1)
+          (reference "#PWR0307") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -4518,7 +4518,7 @@
   (symbol (lib_id "Switch:SW_DIP_x02") (at 62.23 259.08 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 74b9981a-ea84-4867-b6b6-18e32c2590e9)
-    (property "Reference" "SW2" (at 62.23 251.46 0)
+    (property "Reference" "SW301" (at 62.23 251.46 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "SW_DIP_x02" (at 62.23 254 0)
@@ -4537,7 +4537,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "SW2") (unit 1)
+          (reference "SW301") (unit 1)
         )
       )
     )
@@ -4567,7 +4567,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR057") (unit 1)
+          (reference "#PWR0305") (unit 1)
         )
       )
     )
@@ -4576,7 +4576,7 @@
   (symbol (lib_id "power:GND") (at 359.41 55.88 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7947ff14-ea05-4349-abec-21106945cefc)
-    (property "Reference" "#PWR060" (at 359.41 62.23 0)
+    (property "Reference" "#PWR0340" (at 359.41 62.23 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 359.41 60.96 0)
@@ -4592,7 +4592,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR060") (unit 1)
+          (reference "#PWR0340") (unit 1)
         )
       )
     )
@@ -4601,7 +4601,7 @@
   (symbol (lib_id "TS20-42-25-WT-160-SMT-TR-MSL:TS20-42-25-WT-160-SMT-TR") (at 27.94 102.87 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7cbe5a5d-6492-4b52-bc52-5732378f08d5)
-    (property "Reference" "S1" (at 45.72 96.52 0)
+    (property "Reference" "S302" (at 45.72 96.52 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TS20-42-25-WT-160-SMT-TR" (at 45.72 99.06 0)
@@ -4638,7 +4638,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "S1") (unit 1)
+          (reference "S302") (unit 1)
         )
       )
     )
@@ -4647,7 +4647,7 @@
   (symbol (lib_id "power:+3V3") (at 167.64 60.96 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7f20b962-1a12-49c7-83bf-0fb68a7a3af4)
-    (property "Reference" "#PWR043" (at 167.64 64.77 0)
+    (property "Reference" "#PWR0322" (at 167.64 64.77 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (at 166.37 57.15 0)
@@ -4663,7 +4663,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR043") (unit 1)
+          (reference "#PWR0322") (unit 1)
         )
       )
     )
@@ -4672,7 +4672,7 @@
   (symbol (lib_id "power:+3V3") (at 320.04 158.75 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 84b26da3-d484-4bab-a7ec-26f5911dac5d)
-    (property "Reference" "#PWR071" (at 320.04 162.56 0)
+    (property "Reference" "#PWR0333" (at 320.04 162.56 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (at 320.04 154.94 0)
@@ -4688,7 +4688,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR071") (unit 1)
+          (reference "#PWR0333") (unit 1)
         )
       )
     )
@@ -4697,7 +4697,7 @@
   (symbol (lib_id "TJA1057T:TJA1057GT/3") (at 328.93 45.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8ad0e757-2378-408d-86b0-a6bdc9504fb3)
-    (property "Reference" "IC7" (at 342.9 39.37 0)
+    (property "Reference" "IC302" (at 342.9 39.37 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TJA1057GT/3" (at 342.9 41.91 0)
@@ -4741,7 +4741,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "IC7") (unit 1)
+          (reference "IC302") (unit 1)
         )
       )
     )
@@ -4750,7 +4750,7 @@
   (symbol (lib_id "power:GND") (at 170.18 167.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8ada34a6-246b-47aa-a57d-a1375a747973)
-    (property "Reference" "#PWR044" (at 170.18 173.99 0)
+    (property "Reference" "#PWR0323" (at 170.18 173.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 170.18 172.72 0)
@@ -4766,7 +4766,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR044") (unit 1)
+          (reference "#PWR0323") (unit 1)
         )
       )
     )
@@ -4796,7 +4796,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR054") (unit 1)
+          (reference "#PWR0304") (unit 1)
         )
       )
     )
@@ -4827,7 +4827,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "D4") (unit 1)
+          (reference "D301") (unit 1)
         )
       )
     )
@@ -4857,7 +4857,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR0102") (unit 1)
+          (reference "#PWR0338") (unit 1)
         )
       )
     )
@@ -4892,7 +4892,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "U2") (unit 1)
+          (reference "U301") (unit 1)
         )
       )
     )
@@ -4923,7 +4923,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "D5") (unit 1)
+          (reference "D303") (unit 1)
         )
       )
     )
@@ -4956,7 +4956,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR069") (unit 1)
+          (reference "#PWR0302") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -4970,7 +4970,7 @@
   (symbol (lib_id "power:+3V3") (at 320.04 43.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9a209748-aa01-488b-af5a-b054c8c9ca5f)
-    (property "Reference" "#PWR053" (at 320.04 46.99 0)
+    (property "Reference" "#PWR0332" (at 320.04 46.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (at 320.04 39.37 0)
@@ -4986,7 +4986,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR053") (unit 1)
+          (reference "#PWR0332") (unit 1)
         )
       )
     )
@@ -5030,7 +5030,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR0103") (unit 1)
+          (reference "#PWR0341") (unit 1)
         )
       )
     )
@@ -5061,7 +5061,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "D6") (unit 1)
+          (reference "D304") (unit 1)
         )
       )
     )
@@ -5070,7 +5070,7 @@
   (symbol (lib_id "power:+3V3") (at 238.76 83.82 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a50bd502-0cd5-4c01-b501-d5c930f5c90a)
-    (property "Reference" "#PWR051" (at 238.76 87.63 0)
+    (property "Reference" "#PWR0329" (at 238.76 87.63 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (at 238.76 80.01 0)
@@ -5086,32 +5086,32 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR051") (unit 1)
+          (reference "#PWR0329") (unit 1)
         )
       )
     )
   )
 
-  (symbol (lib_id "power:+3V3") (at 128.27 255.27 0) (unit 1)
+  (symbol (lib_id "power:+3V3") (at 132.08 255.27 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a694ca0a-569a-4f73-83dd-6d6234b46eb3)
-    (property "Reference" "#PWR056" (at 128.27 259.08 0)
+    (property "Reference" "#PWR0316" (at 132.08 259.08 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "+3V3" (at 128.27 251.46 0)
+    (property "Value" "+3V3" (at 132.08 251.46 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 128.27 255.27 0)
+    (property "Footprint" "" (at 132.08 255.27 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 128.27 255.27 0)
+    (property "Datasheet" "" (at 132.08 255.27 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 37d81201-d835-4716-8756-9f93a41f5d1f))
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR056") (unit 1)
+          (reference "#PWR0316") (unit 1)
         )
       )
     )
@@ -5150,7 +5150,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "R31") (unit 1)
+          (reference "R311") (unit 1)
         )
       )
     )
@@ -5159,7 +5159,7 @@
   (symbol (lib_id "power:+3V3") (at 234.95 165.1 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a88d6912-f3c5-42fb-a228-4c1739ca6ddb)
-    (property "Reference" "#PWR050" (at 234.95 168.91 0)
+    (property "Reference" "#PWR0328" (at 234.95 168.91 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (at 234.95 161.29 0)
@@ -5175,7 +5175,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR050") (unit 1)
+          (reference "#PWR0328") (unit 1)
         )
       )
     )
@@ -5184,7 +5184,7 @@
   (symbol (lib_id "power:GND") (at 139.7 111.76 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b0409998-c001-4c70-a9ea-3a4f71b830bc)
-    (property "Reference" "#PWR041" (at 139.7 118.11 0)
+    (property "Reference" "#PWR0317" (at 139.7 118.11 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 139.7 116.84 0)
@@ -5200,7 +5200,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR041") (unit 1)
+          (reference "#PWR0317") (unit 1)
         )
       )
     )
@@ -5209,7 +5209,7 @@
   (symbol (lib_id "power:+3V3") (at 142.24 106.68 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b29416bd-23b0-460c-a66b-c181c6629e64)
-    (property "Reference" "#PWR042" (at 142.24 110.49 0)
+    (property "Reference" "#PWR0319" (at 142.24 110.49 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (at 142.24 102.87 0)
@@ -5225,7 +5225,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR042") (unit 1)
+          (reference "#PWR0319") (unit 1)
         )
       )
     )
@@ -5259,7 +5259,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "R28") (unit 1)
+          (reference "R302") (unit 1)
         )
       )
     )
@@ -5292,7 +5292,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR0101") (unit 1)
+          (reference "#PWR0337") (unit 1)
         )
       )
     )
@@ -5331,7 +5331,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "R30") (unit 1)
+          (reference "R310") (unit 1)
         )
       )
     )
@@ -5340,7 +5340,7 @@
   (symbol (lib_id "power:+3V3") (at 176.53 176.53 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c337457e-4c52-4d63-9246-2b837b02b8e6)
-    (property "Reference" "#PWR046" (at 176.53 180.34 0)
+    (property "Reference" "#PWR0325" (at 176.53 180.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (at 176.53 172.72 0)
@@ -5356,7 +5356,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR046") (unit 1)
+          (reference "#PWR0325") (unit 1)
         )
       )
     )
@@ -5365,7 +5365,7 @@
   (symbol (lib_id "power:+3V3") (at 152.4 96.52 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c57393da-f27c-46e1-b491-c73376ad3694)
-    (property "Reference" "#PWR070" (at 152.4 100.33 0)
+    (property "Reference" "#PWR0320" (at 152.4 100.33 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (at 152.4 92.71 0)
@@ -5381,7 +5381,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR070") (unit 1)
+          (reference "#PWR0320") (unit 1)
         )
       )
     )
@@ -5390,7 +5390,7 @@
   (symbol (lib_id "power:GND") (at 60.96 166.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c6fbdd78-02d0-40dc-84e6-a7cd420cfa27)
-    (property "Reference" "#PWR068" (at 60.96 172.72 0)
+    (property "Reference" "#PWR0312" (at 60.96 172.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 60.96 171.45 0)
@@ -5406,7 +5406,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR068") (unit 1)
+          (reference "#PWR0312") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -5450,7 +5450,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "R29") (unit 1)
+          (reference "R309") (unit 1)
         )
       )
     )
@@ -5495,7 +5495,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "D7") (unit 1)
+          (reference "D302") (unit 1)
         )
       )
     )
@@ -5533,7 +5533,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR078") (unit 1)
+          (reference "#PWR0339") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -5582,7 +5582,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR099") (unit 1)
+          (reference "#PWR0331") (unit 1)
         )
       )
     )
@@ -5622,7 +5622,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "R22") (unit 1)
+          (reference "R304") (unit 1)
         )
       )
     )
@@ -5631,7 +5631,7 @@
   (symbol (lib_id "power:GND") (at 60.96 151.13 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid dd8541a5-f3c8-4475-a889-66c687387cdc)
-    (property "Reference" "#PWR067" (at 60.96 157.48 0)
+    (property "Reference" "#PWR0311" (at 60.96 157.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 60.96 156.21 0)
@@ -5647,7 +5647,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR067") (unit 1)
+          (reference "#PWR0311") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -5685,7 +5685,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR076") (unit 1)
+          (reference "#PWR0309") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -5723,7 +5723,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR077") (unit 1)
+          (reference "#PWR0313") (unit 1)
         )
       )
     )
@@ -5732,7 +5732,7 @@
   (symbol (lib_id "Device:C_Small") (at 149.86 144.78 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e8e86fb7-cb62-4799-b804-f6278b3a9429)
-    (property "Reference" "C40" (at 152.4 144.1513 0)
+    (property "Reference" "C308" (at 152.4 144.1513 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1u" (at 152.4 146.6913 0)
@@ -5749,7 +5749,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C40") (unit 1)
+          (reference "C308") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -5763,7 +5763,7 @@
   (symbol (lib_id "Device:C_Small") (at 139.7 144.78 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid eae4e3bf-8a4a-4900-b6c2-a63e6a9a3b47)
-    (property "Reference" "C39" (at 142.24 144.1513 0)
+    (property "Reference" "C307" (at 142.24 144.1513 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 142.24 146.6913 0)
@@ -5780,7 +5780,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C39") (unit 1)
+          (reference "C307") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -5794,7 +5794,7 @@
   (symbol (lib_id "Device:C_Small") (at 381 166.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ebb8c658-97d2-4489-a2ae-e1156810b9d6)
-    (property "Reference" "C35" (at 383.54 165.1 0)
+    (property "Reference" "C316" (at 383.54 165.1 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10u" (at 383.54 167.64 0)
@@ -5811,7 +5811,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C35") (unit 1)
+          (reference "C316") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -5849,7 +5849,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "#PWR059") (unit 1)
+          (reference "#PWR0303") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -5899,7 +5899,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "R32") (unit 1)
+          (reference "R307") (unit 1)
         )
       )
     )
@@ -5933,7 +5933,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C41") (unit 1)
+          (reference "C303") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -5947,7 +5947,7 @@
   (symbol (lib_id "Device:C_Small") (at 360.68 166.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f9865449-4ff1-4b9a-b5e5-ac929e7105a3)
-    (property "Reference" "C33" (at 363.22 165.1062 0)
+    (property "Reference" "C314" (at 363.22 165.1062 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 363.22 167.6462 0)
@@ -5964,7 +5964,7 @@
     (instances
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "C33") (unit 1)
+          (reference "C314") (unit 1)
         )
       )
       (project "ViRG0_PCB"
@@ -6004,25 +6004,25 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "J4") (unit 1)
+          (reference "J301") (unit 1)
         )
       )
     )
   )
 
-  (symbol (lib_id "Device:R_Small") (at 128.27 262.89 0) (mirror y) (unit 1)
+  (symbol (lib_id "Device:R_Small") (at 132.08 262.89 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ffe8d6e6-7b12-48ec-a11d-092e101b0ed3)
-    (property "Reference" "R6" (at 130.81 262.255 0)
+    (property "Reference" "R6" (at 134.62 262.255 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "2k2" (at 130.81 264.795 0)
+    (property "Value" "2k2" (at 134.62 264.795 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 128.27 262.89 0)
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 132.08 262.89 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 128.27 262.89 0)
+    (property "Datasheet" "~" (at 132.08 262.89 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid d05eac5d-263a-4232-a0ec-a07de1a01e91))
@@ -6044,7 +6044,7 @@
       )
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "R23") (unit 1)
+          (reference "R305") (unit 1)
         )
       )
     )

@@ -103,7 +103,7 @@
   (symbol (lib_id "Mechanical:MountingHole_Pad") (at 57.15 119.38 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 223c5845-8531-47d7-9ac4-fa943f13e75b)
-    (property "Reference" "H4" (at 59.69 117.475 0)
+    (property "Reference" "H104" (at 59.69 117.475 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "MountingHole_Pad" (at 59.69 120.015 0)
@@ -119,7 +119,7 @@
     (instances
       (project "Gateway Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
-          (reference "H4") (unit 1)
+          (reference "H104") (unit 1)
         )
       )
       (project "Power Board"
@@ -133,7 +133,7 @@
   (symbol (lib_id "power:GND") (at 57.15 124.46 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 27371970-7e92-440c-83b5-a9b760c2aa4b)
-    (property "Reference" "#PWR04" (at 57.15 130.81 0)
+    (property "Reference" "#PWR0104" (at 57.15 130.81 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 57.15 129.54 0)
@@ -149,7 +149,7 @@
     (instances
       (project "Gateway Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
-          (reference "#PWR04") (unit 1)
+          (reference "#PWR0104") (unit 1)
         )
       )
       (project "Power Board"
@@ -163,7 +163,7 @@
   (symbol (lib_id "Mechanical:MountingHole_Pad") (at 33.02 119.38 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2c7ee9c3-70ba-4c63-894d-ccf8382c7429)
-    (property "Reference" "H2" (at 35.56 117.475 0)
+    (property "Reference" "H102" (at 35.56 117.475 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "MountingHole_Pad" (at 35.56 120.015 0)
@@ -179,7 +179,7 @@
     (instances
       (project "Gateway Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
-          (reference "H2") (unit 1)
+          (reference "H102") (unit 1)
         )
       )
       (project "Power Board"
@@ -193,7 +193,7 @@
   (symbol (lib_id "power:GND") (at 57.15 106.68 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 31f902bd-db2d-4e27-a780-bb8b8a224875)
-    (property "Reference" "#PWR03" (at 57.15 113.03 0)
+    (property "Reference" "#PWR0103" (at 57.15 113.03 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 57.15 111.76 0)
@@ -209,7 +209,7 @@
     (instances
       (project "Gateway Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
-          (reference "#PWR03") (unit 1)
+          (reference "#PWR0103") (unit 1)
         )
       )
       (project "Power Board"
@@ -223,7 +223,7 @@
   (symbol (lib_id "Mechanical:MountingHole_Pad") (at 57.15 101.6 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3ce92a9b-fd74-4005-acd3-abcd17ed3b58)
-    (property "Reference" "H3" (at 59.69 99.695 0)
+    (property "Reference" "H103" (at 59.69 99.695 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "MountingHole_Pad" (at 59.69 102.235 0)
@@ -239,7 +239,7 @@
     (instances
       (project "Gateway Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
-          (reference "H3") (unit 1)
+          (reference "H103") (unit 1)
         )
       )
       (project "Power Board"
@@ -253,7 +253,7 @@
   (symbol (lib_id "Mechanical:MountingHole_Pad") (at 33.02 101.6 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b1aa1782-b392-48e3-8531-c87e411a3046)
-    (property "Reference" "H1" (at 35.56 99.695 0)
+    (property "Reference" "H101" (at 35.56 99.695 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "MountingHole_Pad" (at 35.56 102.235 0)
@@ -269,7 +269,7 @@
     (instances
       (project "Gateway Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
-          (reference "H1") (unit 1)
+          (reference "H101") (unit 1)
         )
       )
       (project "Power Board"
@@ -283,7 +283,7 @@
   (symbol (lib_id "power:GND") (at 33.02 106.68 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid da3ebf54-cd35-45ad-adf8-a501286674db)
-    (property "Reference" "#PWR01" (at 33.02 113.03 0)
+    (property "Reference" "#PWR0101" (at 33.02 113.03 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 33.02 111.76 0)
@@ -299,7 +299,7 @@
     (instances
       (project "Gateway Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
-          (reference "#PWR01") (unit 1)
+          (reference "#PWR0101") (unit 1)
         )
       )
       (project "Power Board"
@@ -313,7 +313,7 @@
   (symbol (lib_id "power:GND") (at 33.02 124.46 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid dd4e5271-67eb-4bf0-ae2c-98e5adc82fa7)
-    (property "Reference" "#PWR02" (at 33.02 130.81 0)
+    (property "Reference" "#PWR0102" (at 33.02 130.81 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 33.02 129.54 0)
@@ -329,7 +329,7 @@
     (instances
       (project "Gateway Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
-          (reference "#PWR02") (unit 1)
+          (reference "#PWR0102") (unit 1)
         )
       )
       (project "Power Board"

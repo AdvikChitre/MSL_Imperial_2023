@@ -117,7 +117,7 @@
     )
     (pin "1" (uuid 77d970c8-711a-4267-9722-ceb8b27fb1d9))
     (instances
-      (project "Motor Driver Board"
+      (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
           (reference "H104") (unit 1)
         )
@@ -147,7 +147,7 @@
     )
     (pin "1" (uuid 3bf2e481-3b60-44a1-a955-93bfa4ff1d6e))
     (instances
-      (project "Motor Driver Board"
+      (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
           (reference "#PWR0104") (unit 1)
         )
@@ -177,7 +177,7 @@
     )
     (pin "1" (uuid 94e84f69-b203-4bb1-86fb-f171d4bfb99a))
     (instances
-      (project "Motor Driver Board"
+      (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
           (reference "H102") (unit 1)
         )
@@ -207,7 +207,7 @@
     )
     (pin "1" (uuid fe790a61-d7f5-4e2b-86d8-eebe45bf727d))
     (instances
-      (project "Motor Driver Board"
+      (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
           (reference "#PWR0103") (unit 1)
         )
@@ -237,7 +237,7 @@
     )
     (pin "1" (uuid 640377f8-ea3f-4715-936f-f6eb3e76b4e8))
     (instances
-      (project "Motor Driver Board"
+      (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
           (reference "H103") (unit 1)
         )
@@ -267,7 +267,7 @@
     )
     (pin "1" (uuid 54e0972e-c502-41ad-8d04-f62009cbed19))
     (instances
-      (project "Motor Driver Board"
+      (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
           (reference "H101") (unit 1)
         )
@@ -297,7 +297,7 @@
     )
     (pin "1" (uuid 4acb6801-924c-44c1-ae29-8053f33cad23))
     (instances
-      (project "Motor Driver Board"
+      (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
           (reference "#PWR0101") (unit 1)
         )
@@ -327,7 +327,7 @@
     )
     (pin "1" (uuid 71502ba0-8cc7-4c1a-b672-e2ffe16b6abb))
     (instances
-      (project "Motor Driver Board"
+      (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447"
           (reference "#PWR0102") (unit 1)
         )
@@ -351,7 +351,7 @@
       (effects (font (size 1.27 1.27)) (justify left top))
     )
     (instances
-      (project "Motor Driver Board"
+      (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447" (page "2"))
       )
     )
@@ -368,7 +368,7 @@
       (effects (font (size 1.27 1.27)) (justify left top))
     )
     (instances
-      (project "Motor Driver Board"
+      (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447" (page "3"))
       )
     )
@@ -378,14 +378,14 @@
     (stroke (width 0.1524) (type solid))
     (fill (color 0 0 194 1.0000))
     (uuid eac1bb94-ca61-4d80-916e-a7f6d96905e1)
-    (property "Sheetname" "Motor Drivers" (at 83.82 37.3884 0)
+    (property "Sheetname" "Sensors & connectors" (at 83.82 37.3884 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (property "Sheetfile" "motor_driver.kicad_sch" (at 83.82 79.3246 0)
+    (property "Sheetfile" "sensors_connectors.kicad_sch" (at 83.82 79.3246 0)
       (effects (font (size 1.27 1.27)) (justify left top))
     )
     (instances
-      (project "Motor Driver Board"
+      (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447" (page "4"))
       )
     )

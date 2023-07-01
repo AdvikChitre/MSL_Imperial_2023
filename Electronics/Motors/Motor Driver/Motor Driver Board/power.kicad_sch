@@ -1352,7 +1352,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C11") (unit 1)
+          (reference "C209") (unit 1)
         )
       )
       (project "Power Board"
@@ -1391,7 +1391,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "L2") (unit 1)
+          (reference "L202") (unit 1)
         )
       )
       (project "Power Board"
@@ -1405,7 +1405,7 @@
   (symbol (lib_id "Personal Library:VIN") (at 101.6 142.24 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 13cbf082-9254-4ecf-b764-72324f940b79)
-    (property "Reference" "#PWR077" (at 101.6 146.05 0)
+    (property "Reference" "#PWR0206" (at 101.6 146.05 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VIN" (at 101.6 138.43 0)
@@ -1421,7 +1421,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR077") (unit 1)
+          (reference "#PWR0206") (unit 1)
         )
       )
     )
@@ -1454,7 +1454,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR098") (unit 1)
+          (reference "#PWR0211") (unit 1)
         )
       )
       (project "Power Board"
@@ -1493,7 +1493,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "D2") (unit 1)
+          (reference "D202") (unit 1)
         )
       )
       (project "Power Board"
@@ -1531,7 +1531,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR043") (unit 1)
+          (reference "#PWR0218") (unit 1)
         )
       )
       (project "Power Board"
@@ -1569,7 +1569,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR034") (unit 1)
+          (reference "#PWR0202") (unit 1)
         )
       )
       (project "Power Board"
@@ -1607,7 +1607,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR045") (unit 1)
+          (reference "#PWR0220") (unit 1)
         )
       )
       (project "Power Board"
@@ -1645,7 +1645,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR038") (unit 1)
+          (reference "#PWR0213") (unit 1)
         )
       )
       (project "Power Board"
@@ -1683,7 +1683,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR044") (unit 1)
+          (reference "#PWR0219") (unit 1)
         )
       )
       (project "Power Board"
@@ -1721,7 +1721,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR099") (unit 1)
+          (reference "#PWR0212") (unit 1)
         )
       )
       (project "Power Board"
@@ -1735,7 +1735,7 @@
   (symbol (lib_id "Connector:Conn_01x02_Pin") (at 194.31 143.51 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4036e611-83cb-4188-91e6-9bfb76e36263)
-    (property "Reference" "J11" (at 196.85 144.78 0)
+    (property "Reference" "J204" (at 196.85 144.78 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x02_Pin" (at 196.85 147.32 0)
@@ -1752,7 +1752,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "J11") (unit 1)
+          (reference "J204") (unit 1)
         )
       )
     )
@@ -1761,7 +1761,7 @@
   (symbol (lib_id "Personal Library:VIN") (at 76.2 36.83 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4539c3ea-e2b4-484c-bef3-4143bf158f35)
-    (property "Reference" "#PWR033" (at 76.2 40.64 0)
+    (property "Reference" "#PWR0201" (at 76.2 40.64 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VIN" (at 76.2 33.02 0)
@@ -1777,7 +1777,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR033") (unit 1)
+          (reference "#PWR0201") (unit 1)
         )
       )
     )
@@ -1811,7 +1811,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "L1") (unit 1)
+          (reference "L201") (unit 1)
         )
       )
       (project "Power Board"
@@ -1859,7 +1859,7 @@
           (reference "D1") (unit 1)
         )
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "D4") (unit 1)
+          (reference "D201") (unit 1)
         )
       )
       (project "Power Board"
@@ -1897,7 +1897,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR036") (unit 1)
+          (reference "#PWR0209") (unit 1)
         )
       )
       (project "Power Board"
@@ -1936,7 +1936,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C3") (unit 1)
+          (reference "C201") (unit 1)
         )
       )
       (project "Power Board"
@@ -1975,7 +1975,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "R16") (unit 1)
+          (reference "R206") (unit 1)
         )
       )
       (project "Power Board"
@@ -2013,7 +2013,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR041") (unit 1)
+          (reference "#PWR0216") (unit 1)
         )
       )
       (project "Power Board"
@@ -2051,7 +2051,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0100") (unit 1)
+          (reference "#PWR0221") (unit 1)
         )
       )
       (project "Power Board"
@@ -2090,7 +2090,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C10") (unit 1)
+          (reference "C208") (unit 1)
         )
       )
       (project "Power Board"
@@ -2128,7 +2128,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR042") (unit 1)
+          (reference "#PWR0217") (unit 1)
         )
       )
       (project "Power Board"
@@ -2142,7 +2142,7 @@
   (symbol (lib_id "Connector:Conn_01x02_Pin") (at 170.18 143.51 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7d2eb4c8-b6d0-488d-b133-b216178e084d)
-    (property "Reference" "J10" (at 172.72 144.78 0)
+    (property "Reference" "J203" (at 172.72 144.78 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x02_Pin" (at 172.72 147.32 0)
@@ -2159,7 +2159,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "J10") (unit 1)
+          (reference "J203") (unit 1)
         )
       )
     )
@@ -2193,7 +2193,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C8") (unit 1)
+          (reference "C206") (unit 1)
         )
       )
       (project "Power Board"
@@ -2231,7 +2231,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0101") (unit 1)
+          (reference "#PWR0222") (unit 1)
         )
       )
       (project "Power Board"
@@ -2270,7 +2270,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "R11") (unit 1)
+          (reference "R201") (unit 1)
         )
       )
       (project "Power Board"
@@ -2284,7 +2284,7 @@
   (symbol (lib_id "MSL_Symbols:VIN_RAW") (at 87.63 142.24 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9647b59e-4e10-4f2d-8ff8-4d76229f295d)
-    (property "Reference" "#PWR078" (at 87.63 146.05 0)
+    (property "Reference" "#PWR0205" (at 87.63 146.05 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VIN_RAW" (at 87.63 138.43 0)
@@ -2300,7 +2300,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR078") (unit 1)
+          (reference "#PWR0205") (unit 1)
         )
       )
     )
@@ -2333,7 +2333,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR040") (unit 1)
+          (reference "#PWR0215") (unit 1)
         )
       )
       (project "Power Board"
@@ -2372,7 +2372,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C5") (unit 1)
+          (reference "C203") (unit 1)
         )
       )
       (project "Power Board"
@@ -2411,7 +2411,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "D3") (unit 1)
+          (reference "D203") (unit 1)
         )
       )
       (project "Power Board"
@@ -2449,7 +2449,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR039") (unit 1)
+          (reference "#PWR0214") (unit 1)
         )
       )
       (project "Power Board"
@@ -2488,7 +2488,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "R13") (unit 1)
+          (reference "R203") (unit 1)
         )
       )
       (project "Power Board"
@@ -2527,7 +2527,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "R14") (unit 1)
+          (reference "R204") (unit 1)
         )
       )
       (project "Power Board"
@@ -2566,7 +2566,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C7") (unit 1)
+          (reference "C205") (unit 1)
         )
       )
       (project "Power Board"
@@ -2605,7 +2605,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C4") (unit 1)
+          (reference "C202") (unit 1)
         )
       )
       (project "Power Board"
@@ -2639,7 +2639,7 @@
           (reference "J2") (unit 1)
         )
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "J8") (unit 1)
+          (reference "J201") (unit 1)
         )
       )
       (project "Power Board"
@@ -2678,7 +2678,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "R15") (unit 1)
+          (reference "R205") (unit 1)
         )
       )
       (project "Power Board"
@@ -2717,7 +2717,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C6") (unit 1)
+          (reference "C204") (unit 1)
         )
       )
       (project "Power Board"
@@ -2731,7 +2731,7 @@
   (symbol (lib_id "Connector:Conn_01x02_Pin") (at 146.05 143.51 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid da8a7889-82e8-46d1-a70b-8d53de1b1935)
-    (property "Reference" "J9" (at 148.59 144.78 0)
+    (property "Reference" "J202" (at 148.59 144.78 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x02_Pin" (at 148.59 147.32 0)
@@ -2748,7 +2748,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "J9") (unit 1)
+          (reference "J202") (unit 1)
         )
       )
     )
@@ -2781,7 +2781,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR096") (unit 1)
+          (reference "#PWR0207") (unit 1)
         )
       )
       (project "Power Board"
@@ -2819,7 +2819,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR097") (unit 1)
+          (reference "#PWR0208") (unit 1)
         )
       )
       (project "Power Board"
@@ -2857,7 +2857,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR037") (unit 1)
+          (reference "#PWR0210") (unit 1)
         )
       )
       (project "Power Board"
@@ -2895,7 +2895,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR035") (unit 1)
+          (reference "#PWR0203") (unit 1)
         )
       )
       (project "Power Board"
@@ -2934,7 +2934,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C9") (unit 1)
+          (reference "C207") (unit 1)
         )
       )
       (project "Power Board"
@@ -2973,7 +2973,7 @@
       )
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "R12") (unit 1)
+          (reference "R202") (unit 1)
         )
       )
       (project "Power Board"
@@ -2987,7 +2987,7 @@
   (symbol (lib_id "TPS54295PWPR:TPS54295PWPR") (at 119.38 58.42 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid fa1fc7f3-0cb2-4ed7-97fc-274373713a00)
-    (property "Reference" "IC5" (at 119.38 31.75 0)
+    (property "Reference" "IC201" (at 119.38 31.75 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TPS54295PWPR" (at 119.38 34.29 0)
@@ -3040,7 +3040,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "IC5") (unit 1)
+          (reference "IC201") (unit 1)
         )
       )
       (project "Power Board"
@@ -3054,7 +3054,7 @@
   (symbol (lib_id "power:GND") (at 86.36 149.86 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ff938795-3517-4742-aecd-cb65fc8400f5)
-    (property "Reference" "#PWR079" (at 86.36 156.21 0)
+    (property "Reference" "#PWR0204" (at 86.36 156.21 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 86.36 154.94 0)
@@ -3070,7 +3070,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR079") (unit 1)
+          (reference "#PWR0204") (unit 1)
         )
       )
     )

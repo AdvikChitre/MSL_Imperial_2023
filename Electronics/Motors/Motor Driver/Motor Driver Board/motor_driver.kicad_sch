@@ -2369,7 +2369,7 @@
   (symbol (lib_id "power:GND") (at 66.04 205.74 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 06bde7d0-1ec0-4526-bd63-091ea9f5033b)
-    (property "Reference" "#PWR060" (at 66.04 212.09 0)
+    (property "Reference" "#PWR0401" (at 66.04 212.09 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 66.04 209.55 0)
@@ -2385,7 +2385,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR060") (unit 1)
+          (reference "#PWR0401") (unit 1)
         )
       )
     )
@@ -2422,7 +2422,7 @@
           (reference "R29") (unit 1)
         )
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "R34") (unit 1)
+          (reference "R401") (unit 1)
         )
       )
       (project "Power Board"
@@ -2436,7 +2436,7 @@
   (symbol (lib_id "power:GND") (at 261.62 179.07 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0891afeb-2a80-461b-a980-361ab126e1d3)
-    (property "Reference" "#PWR075" (at 261.62 185.42 0)
+    (property "Reference" "#PWR0417" (at 261.62 185.42 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 261.62 184.15 0)
@@ -2452,7 +2452,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR075") (unit 1)
+          (reference "#PWR0417") (unit 1)
         )
       )
       (project "Power Board"
@@ -2466,7 +2466,7 @@
   (symbol (lib_id "Device:C_Small") (at 77.47 80.01 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0893b0ae-337b-47f5-b480-5703e5f6a392)
-    (property "Reference" "C16" (at 74.93 79.3813 0)
+    (property "Reference" "C404" (at 74.93 79.3813 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1u" (at 74.93 81.9213 0)
@@ -2483,7 +2483,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C16") (unit 1)
+          (reference "C404") (unit 1)
         )
       )
     )
@@ -2512,7 +2512,7 @@
           (reference "D5") (unit 1)
         )
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "D9") (unit 1)
+          (reference "D402") (unit 1)
         )
       )
     )
@@ -2521,7 +2521,7 @@
   (symbol (lib_id "MSL_Symbols:NVMFS4C05NT1G") (at 147.32 58.42 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0bc1c886-0bd0-4afa-a2d8-0b2930ae82d8)
-    (property "Reference" "T1" (at 151.13 57.785 0)
+    (property "Reference" "T405" (at 151.13 57.785 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "NVMFS4C05NT1G" (at 151.13 60.325 0)
@@ -2541,7 +2541,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "T1") (unit 1)
+          (reference "T405") (unit 1)
         )
       )
     )
@@ -2550,7 +2550,7 @@
   (symbol (lib_id "MSL_Symbols:NVMFS4C05NT1G") (at 314.96 88.9 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 160ef3ed-9116-4a4b-a266-0bdf60e3ed77)
-    (property "Reference" "T7" (at 318.77 88.265 0)
+    (property "Reference" "T411" (at 318.77 88.265 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "NVMFS4C05NT1G" (at 318.77 90.805 0)
@@ -2570,7 +2570,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "T7") (unit 1)
+          (reference "T411") (unit 1)
         )
       )
     )
@@ -2579,7 +2579,7 @@
   (symbol (lib_id "MSL_Symbols:VMOT") (at 135.89 110.49 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 16273168-4f7f-41b5-a0da-f0a738a9a09d)
-    (property "Reference" "#PWR052" (at 135.89 114.3 0)
+    (property "Reference" "#PWR0408" (at 135.89 114.3 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VMOT" (at 135.89 106.68 0)
@@ -2595,7 +2595,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR052") (unit 1)
+          (reference "#PWR0408") (unit 1)
         )
       )
     )
@@ -2604,7 +2604,7 @@
   (symbol (lib_id "MSL_Symbols:NVMFS4C05NT1G") (at 314.96 104.14 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 16db58d8-1037-4644-a96b-5ca4ffa3c106)
-    (property "Reference" "T8" (at 318.77 103.505 0)
+    (property "Reference" "T412" (at 318.77 103.505 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "NVMFS4C05NT1G" (at 318.77 106.045 0)
@@ -2624,7 +2624,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "T8") (unit 1)
+          (reference "T412") (unit 1)
         )
       )
     )
@@ -2633,7 +2633,7 @@
   (symbol (lib_id "power:GND") (at 67.31 86.36 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 17b74b79-82d5-4f0c-9c0a-63afe0daf09f)
-    (property "Reference" "#PWR054" (at 67.31 92.71 0)
+    (property "Reference" "#PWR0402" (at 67.31 92.71 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 67.31 90.17 0)
@@ -2649,7 +2649,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR054") (unit 1)
+          (reference "#PWR0402") (unit 1)
         )
       )
     )
@@ -2658,7 +2658,7 @@
   (symbol (lib_id "power:GND") (at 134.62 83.82 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1de81cc1-f388-4776-a570-81eba5454e3a)
-    (property "Reference" "#PWR050" (at 134.62 90.17 0)
+    (property "Reference" "#PWR0406" (at 134.62 90.17 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 132.08 83.82 0)
@@ -2674,7 +2674,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR050") (unit 1)
+          (reference "#PWR0406") (unit 1)
         )
       )
     )
@@ -2683,7 +2683,7 @@
   (symbol (lib_id "XT60PW-F:XT60PW-F") (at 181.61 82.55 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1f434ffe-18ae-4a06-b198-003425a19465)
-    (property "Reference" "J4" (at 187.96 83.185 0)
+    (property "Reference" "J402" (at 187.96 83.185 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "XT60PW-F" (at 187.96 85.725 0)
@@ -2714,7 +2714,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "J4") (unit 1)
+          (reference "J402") (unit 1)
         )
       )
     )
@@ -2723,7 +2723,7 @@
   (symbol (lib_id "Device:C_Small") (at 184.15 121.92 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 203827df-0857-4457-9277-53b3261b4db5)
-    (property "Reference" "C49" (at 181.61 120.65 0)
+    (property "Reference" "C411" (at 181.61 120.65 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 181.61 123.19 0)
@@ -2740,7 +2740,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C49") (unit 1)
+          (reference "C411") (unit 1)
         )
       )
     )
@@ -2749,7 +2749,7 @@
   (symbol (lib_id "power:GND") (at 111.76 251.46 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 27d9d332-6de2-4500-8bc3-457c487ea3f4)
-    (property "Reference" "#PWR061" (at 111.76 257.81 0)
+    (property "Reference" "#PWR0403" (at 111.76 257.81 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 111.76 255.27 0)
@@ -2765,7 +2765,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR061") (unit 1)
+          (reference "#PWR0403") (unit 1)
         )
       )
     )
@@ -2774,7 +2774,7 @@
   (symbol (lib_id "Device:C_Small") (at 76.2 199.39 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 293e0302-034b-4730-8131-693493fc94dd)
-    (property "Reference" "C23" (at 73.66 198.7613 0)
+    (property "Reference" "C403" (at 73.66 198.7613 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1u" (at 73.66 201.3013 0)
@@ -2791,7 +2791,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C23") (unit 1)
+          (reference "C403") (unit 1)
         )
       )
     )
@@ -2800,7 +2800,7 @@
   (symbol (lib_id "Device:C_Small") (at 67.31 78.74 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3151ab88-499d-4b6b-8f45-a59e99bc765f)
-    (property "Reference" "C17" (at 64.77 78.1113 0)
+    (property "Reference" "C402" (at 64.77 78.1113 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1u" (at 64.77 80.6513 0)
@@ -2817,7 +2817,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C17") (unit 1)
+          (reference "C402") (unit 1)
         )
       )
     )
@@ -2826,7 +2826,7 @@
   (symbol (lib_id "Device:C_Small") (at 234.95 78.74 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 334c3d26-a36b-491b-b7ed-a4294b6fbd24)
-    (property "Reference" "C18" (at 232.41 78.1113 0)
+    (property "Reference" "C413" (at 232.41 78.1113 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1u" (at 232.41 80.6513 0)
@@ -2843,7 +2843,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C18") (unit 1)
+          (reference "C413") (unit 1)
         )
       )
     )
@@ -2852,7 +2852,7 @@
   (symbol (lib_id "power:GND") (at 351.79 130.81 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 36b36372-7f2a-44ad-8ea0-553e84fef689)
-    (property "Reference" "#PWR081" (at 351.79 137.16 0)
+    (property "Reference" "#PWR0423" (at 351.79 137.16 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 351.79 134.62 0)
@@ -2868,7 +2868,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR081") (unit 1)
+          (reference "#PWR0423") (unit 1)
         )
       )
     )
@@ -2877,7 +2877,7 @@
   (symbol (lib_id "Device:R_Small") (at 85.09 200.66 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 37fc8819-b9b7-4702-884e-878dbc621082)
-    (property "Reference" "R23" (at 82.55 199.39 0)
+    (property "Reference" "R403" (at 82.55 199.39 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 82.55 201.93 0)
@@ -2894,7 +2894,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "R23") (unit 1)
+          (reference "R403") (unit 1)
         )
       )
     )
@@ -2903,7 +2903,7 @@
   (symbol (lib_id "power:GND") (at 133.35 203.2 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 40f7ba2f-b8f1-4e20-b401-cf08cb52dd97)
-    (property "Reference" "#PWR062" (at 133.35 209.55 0)
+    (property "Reference" "#PWR0405" (at 133.35 209.55 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 130.81 203.2 0)
@@ -2919,7 +2919,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR062") (unit 1)
+          (reference "#PWR0405") (unit 1)
         )
       )
     )
@@ -2928,7 +2928,7 @@
   (symbol (lib_id "MSL_Symbols:VMOT") (at 185.42 232.41 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 41050508-2928-45db-afee-9380cbdfcb32)
-    (property "Reference" "#PWR084" (at 185.42 236.22 0)
+    (property "Reference" "#PWR0413" (at 185.42 236.22 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VMOT" (at 185.42 228.6 0)
@@ -2944,7 +2944,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR084") (unit 1)
+          (reference "#PWR0413") (unit 1)
         )
       )
     )
@@ -2981,7 +2981,7 @@
           (reference "R29") (unit 1)
         )
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "R32") (unit 1)
+          (reference "R409") (unit 1)
         )
       )
       (project "Power Board"
@@ -2995,7 +2995,7 @@
   (symbol (lib_id "MSL_Symbols:VMOT") (at 351.79 115.57 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 41c50184-b7eb-4fc5-bc52-a46fe0710ebf)
-    (property "Reference" "#PWR080" (at 351.79 119.38 0)
+    (property "Reference" "#PWR0422" (at 351.79 119.38 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VMOT" (at 351.79 111.76 0)
@@ -3011,7 +3011,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR080") (unit 1)
+          (reference "#PWR0422") (unit 1)
         )
       )
     )
@@ -3020,7 +3020,7 @@
   (symbol (lib_id "CSS2H-3920K-5L00F:CSS2H-3920K-5L00F") (at 307.34 82.55 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 41fd181d-3b35-49b3-bc40-9b03b9189fb3)
-    (property "Reference" "R22" (at 307.975 80.01 0)
+    (property "Reference" "R412" (at 307.975 80.01 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "CSS2H-3920K-5L00F" (at 316.23 80.01 0)
@@ -3052,7 +3052,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "R22") (unit 1)
+          (reference "R412") (unit 1)
         )
       )
     )
@@ -3061,7 +3061,7 @@
   (symbol (lib_id "XT60PW-M:XT60PW-M") (at 248.92 176.53 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4495333f-8b94-4c74-82de-0cc37fb71fb6)
-    (property "Reference" "J7" (at 242.57 174.625 0)
+    (property "Reference" "J403" (at 242.57 174.625 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "XT60PW-M" (at 242.57 177.165 0)
@@ -3090,7 +3090,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "J7") (unit 1)
+          (reference "J403") (unit 1)
         )
       )
       (project "Power Board"
@@ -3104,7 +3104,7 @@
   (symbol (lib_id "power:GND") (at 113.03 132.08 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 479e674f-7cbb-4c7a-9478-43e13717c3b0)
-    (property "Reference" "#PWR053" (at 113.03 138.43 0)
+    (property "Reference" "#PWR0404" (at 113.03 138.43 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 113.03 135.89 0)
@@ -3120,7 +3120,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR053") (unit 1)
+          (reference "#PWR0404") (unit 1)
         )
       )
     )
@@ -3129,7 +3129,7 @@
   (symbol (lib_id "Device:C_Small") (at 351.79 123.19 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4a7f3d1c-d4ae-48b3-aeb2-3f34e58a1218)
-    (property "Reference" "C47" (at 349.25 121.92 0)
+    (property "Reference" "C418" (at 349.25 121.92 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 349.25 124.46 0)
@@ -3146,7 +3146,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C47") (unit 1)
+          (reference "C418") (unit 1)
         )
       )
     )
@@ -3155,7 +3155,7 @@
   (symbol (lib_id "XT60PW-F:XT60PW-F") (at 180.34 201.93 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4cfb8690-949c-4b49-a4ad-4a608b071436)
-    (property "Reference" "J6" (at 186.69 202.565 0)
+    (property "Reference" "J401" (at 186.69 202.565 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "XT60PW-F" (at 186.69 205.105 0)
@@ -3186,7 +3186,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "J6") (unit 1)
+          (reference "J401") (unit 1)
         )
       )
     )
@@ -3195,7 +3195,7 @@
   (symbol (lib_id "power:GND") (at 184.15 129.54 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4facdc9f-5552-4de1-809b-0f3d6f39d3ff)
-    (property "Reference" "#PWR083" (at 184.15 135.89 0)
+    (property "Reference" "#PWR0412" (at 184.15 135.89 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 184.15 133.35 0)
@@ -3211,7 +3211,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR083") (unit 1)
+          (reference "#PWR0412") (unit 1)
         )
       )
     )
@@ -3220,7 +3220,7 @@
   (symbol (lib_id "power:GND") (at 234.95 86.36 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 50528b1f-eeb4-4641-8380-18a20dd884d9)
-    (property "Reference" "#PWR055" (at 234.95 92.71 0)
+    (property "Reference" "#PWR0415" (at 234.95 92.71 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 234.95 90.17 0)
@@ -3236,7 +3236,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR055") (unit 1)
+          (reference "#PWR0415") (unit 1)
         )
       )
     )
@@ -3245,7 +3245,7 @@
   (symbol (lib_id "Device:C_Small") (at 93.98 182.88 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 512f7e4a-25b2-4630-bba5-128101dea118)
-    (property "Reference" "C24" (at 91.44 182.2513 0)
+    (property "Reference" "C405" (at 91.44 182.2513 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 91.44 184.7913 0)
@@ -3262,7 +3262,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C24") (unit 1)
+          (reference "C405") (unit 1)
         )
       )
     )
@@ -3271,7 +3271,7 @@
   (symbol (lib_id "XT60PW-F:XT60PW-F") (at 349.25 82.55 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 528cf2f1-8580-406a-9aac-93c4907c0859)
-    (property "Reference" "J5" (at 355.6 83.185 0)
+    (property "Reference" "J404" (at 355.6 83.185 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "XT60PW-F" (at 355.6 85.725 0)
@@ -3302,7 +3302,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "J5") (unit 1)
+          (reference "J404") (unit 1)
         )
       )
     )
@@ -3311,7 +3311,7 @@
   (symbol (lib_id "Device:R_Small") (at 262.89 81.28 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 560af7eb-8308-4dc9-a5f7-cf808007cb2c)
-    (property "Reference" "R21" (at 260.35 80.01 0)
+    (property "Reference" "R411" (at 260.35 80.01 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 260.35 82.55 0)
@@ -3328,7 +3328,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "R21") (unit 1)
+          (reference "R411") (unit 1)
         )
       )
     )
@@ -3337,7 +3337,7 @@
   (symbol (lib_id "DRV8701ERGER:DRV8701ERGER") (at 115.57 82.55 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5750ccbc-52f6-4b48-a7eb-ba4c679fb312)
-    (property "Reference" "U2" (at 115.57 49.53 0)
+    (property "Reference" "U402" (at 115.57 49.53 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "DRV8701ERGER" (at 115.57 52.07 0)
@@ -3398,7 +3398,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "U2") (unit 1)
+          (reference "U402") (unit 1)
         )
       )
     )
@@ -3407,7 +3407,7 @@
   (symbol (lib_id "Device:C_Small") (at 185.42 240.03 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5a794c1f-5abb-499d-9d28-6fd8c37ca5f6)
-    (property "Reference" "C51" (at 182.88 238.76 0)
+    (property "Reference" "C412" (at 182.88 238.76 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 182.88 241.3 0)
@@ -3424,7 +3424,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C51") (unit 1)
+          (reference "C412") (unit 1)
         )
       )
     )
@@ -3433,7 +3433,7 @@
   (symbol (lib_id "Device:C_Polarized_Small") (at 173.99 121.92 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5e65ab8a-a160-44fb-bea5-6f94d499f4f3)
-    (property "Reference" "C48" (at 171.45 120.7389 0)
+    (property "Reference" "C409" (at 171.45 120.7389 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "100u" (at 171.45 123.2789 0)
@@ -3450,7 +3450,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C48") (unit 1)
+          (reference "C409") (unit 1)
         )
       )
     )
@@ -3459,7 +3459,7 @@
   (symbol (lib_id "MSL_Symbols:VMOT") (at 184.15 114.3 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 628902cf-3361-4732-b731-62151597679c)
-    (property "Reference" "#PWR082" (at 184.15 118.11 0)
+    (property "Reference" "#PWR0411" (at 184.15 118.11 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VMOT" (at 184.15 110.49 0)
@@ -3475,7 +3475,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR082") (unit 1)
+          (reference "#PWR0411") (unit 1)
         )
       )
     )
@@ -3484,7 +3484,7 @@
   (symbol (lib_id "MSL_Symbols:VMOT") (at 146.05 170.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 630b84df-7566-44e7-a8e1-49a697afda27)
-    (property "Reference" "#PWR064" (at 146.05 173.99 0)
+    (property "Reference" "#PWR0409" (at 146.05 173.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VMOT" (at 146.05 166.37 0)
@@ -3500,7 +3500,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR064") (unit 1)
+          (reference "#PWR0409") (unit 1)
         )
       )
     )
@@ -3509,7 +3509,7 @@
   (symbol (lib_id "Device:C_Small") (at 66.04 198.12 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 645cb5ad-5e4a-48ba-ab5b-46d2e94fb2e9)
-    (property "Reference" "C22" (at 63.5 197.4913 0)
+    (property "Reference" "C401" (at 63.5 197.4913 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1u" (at 63.5 200.0313 0)
@@ -3526,7 +3526,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C22") (unit 1)
+          (reference "C401") (unit 1)
         )
       )
     )
@@ -3535,7 +3535,7 @@
   (symbol (lib_id "MSL_Symbols:VMOT") (at 303.53 110.49 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6626c2a0-773b-47d0-af83-9cd858482c92)
-    (property "Reference" "#PWR058" (at 303.53 114.3 0)
+    (property "Reference" "#PWR0420" (at 303.53 114.3 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VMOT" (at 303.53 106.68 0)
@@ -3551,7 +3551,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR058") (unit 1)
+          (reference "#PWR0420") (unit 1)
         )
       )
     )
@@ -3560,7 +3560,7 @@
   (symbol (lib_id "CSS2H-3920K-5L00F:CSS2H-3920K-5L00F") (at 139.7 82.55 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 6afa5da3-1001-46a1-b98f-9360745f2462)
-    (property "Reference" "R17" (at 140.335 80.01 0)
+    (property "Reference" "R408" (at 140.335 80.01 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "CSS2H-3920K-5L00F" (at 148.59 80.01 0)
@@ -3592,7 +3592,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "R17") (unit 1)
+          (reference "R408") (unit 1)
         )
       )
     )
@@ -3601,7 +3601,7 @@
   (symbol (lib_id "DRV8701ERGER:DRV8701ERGER") (at 114.3 201.93 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 6c530ffe-3f6a-450f-b07b-5f061b6444a9)
-    (property "Reference" "U4" (at 114.3 168.91 0)
+    (property "Reference" "U401" (at 114.3 168.91 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "DRV8701ERGER" (at 114.3 171.45 0)
@@ -3662,7 +3662,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "U4") (unit 1)
+          (reference "U401") (unit 1)
         )
       )
     )
@@ -3671,7 +3671,7 @@
   (symbol (lib_id "MSL_Symbols:VMOT") (at 261.62 171.45 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 73b7c6fb-d810-4a57-bdbc-5942cb2a667f)
-    (property "Reference" "#PWR076" (at 261.62 175.26 0)
+    (property "Reference" "#PWR0416" (at 261.62 175.26 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VMOT" (at 261.62 167.64 0)
@@ -3687,7 +3687,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR076") (unit 1)
+          (reference "#PWR0416") (unit 1)
         )
       )
     )
@@ -3696,7 +3696,7 @@
   (symbol (lib_id "Device:C_Polarized_Small") (at 341.63 123.19 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 78faf536-8fc7-4017-b44b-ebbf702219df)
-    (property "Reference" "C46" (at 339.09 122.0089 0)
+    (property "Reference" "C417" (at 339.09 122.0089 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "100u" (at 339.09 124.5489 0)
@@ -3713,7 +3713,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C46") (unit 1)
+          (reference "C417") (unit 1)
         )
       )
     )
@@ -3722,7 +3722,7 @@
   (symbol (lib_id "Device:R_Small") (at 95.25 81.28 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7cc199fe-4fae-449a-825e-c0df6258f130)
-    (property "Reference" "R18" (at 92.71 80.01 0)
+    (property "Reference" "R406" (at 92.71 80.01 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 92.71 82.55 0)
@@ -3739,7 +3739,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "R18") (unit 1)
+          (reference "R406") (unit 1)
         )
       )
     )
@@ -3748,7 +3748,7 @@
   (symbol (lib_id "power:GND") (at 185.42 247.65 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7d7cd68e-90ec-411e-80cf-3c7645a3480d)
-    (property "Reference" "#PWR085" (at 185.42 254 0)
+    (property "Reference" "#PWR0414" (at 185.42 254 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 185.42 251.46 0)
@@ -3764,7 +3764,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR085") (unit 1)
+          (reference "#PWR0414") (unit 1)
         )
       )
     )
@@ -3793,7 +3793,7 @@
           (reference "D5") (unit 1)
         )
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "D8") (unit 1)
+          (reference "D403") (unit 1)
         )
       )
     )
@@ -3802,7 +3802,7 @@
   (symbol (lib_id "power:GND") (at 280.67 132.08 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 87778ba2-8a05-4d2d-ad16-0f234649dd72)
-    (property "Reference" "#PWR056" (at 280.67 138.43 0)
+    (property "Reference" "#PWR0418" (at 280.67 138.43 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 280.67 135.89 0)
@@ -3818,7 +3818,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR056") (unit 1)
+          (reference "#PWR0418") (unit 1)
         )
       )
     )
@@ -3827,7 +3827,7 @@
   (symbol (lib_id "MSL_Symbols:NVMFS4C05NT1G") (at 147.32 104.14 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8a0d9806-5026-4a77-ad25-1a51b1b1e761)
-    (property "Reference" "T4" (at 151.13 103.505 0)
+    (property "Reference" "T408" (at 151.13 103.505 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "NVMFS4C05NT1G" (at 151.13 106.045 0)
@@ -3847,7 +3847,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "T4") (unit 1)
+          (reference "T408") (unit 1)
         )
       )
     )
@@ -3856,7 +3856,7 @@
   (symbol (lib_id "MSL_Symbols:NVMFS4C05NT1G") (at 146.05 208.28 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8b1b8bd8-fb1d-464d-9713-cbfe296a0de2)
-    (property "Reference" "T11" (at 149.86 207.645 0)
+    (property "Reference" "T403" (at 149.86 207.645 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "NVMFS4C05NT1G" (at 149.86 210.185 0)
@@ -3876,7 +3876,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "T11") (unit 1)
+          (reference "T403") (unit 1)
         )
       )
     )
@@ -3885,7 +3885,7 @@
   (symbol (lib_id "Device:C_Small") (at 95.25 63.5 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8c055064-422c-44a7-899f-c22c85277b34)
-    (property "Reference" "C15" (at 92.71 62.8713 0)
+    (property "Reference" "C406" (at 92.71 62.8713 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 92.71 65.4113 0)
@@ -3902,7 +3902,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C15") (unit 1)
+          (reference "C406") (unit 1)
         )
       )
     )
@@ -3911,7 +3911,7 @@
   (symbol (lib_id "MSL_Symbols:NVMFS4C05NT1G") (at 147.32 88.9 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8d536795-adb3-4e9b-8113-010bf9549bb6)
-    (property "Reference" "T3" (at 151.13 88.265 0)
+    (property "Reference" "T407" (at 151.13 88.265 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "NVMFS4C05NT1G" (at 151.13 90.805 0)
@@ -3931,7 +3931,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "T3") (unit 1)
+          (reference "T407") (unit 1)
         )
       )
     )
@@ -3940,7 +3940,7 @@
   (symbol (lib_id "Device:R_Small") (at 93.98 200.66 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9d6c6ba8-c600-49fe-a927-82f29ebe4628)
-    (property "Reference" "R24" (at 91.44 199.39 0)
+    (property "Reference" "R405" (at 91.44 199.39 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 91.44 201.93 0)
@@ -3957,7 +3957,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "R24") (unit 1)
+          (reference "R405") (unit 1)
         )
       )
     )
@@ -3966,7 +3966,7 @@
   (symbol (lib_id "Device:C_Polarized_Small") (at 175.26 240.03 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9d9994a0-d57e-4641-a78f-dae308a42fae)
-    (property "Reference" "C50" (at 172.72 238.8489 0)
+    (property "Reference" "C410" (at 172.72 238.8489 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "100u" (at 172.72 241.3889 0)
@@ -3983,7 +3983,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C50") (unit 1)
+          (reference "C410") (unit 1)
         )
       )
     )
@@ -4012,7 +4012,7 @@
           (reference "D5") (unit 1)
         )
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "D10") (unit 1)
+          (reference "D401") (unit 1)
         )
       )
     )
@@ -4021,7 +4021,7 @@
   (symbol (lib_id "Device:R_Small") (at 86.36 81.28 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a7cf0b94-65f4-417c-a5d2-eb733eba2dfe)
-    (property "Reference" "R19" (at 83.82 80.01 0)
+    (property "Reference" "R404" (at 83.82 80.01 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 83.82 82.55 0)
@@ -4038,7 +4038,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "R19") (unit 1)
+          (reference "R404") (unit 1)
         )
       )
     )
@@ -4047,7 +4047,7 @@
   (symbol (lib_id "Device:C_Small") (at 262.89 63.5 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b13a4c73-2447-4957-a42c-53e5a01a8a59)
-    (property "Reference" "C20" (at 260.35 62.8713 0)
+    (property "Reference" "C415" (at 260.35 62.8713 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 260.35 65.4113 0)
@@ -4064,7 +4064,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C20") (unit 1)
+          (reference "C415") (unit 1)
         )
       )
     )
@@ -4073,7 +4073,7 @@
   (symbol (lib_id "MSL_Symbols:NVMFS4C05NT1G") (at 146.05 223.52 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b4e6a424-6640-45e3-9594-364578db76da)
-    (property "Reference" "T12" (at 149.86 222.885 0)
+    (property "Reference" "T404" (at 149.86 222.885 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "NVMFS4C05NT1G" (at 149.86 225.425 0)
@@ -4093,7 +4093,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "T12") (unit 1)
+          (reference "T404") (unit 1)
         )
       )
     )
@@ -4102,7 +4102,7 @@
   (symbol (lib_id "Device:C_Small") (at 134.62 115.57 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid bb1e667d-5463-4a76-b740-fb5af289eec7)
-    (property "Reference" "C14" (at 137.16 114.9413 0)
+    (property "Reference" "C408" (at 137.16 114.9413 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1u" (at 137.16 117.4813 0)
@@ -4119,7 +4119,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C14") (unit 1)
+          (reference "C408") (unit 1)
         )
       )
     )
@@ -4128,7 +4128,7 @@
   (symbol (lib_id "MSL_Symbols:VMOT") (at 134.62 229.87 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid bf1e8000-bbcf-435d-953a-f942227eff7b)
-    (property "Reference" "#PWR063" (at 134.62 233.68 0)
+    (property "Reference" "#PWR0407" (at 134.62 233.68 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VMOT" (at 134.62 226.06 0)
@@ -4144,7 +4144,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR063") (unit 1)
+          (reference "#PWR0407") (unit 1)
         )
       )
     )
@@ -4153,7 +4153,7 @@
   (symbol (lib_id "MSL_Symbols:NVMFS4C05NT1G") (at 147.32 73.66 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid bf882d1d-6182-46eb-9a7f-4509b259b72e)
-    (property "Reference" "T2" (at 151.13 73.025 0)
+    (property "Reference" "T406" (at 151.13 73.025 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "NVMFS4C05NT1G" (at 151.13 75.565 0)
@@ -4173,7 +4173,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "T2") (unit 1)
+          (reference "T406") (unit 1)
         )
       )
     )
@@ -4182,7 +4182,7 @@
   (symbol (lib_id "MSL_Symbols:NVMFS4C05NT1G") (at 314.96 73.66 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c0b28a9a-68db-4ac8-8f8b-144e302fd0f3)
-    (property "Reference" "T6" (at 318.77 73.025 0)
+    (property "Reference" "T410" (at 318.77 73.025 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "NVMFS4C05NT1G" (at 318.77 75.565 0)
@@ -4202,7 +4202,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "T6") (unit 1)
+          (reference "T410") (unit 1)
         )
       )
     )
@@ -4211,7 +4211,7 @@
   (symbol (lib_id "CSS2H-3920K-5L00F:CSS2H-3920K-5L00F") (at 138.43 201.93 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c11be2ec-8581-479a-b21b-199e44d5177b)
-    (property "Reference" "R25" (at 139.065 199.39 0)
+    (property "Reference" "R407" (at 139.065 199.39 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "CSS2H-3920K-5L00F" (at 147.32 199.39 0)
@@ -4243,7 +4243,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "R25") (unit 1)
+          (reference "R407") (unit 1)
         )
       )
     )
@@ -4252,7 +4252,7 @@
   (symbol (lib_id "DRV8701ERGER:DRV8701ERGER") (at 283.21 82.55 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c2ea550c-dbaf-4f28-a9a0-888710bd2ce4)
-    (property "Reference" "U3" (at 283.21 49.53 0)
+    (property "Reference" "U403" (at 283.21 49.53 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "DRV8701ERGER" (at 283.21 52.07 0)
@@ -4313,7 +4313,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "U3") (unit 1)
+          (reference "U403") (unit 1)
         )
       )
     )
@@ -4350,7 +4350,7 @@
           (reference "R29") (unit 1)
         )
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "R33") (unit 1)
+          (reference "R402") (unit 1)
         )
       )
       (project "Power Board"
@@ -4364,7 +4364,7 @@
   (symbol (lib_id "MSL_Symbols:VMOT") (at 314.96 50.8 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ceaaf5ed-2786-43f7-8388-08ba82bd0bd5)
-    (property "Reference" "#PWR059" (at 314.96 54.61 0)
+    (property "Reference" "#PWR0421" (at 314.96 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VMOT" (at 314.96 46.99 0)
@@ -4380,7 +4380,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR059") (unit 1)
+          (reference "#PWR0421") (unit 1)
         )
       )
     )
@@ -4389,7 +4389,7 @@
   (symbol (lib_id "MSL_Symbols:NVMFS4C05NT1G") (at 146.05 177.8 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d513a6c2-31fb-4d27-aaa0-94dde5fca9de)
-    (property "Reference" "T9" (at 149.86 177.165 0)
+    (property "Reference" "T401" (at 149.86 177.165 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "NVMFS4C05NT1G" (at 149.86 179.705 0)
@@ -4409,7 +4409,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "T9") (unit 1)
+          (reference "T401") (unit 1)
         )
       )
     )
@@ -4418,7 +4418,7 @@
   (symbol (lib_id "MSL_Symbols:NVMFS4C05NT1G") (at 146.05 193.04 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d9f4f465-d7ca-4bd1-8338-a606d535d0d3)
-    (property "Reference" "T10" (at 149.86 192.405 0)
+    (property "Reference" "T402" (at 149.86 192.405 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "NVMFS4C05NT1G" (at 149.86 194.945 0)
@@ -4438,7 +4438,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "T10") (unit 1)
+          (reference "T402") (unit 1)
         )
       )
     )
@@ -4447,7 +4447,7 @@
   (symbol (lib_id "Device:C_Small") (at 302.26 115.57 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e29a615b-44dc-4321-8af7-5f6cb688720a)
-    (property "Reference" "C21" (at 304.8 114.9413 0)
+    (property "Reference" "C416" (at 304.8 114.9413 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1u" (at 304.8 117.4813 0)
@@ -4464,7 +4464,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C21") (unit 1)
+          (reference "C416") (unit 1)
         )
       )
     )
@@ -4473,7 +4473,7 @@
   (symbol (lib_id "Device:C_Small") (at 245.11 80.01 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e4b94ea7-940a-4716-8ecc-f7d93a647888)
-    (property "Reference" "C19" (at 242.57 79.3813 0)
+    (property "Reference" "C414" (at 242.57 79.3813 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1u" (at 242.57 81.9213 0)
@@ -4490,7 +4490,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C19") (unit 1)
+          (reference "C414") (unit 1)
         )
       )
     )
@@ -4499,7 +4499,7 @@
   (symbol (lib_id "Device:C_Small") (at 133.35 234.95 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f6b36d9d-b4fd-4bb5-a8f6-6f246e4d17fb)
-    (property "Reference" "C25" (at 135.89 234.3213 0)
+    (property "Reference" "C407" (at 135.89 234.3213 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1u" (at 135.89 236.8613 0)
@@ -4516,7 +4516,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "C25") (unit 1)
+          (reference "C407") (unit 1)
         )
       )
     )
@@ -4525,7 +4525,7 @@
   (symbol (lib_id "MSL_Symbols:NVMFS4C05NT1G") (at 314.96 58.42 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f85b76cc-1131-47a5-be96-05f3bc2aa203)
-    (property "Reference" "T5" (at 318.77 57.785 0)
+    (property "Reference" "T409" (at 318.77 57.785 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "NVMFS4C05NT1G" (at 318.77 60.325 0)
@@ -4545,7 +4545,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "T5") (unit 1)
+          (reference "T409") (unit 1)
         )
       )
     )
@@ -4554,7 +4554,7 @@
   (symbol (lib_id "MSL_Symbols:VMOT") (at 147.32 50.8 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid fb57a7af-b6ee-48e2-a179-edb5eac24e99)
-    (property "Reference" "#PWR051" (at 147.32 54.61 0)
+    (property "Reference" "#PWR0410" (at 147.32 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VMOT" (at 147.32 46.99 0)
@@ -4570,7 +4570,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR051") (unit 1)
+          (reference "#PWR0410") (unit 1)
         )
       )
     )
@@ -4579,7 +4579,7 @@
   (symbol (lib_id "Device:R_Small") (at 254 81.28 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid fbe69e70-80f9-449f-bcca-c26093356bb7)
-    (property "Reference" "R20" (at 251.46 80.01 0)
+    (property "Reference" "R410" (at 251.46 80.01 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 251.46 82.55 0)
@@ -4596,7 +4596,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "R20") (unit 1)
+          (reference "R410") (unit 1)
         )
       )
     )
@@ -4605,7 +4605,7 @@
   (symbol (lib_id "power:GND") (at 302.26 83.82 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ffb877e5-8e0e-4cd2-b141-ec5cdb6d11c5)
-    (property "Reference" "#PWR057" (at 302.26 90.17 0)
+    (property "Reference" "#PWR0419" (at 302.26 90.17 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 299.72 83.82 0)
@@ -4621,7 +4621,7 @@
     (instances
       (project "Motor Driver Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/eac1bb94-ca61-4d80-916e-a7f6d96905e1"
-          (reference "#PWR057") (unit 1)
+          (reference "#PWR0419") (unit 1)
         )
       )
     )
