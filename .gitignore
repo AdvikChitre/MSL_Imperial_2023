@@ -1,6 +1,6 @@
-/Electronics/Motors/Motor Encoder/Motor Encoder Board/Motor Encoder Board-backups
-/Electronics/Motors/Motor Driver/Motor Driver Board/Motor Driver Board-backups
-/Electronics/Power/Power Board/Power Board-backups
-/Electronics/Gateway/Gateway Board/Gateway Board-backups
-/Software/STM32 Firmware/.metadata
-/Electronics/Sensor Hub/Sensor Hub Board/Sensor Hub Board-backups
+/Electronics/Motors/Motor Encoder/Motor Encoder Board/Motor Encoder Board-backups/*
+/Electronics/Motors/Motor Driver/Motor Driver Board/Motor Driver Board-backups/*
+/Electronics/Power/Power Board/Power Board-backups/*
+/Electronics/Gateway/Gateway Board/Gateway Board-backups/*
+/Software/STM32 Firmware/.metadata/*
+/Electronics/Sensor Hub/Sensor Hub Board/Sensor Hub Board-backups/*

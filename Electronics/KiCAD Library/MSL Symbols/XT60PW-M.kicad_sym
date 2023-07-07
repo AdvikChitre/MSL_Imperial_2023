@@ -6,7 +6,7 @@
     (property "Value" "XT60PW-M" (at -5.08 -5.0923 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (property "Footprint" "MSL Footprints:AMASS_XT60PW-M" (at 0 0 0)
+    (property "Footprint" "Connector_AMASS:AMASS_XT60PW-M_1x02_P7.20mm_Horizontal" (at 0 0 0)
       (effects (font (size 1.27 1.27)) (justify bottom) hide)
     )
     (property "Datasheet" "" (at 0 0 0)
