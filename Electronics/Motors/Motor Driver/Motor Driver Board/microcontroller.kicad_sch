@@ -5330,6 +5330,38 @@
     )
   )
 
+  (symbol (lib_id "Connector:Screw_Terminal_01x03") (at 160.02 261.62 0) (mirror x) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 3353db01-1dc9-420f-a0cd-9afe511fa441)
+    (property "Reference" "J302" (at 157.48 254 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "Screw_Terminal_01x03" (at 144.78 251.46 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "TerminalBlock:TerminalBlock_bornier-3_P5.08mm" (at 160.02 261.62 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 160.02 261.62 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 81a46472-7901-4fb6-9c71-74d016c7eb4d))
+    (pin "2" (uuid 7b3b436d-44b5-4f77-bbb4-9f21c2f9faab))
+    (pin "3" (uuid a3c275b1-5510-441a-b9b0-741f7913a9ed))
+    (instances
+      (project "Motor Driver Board"
+        (path "/5318664d-e328-4e84-a383-7318275dc447/86a04d6c-5487-4291-b767-6da69e96f7da"
+          (reference "J302") (unit 1)
+        )
+      )
+      (project "Power Board"
+        (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
+          (reference "J303") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "power:+3V3") (at 95.25 255.27 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 33aacd69-902d-4aad-b229-6902e83de565)
@@ -9008,38 +9040,6 @@
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
           (reference "#PWR060") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Connector:Screw_Terminal_01x03") (at 160.02 261.62 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid f466ad90-144a-4cdc-b803-2804f2467f0a)
-    (property "Reference" "J302" (at 144.78 251.46 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "Screw_Terminal_01x03" (at 144.78 254 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "TerminalBlock:TerminalBlock_bornier-3_P5.08mm" (at 160.02 261.62 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 160.02 261.62 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid b9743ce0-07d9-4c19-8aaa-3e44e491c309))
-    (pin "2" (uuid bb22728e-994c-41fb-9fd1-498dfe775c28))
-    (pin "3" (uuid 0177d19c-b61d-4408-b573-1b0123d8b3d7))
-    (instances
-      (project "Motor Driver Board"
-        (path "/5318664d-e328-4e84-a383-7318275dc447/86a04d6c-5487-4291-b767-6da69e96f7da"
-          (reference "J302") (unit 1)
-        )
-      )
-      (project "Power Board"
-        (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "J303") (unit 1)
         )
       )
     )

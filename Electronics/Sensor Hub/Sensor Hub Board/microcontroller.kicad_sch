@@ -4778,38 +4778,6 @@
     )
   )
 
-  (symbol (lib_id "Connector:Screw_Terminal_01x03") (at 160.02 261.62 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 3806a744-e927-4698-8405-9986b9a5be50)
-    (property "Reference" "J304" (at 144.78 251.46 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "Screw_Terminal_01x03" (at 144.78 254 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "TerminalBlock:TerminalBlock_bornier-3_P5.08mm" (at 160.02 261.62 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 160.02 261.62 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 7b38702e-0297-4bfe-b8f7-1e50bcc67595))
-    (pin "2" (uuid fae62df1-1589-4469-9b26-bb7c77dc116a))
-    (pin "3" (uuid b7f40d86-2564-4170-8af2-6ad5cccecd35))
-    (instances
-      (project "Sensor Hub Board"
-        (path "/5318664d-e328-4e84-a383-7318275dc447/86a04d6c-5487-4291-b767-6da69e96f7da"
-          (reference "J304") (unit 1)
-        )
-      )
-      (project "Power Board"
-        (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
-          (reference "J303") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "power:GND") (at 243.84 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 38f5fe9d-fab8-43cd-917e-295eabee04ed)
@@ -4939,6 +4907,38 @@
       (project "Power Board"
         (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
           (reference "#PWR039") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Connector:Screw_Terminal_01x03") (at 160.02 261.62 0) (mirror x) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 3ef2ebda-fa5c-4407-b1d3-2e37f59b363e)
+    (property "Reference" "J302" (at 156.21 254 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "Screw_Terminal_01x03" (at 144.78 251.46 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "TerminalBlock:TerminalBlock_bornier-3_P5.08mm" (at 160.02 261.62 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 160.02 261.62 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid ba003fc0-99fd-4762-aaae-d4d74d99866a))
+    (pin "2" (uuid 8f741884-a8a2-4386-9cb0-55bc75406bf9))
+    (pin "3" (uuid 3f09c950-41d8-412e-a6ea-b259303cf9e2))
+    (instances
+      (project "Sensor Hub Board"
+        (path "/5318664d-e328-4e84-a383-7318275dc447/86a04d6c-5487-4291-b767-6da69e96f7da"
+          (reference "J302") (unit 1)
+        )
+      )
+      (project "Power Board"
+        (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fab43204-4de8-48e9-a4c9-80bcd4a9c27a"
+          (reference "J303") (unit 1)
         )
       )
     )
