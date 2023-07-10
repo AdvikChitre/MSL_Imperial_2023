@@ -5967,7 +5967,7 @@
   )
 
   (symbol (lib_id "MSL_Symbols:USBLC6-4SC6-ES") (at 49.53 271.78 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom no) (on_board no) (dnp yes) (fields_autoplaced)
     (uuid 5696140e-a1a6-46ea-90cc-1ddf55a80159)
     (property "Reference" "U301" (at 58.42 270.51 0)
       (effects (font (size 1.27 1.27)) (justify left))

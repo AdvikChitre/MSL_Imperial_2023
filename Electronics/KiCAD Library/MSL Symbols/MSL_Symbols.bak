@@ -237,7 +237,7 @@
     (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6" (at 0 -11.43 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 0 0 0)
+    (property "Datasheet" "https://datasheet.lcsc.com/lcsc/2209201730_ElecSuper-USBLC6-4SC6-ES_C5180279.pdf" (at 0 -11.43 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "ki_description" "USB TVS Diode array" (at 0 0 0)

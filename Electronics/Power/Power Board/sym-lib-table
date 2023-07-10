@@ -33,4 +33,6 @@
   (lib (name "XT60PW-M")(type "KiCad")(uri "C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Electronics/KiCAD Library/MSL Symbols/XT60PW-M.kicad_sym")(options "")(descr ""))
   (lib (name "TLV1805DBVR")(type "KiCad")(uri "C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Electronics/KiCAD Library/MSL Symbols/TLV1805DBVR.kicad_sym")(options "")(descr ""))
   (lib (name "DMP3013SFV-7")(type "KiCad")(uri "C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Electronics/KiCAD Library/MSL Symbols/DMP3013SFV-7.kicad_sym")(options "")(descr ""))
+  (lib (name "TCKE800NA-RF")(type "KiCad")(uri "C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Electronics/KiCAD Library/MSL Symbols/TCKE800NA-RF.kicad_sym")(options "")(descr ""))
+  (lib (name "SSM6K513NU_LF")(type "KiCad")(uri "C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Electronics/KiCAD Library/MSL Symbols/SSM6K513NU_LF.kicad_sym")(options "")(descr ""))
 )

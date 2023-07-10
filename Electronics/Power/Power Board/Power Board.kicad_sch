@@ -100,11 +100,6 @@
     (uuid f9d9e9db-d6a0-48bf-be47-55ce25ec8bcf)
   )
 
-  (text "SPDT Switch" (at 91.44 106.68 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid e819edbf-eba5-4bb1-bbaa-f563ff2c72f0)
-  )
-
   (symbol (lib_id "power:GND") (at 34.29 121.92 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 24032cde-5f6a-44d0-98b4-c1653cd02439)
