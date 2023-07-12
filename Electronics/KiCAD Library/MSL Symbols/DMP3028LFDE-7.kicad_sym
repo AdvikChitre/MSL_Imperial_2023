@@ -36,6 +36,12 @@
     (property "ki_description" "MOSFET 30V P-Ch Enh FET 32mOhm -10V -6.8A" (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+    (symbol "DMP3028LFDE_1_0"
+      (pin passive line (at -12.7 1.27 0) (length 5.08)
+        (name "D_5" (effects (font (size 1.27 1.27))))
+        (number "8" (effects (font (size 1.27 1.27))))
+      )
+    )
     (symbol "DMP3028LFDE_1_1"
       (rectangle (start -7.62 3.81) (end 7.62 -3.81)
         (stroke (width 0.254) (type default))

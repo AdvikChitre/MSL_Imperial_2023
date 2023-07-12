@@ -1,4 +1,4 @@
-21846283635451657
+21875003560479605
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -60751,14 +60751,14 @@ Connector XT60 Horizontal PCB Female, https://www.tme.eu/en/Document/9b8d0c5eb70
 RC Connector XT60
 0
 4
-2
+4
 MSL Footprints
 AMASS_XT60PW-M_1x02_P7.20mm_Horizontal
 Connector XT60 Horizontal PCB Female, https://www.tme.eu/en/Document/9b8d0c5eb7094295f3d3112c214d3ade/XT60PW%20SPEC.pdf
 RC Connector XT60
 0
 4
-2
+4
 MSL Footprints
 BMI088
 BMI088-2
@@ -60795,12 +60795,33 @@ Resistor
 2
 2
 MSL Footprints
+DC_logo_4mm
+
+
+0
+0
+0
+MSL Footprints
+DC_logo_6mm
+
+
+0
+0
+0
+MSL Footprints
 DMP2066UFDE7
 U-DFN2020-6 Type E
 MOSFET (P-Channel)
 0
 8
 8
+MSL Footprints
+DMP3013SFV7
+DMP3013SFV-7-2
+MOSFET (P-Channel)
+0
+9
+9
 MSL Footprints
 DRC10_1P65X2P40_TEX
 
@@ -60851,6 +60872,41 @@ ICRS_7mm
 0
 0
 MSL Footprints
+ICRS_12mm
+
+
+0
+0
+0
+MSL Footprints
+ICRS_15mm
+
+
+0
+0
+0
+MSL Footprints
+ICRS_20mm
+
+
+0
+0
+0
+MSL Footprints
+ICRS_30mm
+
+
+0
+0
+0
+MSL Footprints
+ICRS_50mm
+
+
+0
+0
+0
+MSL Footprints
 ICRS_FC_7mm
 
 
@@ -60879,6 +60935,13 @@ Inductor
 2
 2
 MSL Footprints
+Pluggable_terminal-3_P5.08mm
+simple 3-pin terminal block, pitch 5.08mm, revamped version of bornier3
+terminal block bornier3
+0
+3
+3
+MSL Footprints
 QFN50P400X400X100-25N-D
 RGE0024F
 Integrated Circuit
@@ -60900,12 +60963,26 @@ Integrated Circuit
 144
 144
 MSL Footprints
+RGE0024J
+
+LM25141RGER 
+0
+30
+26
+MSL Footprints
 SOIC127P600X175-8N
 SOIC-8
 Integrated Circuit
 0
 8
 8
+MSL Footprints
+SON50P200X200X60-9N-D
+DFN8 2 x 2
+Integrated Circuit
+0
+9
+9
 MSL Footprints
 SON50P200X200X80-9N
 DSG0008A
@@ -60935,12 +61012,26 @@ Integrated Circuit
 5
 5
 MSL Footprints
+SOT95P280X145-6N
+SOT-23-6
+Integrated Circuit
+0
+6
+6
+MSL Footprints
 SOTFL50P160X60-6N
 DRL0006A
 Integrated Circuit
 0
 6
 6
+MSL Footprints
+SSM6K513NULF
+SSM6K513NU,LF-4
+MOSFET (N-Channel)
+0
+8
+8
 MSL Footprints
 TRANS_NVMFS5834NLWFT1G
 
@@ -60956,6 +61047,13 @@ Switch
 4
 4
 MSL Footprints
+Tag-Connect_TC2030-IDC-FP_2x03_P1.27mm_Vertical
+Tag-Connect programming header; http://www.tag-connect.com/Materials/TC2030-IDC.pdf
+tag connect programming header pogo pins
+0
+6
+6
+MSL Footprints
 Toggle_switch
 1-1825137-1-1
 Switch
@@ -60963,12 +61061,33 @@ Switch
 3
 3
 MSL Footprints
+UCPD_logo_4mm
+
+
+0
+0
+0
+MSL Footprints
+UCPD_logo_7mm
+
+
+0
+0
+0
+MSL Footprints
 USB405603A
 USB4056-03-A-3
 Connector
 0
 28
 28
+MSL Footprints
+WSON10B_TOS
+
+TCKE800NA_RF 
+0
+11
+11
 Module
 A20_OLINUXINO_LIME2
 A20 Olinuxino LIME2, 1.2GHz, 512-1024MB RAM, Micro-SD, NAND or eMMC, 1000Mbit Ethernet
