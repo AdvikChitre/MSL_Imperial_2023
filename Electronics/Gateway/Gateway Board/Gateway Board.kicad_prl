@@ -63,8 +63,8 @@
       36,
       40
     ],
-    "visible_layers": "ffffeef_fffffff9",
-    "zone_display_mode": 1
+    "visible_layers": "ffffeff_fffffff9",
+    "zone_display_mode": 0
   },
   "meta": {
     "filename": "Gateway Board.kicad_prl",

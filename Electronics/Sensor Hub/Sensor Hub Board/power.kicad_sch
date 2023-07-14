@@ -42,6 +42,12 @@
       (property "ki_description" "MOSFET 30V P-Ch Enh FET 32mOhm -10V -6.8A" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
+      (symbol "DMP3028LFDE_1_0"
+        (pin passive line (at -12.7 1.27 0) (length 5.08)
+          (name "D_5" (effects (font (size 1.27 1.27))))
+          (number "8" (effects (font (size 1.27 1.27))))
+        )
+      )
       (symbol "DMP3028LFDE_1_1"
         (rectangle (start -7.62 3.81) (end 7.62 -3.81)
           (stroke (width 0.254) (type default))
@@ -363,42 +369,6 @@
         )
       )
     )
-    (symbol "MSL_Symbols:JST_2.5mm_1x2" (pin_names (offset 0.002) hide) (in_bom yes) (on_board yes)
-      (property "Reference" "J" (at 0 7.62 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "JST-XH-2.50mm" (at 0 5.08 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" (at 0 -5.08 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "" (at -5.08 3.81 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "JST_2.5mm_1x2_1_1"
-        (rectangle (start -1.27 -1.143) (end 0 -1.397)
-          (stroke (width 0.1524) (type default))
-          (fill (type none))
-        )
-        (rectangle (start -1.27 1.397) (end 0 1.143)
-          (stroke (width 0.1524) (type default))
-          (fill (type none))
-        )
-        (rectangle (start -1.27 2.54) (end 1.27 -2.54)
-          (stroke (width 0.254) (type default))
-          (fill (type background))
-        )
-        (pin passive line (at -5.08 1.27 0) (length 3.81)
-          (name "Pin_1" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at -5.08 -1.27 0) (length 3.81)
-          (name "Pin_2" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
     (symbol "MSL_Symbols:Pluggable_Terminal_01x02" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "J" (at 0 2.54 0)
         (effects (font (size 1.27 1.27)))
@@ -700,58 +670,6 @@
         )
       )
     )
-    (symbol "power:+3V3" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "#PWR" (at 0 -3.81 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Value" "+3V3" (at 0 3.556 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "global power" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Power symbol creates a global label with name \"+3V3\"" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "+3V3_0_1"
-        (polyline
-          (pts
-            (xy -0.762 1.27)
-            (xy 0 2.54)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0 0)
-            (xy 0 2.54)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0 2.54)
-            (xy 0.762 1.27)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "+3V3_1_1"
-        (pin power_in line (at 0 0 90) (length 0) hide
-          (name "+3V3" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
     (symbol "power:+5V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -3.81 0)
         (effects (font (size 1.27 1.27)) hide)
@@ -944,21 +862,9 @@
     (stroke (width 0) (type default))
     (uuid 07f4e7a2-fa67-46f6-abfa-877d90f76451)
   )
-  (wire (pts (xy 30.48 111.76) (xy 27.94 111.76))
-    (stroke (width 0) (type default))
-    (uuid 08fc259e-f603-44e2-a5f4-a311cd1d51d5)
-  )
   (wire (pts (xy 245.11 101.6) (xy 245.11 99.06))
     (stroke (width 0) (type default))
     (uuid 0dbb033e-07e6-462c-b1d2-01c9d62d6bfc)
-  )
-  (wire (pts (xy 95.25 111.76) (xy 92.71 111.76))
-    (stroke (width 0) (type default))
-    (uuid 0e0077aa-e83d-4a12-9aa4-6434aab0395a)
-  )
-  (wire (pts (xy 92.71 111.76) (xy 92.71 109.22))
-    (stroke (width 0) (type default))
-    (uuid 14bc99ce-03f9-4f6f-8981-6a39463ce46d)
   )
   (polyline (pts (xy 274.32 129.54) (xy 149.86 129.54))
     (stroke (width 0) (type default))
@@ -988,10 +894,6 @@
   (wire (pts (xy 207.01 91.44) (xy 207.01 88.9))
     (stroke (width 0) (type default))
     (uuid 2807e37e-1369-47ac-8e1b-d2c04d7d57b8)
-  )
-  (wire (pts (xy 119.38 111.76) (xy 116.84 111.76))
-    (stroke (width 0) (type default))
-    (uuid 29765027-0ae6-42e6-9a16-2e1e57c031b1)
   )
   (wire (pts (xy 245.11 53.34) (xy 234.95 53.34))
     (stroke (width 0) (type default))
@@ -1054,10 +956,6 @@
     (stroke (width 0) (type default))
     (uuid 543c3576-83f1-4e5d-89a0-e0dd88d964f4)
   )
-  (wire (pts (xy 116.84 116.84) (xy 116.84 114.3))
-    (stroke (width 0) (type default))
-    (uuid 550aa0cb-efda-4373-a985-09b0ddf6a57e)
-  )
   (wire (pts (xy 166.37 43.18) (xy 166.37 48.26))
     (stroke (width 0) (type default))
     (uuid 55d80b34-86b8-48f3-aacb-8b038af57e1f)
@@ -1102,10 +1000,6 @@
     (stroke (width 0) (type default))
     (uuid 825956dc-8f08-4d24-b7b3-479432d64c88)
   )
-  (wire (pts (xy 27.94 111.76) (xy 27.94 109.22))
-    (stroke (width 0) (type default))
-    (uuid 835881d6-6d12-4b77-9f42-60e3ed87b032)
-  )
   (wire (pts (xy 234.95 53.34) (xy 224.79 53.34))
     (stroke (width 0) (type default))
     (uuid 83b9845d-ac78-4b8f-8990-faddfa0efd71)
@@ -1122,10 +1016,6 @@
     (stroke (width 0) (type default))
     (uuid 881c28f6-4be4-4556-9444-58b93c350708)
   )
-  (wire (pts (xy 95.25 114.3) (xy 92.71 114.3))
-    (stroke (width 0) (type default))
-    (uuid 88afb18d-15b6-4b3e-ba02-bf083c8a39d4)
-  )
   (wire (pts (xy 90.17 41.91) (xy 90.17 44.45))
     (stroke (width 0) (type default))
     (uuid 8a1d711e-98d8-4492-bcec-5530ac1d2649)
@@ -1133,10 +1023,6 @@
   (wire (pts (xy 166.37 55.88) (xy 176.53 55.88))
     (stroke (width 0) (type default))
     (uuid 8baed46b-5dcd-43ed-86f7-bc74036127c9)
-  )
-  (wire (pts (xy 52.07 116.84) (xy 52.07 114.3))
-    (stroke (width 0) (type default))
-    (uuid 8e47b4f1-ff0c-4c78-80db-2b4829fb8de9)
   )
   (wire (pts (xy 207.01 43.18) (xy 204.47 43.18))
     (stroke (width 0) (type default))
@@ -1179,10 +1065,6 @@
     (stroke (width 0) (type default))
     (uuid a6915b55-40b4-48d9-b098-b37fc45bee81)
   )
-  (wire (pts (xy 52.07 111.76) (xy 52.07 109.22))
-    (stroke (width 0) (type default))
-    (uuid a89f54ca-02a3-4faa-9fae-876b1796b41e)
-  )
   (polyline (pts (xy 138.43 77.47) (xy 53.34 77.47))
     (stroke (width 0) (type default))
     (uuid a938a462-6647-421e-992d-bc48ffacb45d)
@@ -1221,21 +1103,9 @@
     (stroke (width 0) (type default))
     (uuid b2fea4d1-96c7-4938-8c2e-e1505b12c327)
   )
-  (wire (pts (xy 119.38 114.3) (xy 116.84 114.3))
-    (stroke (width 0) (type default))
-    (uuid b511dc43-a667-4e22-be08-cda5d04e23e2)
-  )
   (wire (pts (xy 234.95 109.22) (xy 245.11 109.22))
     (stroke (width 0) (type default))
     (uuid b54b8d1c-c464-4358-8406-4f6c35fa41e5)
-  )
-  (wire (pts (xy 30.48 114.3) (xy 27.94 114.3))
-    (stroke (width 0) (type default))
-    (uuid b6e8fda0-6374-44f8-b2c6-61b3048da985)
-  )
-  (wire (pts (xy 54.61 111.76) (xy 52.07 111.76))
-    (stroke (width 0) (type default))
-    (uuid bbd54ad3-b972-4567-a4b6-5955deabc0f6)
   )
   (wire (pts (xy 224.79 63.5) (xy 224.79 60.96))
     (stroke (width 0) (type default))
@@ -1248,10 +1118,6 @@
   (wire (pts (xy 234.95 60.96) (xy 234.95 63.5))
     (stroke (width 0) (type default))
     (uuid bf57b9a9-4fed-4fc7-b1d6-59d3cf063f06)
-  )
-  (wire (pts (xy 54.61 114.3) (xy 52.07 114.3))
-    (stroke (width 0) (type default))
-    (uuid bfc577d6-634a-4af6-bc94-ea78b264ed8e)
   )
   (wire (pts (xy 245.11 55.88) (xy 245.11 53.34))
     (stroke (width 0) (type default))
@@ -1272,10 +1138,6 @@
   (wire (pts (xy 176.53 45.72) (xy 176.53 48.26))
     (stroke (width 0) (type default))
     (uuid c7beb900-4619-4af7-b9c3-cc985d5e67ee)
-  )
-  (wire (pts (xy 92.71 116.84) (xy 92.71 114.3))
-    (stroke (width 0) (type default))
-    (uuid c9a684c4-8cd2-46ea-b085-cf6c990f5f88)
   )
   (wire (pts (xy 207.01 53.34) (xy 217.17 53.34))
     (stroke (width 0) (type default))
@@ -1321,11 +1183,6 @@
     (stroke (width 0) (type default))
     (uuid e2e22eb5-a95e-403c-a354-7f72e84756fe)
   )
-
-  (wire (pts (xy 116.84 111.76) (xy 116.84 109.22))
-    (stroke (width 0) (type default))
-    (uuid e4a15655-2f59-4e36-bfbc-2f5efa6f8f77)
-  )
   (polyline (pts (xy 149.86 30.48) (xy 149.86 129.54))
     (stroke (width 0) (type default))
     (uuid e7ac3af2-df11-4e57-a1d7-283eb04609db)
@@ -1351,10 +1208,6 @@
     (stroke (width 0) (type default))
     (uuid f3acc0f8-688e-499c-9959-39c40211e2a0)
   )
-  (wire (pts (xy 27.94 116.84) (xy 27.94 114.3))
-    (stroke (width 0) (type default))
-    (uuid f3fedf87-10ee-4901-be2d-4ab58125aa50)
-  )
   (polyline (pts (xy 138.43 30.48) (xy 138.43 77.47))
     (stroke (width 0) (type default))
     (uuid f489a388-bd90-42e0-b220-4ade0e3accef)
@@ -1373,28 +1226,9 @@
     (uuid fceeba5c-1a8f-47f3-abc5-bd6cc4c4d457)
   )
 
-  (rectangle (start 85.09 99.06) (end 138.43 129.54)
-    (stroke (width 0) (type default))
-    (fill (type none))
-    (uuid d793962c-5fe3-4c45-b8c2-7c4eb504c35b)
-  )
-  (rectangle (start 21.59 99.06) (end 74.93 129.54)
-    (stroke (width 0) (type default))
-    (fill (type none))
-    (uuid f8d9442a-e0cc-4111-911d-a0ccfe9049ce)
-  )
-
   (text "5V & 3.3V Rails" (at 151.13 29.21 0)
     (effects (font (size 2.54 2.54)) (justify left bottom))
     (uuid 13520d4f-49f4-43cd-99f6-e3665884bb8d)
-  )
-  (text "3.3V Headers" (at 86.36 97.79 0)
-    (effects (font (size 2.54 2.54)) (justify left bottom))
-    (uuid 36b64a71-de74-4267-8674-f06893a24591)
-  )
-  (text "5V Fan Headers" (at 22.86 97.79 0)
-    (effects (font (size 2.54 2.54)) (justify left bottom))
-    (uuid 8a5d248a-b702-46a9-a754-e93f93deb9b2)
   )
   (text "Power In" (at 54.61 29.21 0)
     (effects (font (size 2.54 2.54)) (justify left bottom))
@@ -1441,7 +1275,7 @@
   (symbol (lib_id "Device:C_Small") (at 166.37 96.52 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 031f554e-d907-4c9a-a5ec-30736ad1989a)
-    (property "Reference" "C211" (at 163.83 95.8913 0)
+    (property "Reference" "C202" (at 163.83 95.8913 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22u" (at 163.83 98.4313 0)
@@ -1458,7 +1292,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C211") (unit 1)
+          (reference "C202") (unit 1)
         )
       )
       (project "Power Board"
@@ -1477,7 +1311,7 @@
   (symbol (lib_id "Device:R_Small") (at 106.68 62.23 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 05c0609c-c57c-4c8c-9879-7c4be1952801)
-    (property "Reference" "R207" (at 109.22 60.96 0)
+    (property "Reference" "R201" (at 109.22 60.96 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "4k7" (at 109.22 63.5 0)
@@ -1494,7 +1328,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "R207") (unit 1)
+          (reference "R201") (unit 1)
         )
       )
       (project "101 PCB"
@@ -1508,7 +1342,7 @@
   (symbol (lib_id "Device:R_Small") (at 255.27 114.3 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0bdea1fb-dd10-4425-9dfd-3ad1f3967fe4)
-    (property "Reference" "R213" (at 257.81 113.665 0)
+    (property "Reference" "R207" (at 257.81 113.665 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1k5" (at 257.81 116.205 0)
@@ -1525,7 +1359,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "R213") (unit 1)
+          (reference "R207") (unit 1)
         )
       )
       (project "Power Board"
@@ -1544,7 +1378,7 @@
   (symbol (lib_id "MSL_Symbols:VIN_RAW") (at 90.17 41.91 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 10d5aacb-9efa-4bdb-8c44-65f9831a4471)
-    (property "Reference" "#PWR0230" (at 90.17 45.72 0)
+    (property "Reference" "#PWR0206" (at 90.17 45.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VIN_RAW" (at 90.17 38.1 0)
@@ -1560,45 +1394,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0230") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+5V") (at 52.07 109.22 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 147516d3-db67-471f-85fa-0a0638acb11c)
-    (property "Reference" "#PWR026" (at 52.07 113.03 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+5V" (at 52.07 105.41 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 52.07 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 52.07 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 19a04dbf-1654-44aa-acec-f16e812cda2e))
-    (instances
-      (project "DE10-lite_shield"
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d"
-          (reference "#PWR026") (unit 1)
-        )
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d/64f5d376-489c-4d66-8151-16917461492d"
-          (reference "#PWR033") (unit 1)
-        )
-      )
-      (project "Sensor Hub Board"
-        (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0210") (unit 1)
-        )
-      )
-      (project "Power Board"
-        (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fbb389ee-fd5d-4b29-9eb9-957bc83e8c9f"
-          (reference "#PWR034") (unit 1)
+          (reference "#PWR0206") (unit 1)
         )
       )
     )
@@ -1607,7 +1403,7 @@
   (symbol (lib_id "power:GND") (at 106.68 67.31 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 17059d8d-4df4-4e79-ba29-9ef24228d748)
-    (property "Reference" "#PWR0231" (at 106.68 73.66 0)
+    (property "Reference" "#PWR0209" (at 106.68 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 106.68 72.39 0)
@@ -1623,7 +1419,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0231") (unit 1)
+          (reference "#PWR0209") (unit 1)
         )
       )
       (project "101 PCB"
@@ -1637,7 +1433,7 @@
   (symbol (lib_id "Device:LED_Small") (at 255.27 58.42 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 195cb82d-31f4-4d43-a3d2-cd148f3122d9)
-    (property "Reference" "D205" (at 257.81 57.7215 90)
+    (property "Reference" "D202" (at 257.81 57.7215 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "GREEN" (at 257.81 60.2615 90)
@@ -1654,7 +1450,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "D205") (unit 1)
+          (reference "D202") (unit 1)
         )
       )
       (project "Power Board"
@@ -1673,7 +1469,7 @@
   (symbol (lib_id "Device:R_Small") (at 224.79 68.58 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2217767e-962a-4ae8-8548-3b61b9965cd8)
-    (property "Reference" "R209" (at 227.33 67.945 0)
+    (property "Reference" "R203" (at 227.33 67.945 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 227.33 70.485 0)
@@ -1690,7 +1486,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "R209") (unit 1)
+          (reference "R203") (unit 1)
         )
       )
       (project "Power Board"
@@ -1709,7 +1505,7 @@
   (symbol (lib_id "Personal Library:VIN") (at 166.37 86.36 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 244a4e37-cf10-40f2-be7e-411d72bc80d0)
-    (property "Reference" "#PWR0237" (at 166.37 90.17 0)
+    (property "Reference" "#PWR0215" (at 166.37 90.17 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VIN" (at 166.37 82.55 0)
@@ -1725,7 +1521,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0237") (unit 1)
+          (reference "#PWR0215") (unit 1)
         )
       )
     )
@@ -1734,7 +1530,7 @@
   (symbol (lib_id "Device:C_Small") (at 234.95 104.14 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 26a59b38-96e5-46e6-b826-17c62a42d627)
-    (property "Reference" "C217" (at 237.49 103.5113 0)
+    (property "Reference" "C208" (at 237.49 103.5113 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22u" (at 237.49 106.0513 0)
@@ -1751,7 +1547,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C217") (unit 1)
+          (reference "C208") (unit 1)
         )
       )
       (project "Power Board"
@@ -1770,7 +1566,7 @@
   (symbol (lib_id "power:GND") (at 166.37 58.42 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2cf4ea91-00b3-4c65-bf51-68da42e1dc0f)
-    (property "Reference" "#PWR0236" (at 166.37 64.77 0)
+    (property "Reference" "#PWR0214" (at 166.37 64.77 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 166.37 63.5 0)
@@ -1786,7 +1582,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0236") (unit 1)
+          (reference "#PWR0214") (unit 1)
         )
       )
       (project "Power Board"
@@ -1805,7 +1601,7 @@
   (symbol (lib_id "power:GND") (at 166.37 104.14 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 322d129c-28d0-475b-80d0-e6c6344144fd)
-    (property "Reference" "#PWR0238" (at 166.37 110.49 0)
+    (property "Reference" "#PWR0216" (at 166.37 110.49 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 166.37 109.22 0)
@@ -1821,7 +1617,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0238") (unit 1)
+          (reference "#PWR0216") (unit 1)
         )
       )
       (project "Power Board"
@@ -1840,7 +1636,7 @@
   (symbol (lib_id "Personal Library:VIN") (at 166.37 40.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 38fcb356-416a-43cb-a082-3605b182f1b0)
-    (property "Reference" "#PWR0235" (at 166.37 44.45 0)
+    (property "Reference" "#PWR0213" (at 166.37 44.45 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VIN" (at 166.37 36.83 0)
@@ -1856,7 +1652,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0235") (unit 1)
+          (reference "#PWR0213") (unit 1)
         )
       )
     )
@@ -1865,7 +1661,7 @@
   (symbol (lib_id "power:+3.3V") (at 255.27 96.52 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3cd59f32-3a04-4189-9abb-2d7d946ebbe3)
-    (property "Reference" "#PWR0245" (at 255.27 100.33 0)
+    (property "Reference" "#PWR0223" (at 255.27 100.33 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 255.27 92.71 0)
@@ -1881,7 +1677,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0245") (unit 1)
+          (reference "#PWR0223") (unit 1)
         )
       )
       (project "Power Board"
@@ -1897,48 +1693,10 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 52.07 116.84 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 40015a0d-33f6-4448-bb27-913c14c03f1b)
-    (property "Reference" "#PWR072" (at 52.07 123.19 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 52.07 121.92 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 52.07 116.84 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 52.07 116.84 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid af732314-c2f7-445e-9bdb-cf688046280a))
-    (instances
-      (project "DE10-lite_shield"
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d"
-          (reference "#PWR072") (unit 1)
-        )
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d/64f5d376-489c-4d66-8151-16917461492d"
-          (reference "#PWR072") (unit 1)
-        )
-      )
-      (project "Sensor Hub Board"
-        (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0211") (unit 1)
-        )
-      )
-      (project "Power Board"
-        (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fbb389ee-fd5d-4b29-9eb9-957bc83e8c9f"
-          (reference "#PWR037") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "power:+5V") (at 255.27 50.8 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4a83671d-d686-4c7d-9847-bef4edbe5daf)
-    (property "Reference" "#PWR0243" (at 255.27 54.61 0)
+    (property "Reference" "#PWR0221" (at 255.27 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 255.27 46.99 0)
@@ -1954,7 +1712,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0243") (unit 1)
+          (reference "#PWR0221") (unit 1)
         )
       )
       (project "Power Board"
@@ -1973,7 +1731,7 @@
   (symbol (lib_id "Device:C_Small") (at 207.01 48.26 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 538132ce-c2aa-427a-a3d3-e4ed1d40ed26)
-    (property "Reference" "C214" (at 209.55 47.6313 0)
+    (property "Reference" "C205" (at 209.55 47.6313 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 209.55 50.1713 0)
@@ -1990,7 +1748,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C214") (unit 1)
+          (reference "C205") (unit 1)
         )
       )
       (project "Power Board"
@@ -2009,7 +1767,7 @@
   (symbol (lib_id "Device:L_Small") (at 219.71 53.34 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 56eee66f-2055-477f-88c6-85c90a22955a)
-    (property "Reference" "L203" (at 219.71 48.26 90)
+    (property "Reference" "L201" (at 219.71 48.26 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "4u7" (at 219.71 50.8 90)
@@ -2026,7 +1784,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "L203") (unit 1)
+          (reference "L201") (unit 1)
         )
       )
       (project "Power Board"
@@ -2042,36 +1800,10 @@
     )
   )
 
-  (symbol (lib_id "MSL_Symbols:JST_2.5mm_1x2") (at 59.69 113.03 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 5b7f21c2-c8fa-448a-aa9b-2c0cb81efc9a)
-    (property "Reference" "J201" (at 55.88 105.41 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "JST-XH-2.50mm" (at 55.88 107.95 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" (at 59.69 118.11 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 54.61 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 08c51345-5a3e-4309-876c-935fa8fe2569))
-    (pin "2" (uuid 6461afdf-d746-4557-97fb-ae0e192ae09e))
-    (instances
-      (project "Sensor Hub Board"
-        (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "J201") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "Device:R_Small") (at 224.79 104.14 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5f7e2f76-b9e4-44b4-b5bd-3c8b5e95fde6)
-    (property "Reference" "R210" (at 227.33 103.505 0)
+    (property "Reference" "R204" (at 227.33 103.505 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "31k" (at 227.33 106.045 0)
@@ -2088,7 +1820,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "R210") (unit 1)
+          (reference "R204") (unit 1)
         )
       )
       (project "Power Board"
@@ -2107,7 +1839,7 @@
   (symbol (lib_id "Device:C_Small") (at 207.01 93.98 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 61f2cf4c-1aac-433e-825a-d4d09d0a5695)
-    (property "Reference" "C215" (at 209.55 93.3513 0)
+    (property "Reference" "C206" (at 209.55 93.3513 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 209.55 95.8913 0)
@@ -2124,7 +1856,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C215") (unit 1)
+          (reference "C206") (unit 1)
         )
       )
       (project "Power Board"
@@ -2143,7 +1875,7 @@
   (symbol (lib_id "power:GND") (at 255.27 119.38 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6a117174-afa9-4b2a-88cf-82d021349c8f)
-    (property "Reference" "#PWR0246" (at 255.27 125.73 0)
+    (property "Reference" "#PWR0224" (at 255.27 125.73 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 255.27 124.46 0)
@@ -2159,7 +1891,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0246") (unit 1)
+          (reference "#PWR0224") (unit 1)
         )
       )
       (project "Power Board"
@@ -2178,7 +1910,7 @@
   (symbol (lib_id "Device:R_Small") (at 224.79 114.3 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 73623462-84b8-49d0-b3c0-3d7df773bf62)
-    (property "Reference" "R211" (at 227.33 113.665 0)
+    (property "Reference" "R205" (at 227.33 113.665 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 227.33 116.205 0)
@@ -2195,7 +1927,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "R211") (unit 1)
+          (reference "R205") (unit 1)
         )
       )
       (project "Power Board"
@@ -2214,7 +1946,7 @@
   (symbol (lib_id "Personal Library:VIN") (at 121.92 41.91 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 73cb7ea8-dceb-4a73-bd87-0e38f74cd400)
-    (property "Reference" "#PWR0234" (at 121.92 45.72 0)
+    (property "Reference" "#PWR0212" (at 121.92 45.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VIN" (at 121.92 38.1 0)
@@ -2230,7 +1962,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0234") (unit 1)
+          (reference "#PWR0212") (unit 1)
         )
       )
     )
@@ -2239,7 +1971,7 @@
   (symbol (lib_id "Device:C_Small") (at 245.11 58.42 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 77f40e57-9646-408b-8940-ef67e389b19e)
-    (property "Reference" "C218" (at 247.65 57.7913 0)
+    (property "Reference" "C209" (at 247.65 57.7913 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22u" (at 247.65 60.3313 0)
@@ -2256,7 +1988,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C218") (unit 1)
+          (reference "C209") (unit 1)
         )
       )
       (project "Power Board"
@@ -2308,6 +2040,7 @@
     (property "Arrow Price/Stock" "https://www.arrow.com/en/products/dmp3028lfde-7/diodes-incorporated?region=nac" (at 128.27 1040.64 0)
       (effects (font (size 1.27 1.27)) (justify left top) hide)
     )
+    (pin "8" (uuid 0cd1fbf9-7136-4f29-a5e6-43caaadb5536))
     (pin "1" (uuid 89413dcd-1129-4472-8cac-08591e9dba5b))
     (pin "2" (uuid 37dec59f-7eaf-4a3d-8f03-31ef9bfefa30))
     (pin "3" (uuid 6b61df5b-3e7e-49dd-9e12-a94cca4d79e2))
@@ -2332,7 +2065,7 @@
   (symbol (lib_id "Device:C_Small") (at 234.95 58.42 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8cd9196a-a6bf-4590-91a8-dda5640ed20b)
-    (property "Reference" "C216" (at 237.49 57.7913 0)
+    (property "Reference" "C207" (at 237.49 57.7913 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22u" (at 237.49 60.3313 0)
@@ -2349,7 +2082,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C216") (unit 1)
+          (reference "C207") (unit 1)
         )
       )
       (project "Power Board"
@@ -2368,7 +2101,7 @@
   (symbol (lib_id "Device:C_Small") (at 176.53 96.52 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 909f2ad3-035e-41dc-bbfd-5cf05acab7f9)
-    (property "Reference" "C213" (at 173.99 95.8913 0)
+    (property "Reference" "C204" (at 173.99 95.8913 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 173.99 98.4313 0)
@@ -2385,7 +2118,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C213") (unit 1)
+          (reference "C204") (unit 1)
         )
       )
       (project "Power Board"
@@ -2404,7 +2137,7 @@
   (symbol (lib_id "Device:R_Small") (at 224.79 58.42 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9143644a-6ad9-45ec-a390-67dbfe408cfd)
-    (property "Reference" "R208" (at 227.33 57.785 0)
+    (property "Reference" "R202" (at 227.33 57.785 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "52k" (at 227.33 60.325 0)
@@ -2421,7 +2154,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "R208") (unit 1)
+          (reference "R202") (unit 1)
         )
       )
       (project "Power Board"
@@ -2437,48 +2170,10 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 92.71 116.84 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 93dff0d0-f0d9-42e9-aaa3-713901310221)
-    (property "Reference" "#PWR072" (at 92.71 123.19 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 92.71 121.92 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 92.71 116.84 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 92.71 116.84 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 21e5ff77-9901-4acf-8f8c-d39a5d1a190c))
-    (instances
-      (project "DE10-lite_shield"
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d"
-          (reference "#PWR072") (unit 1)
-        )
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d/64f5d376-489c-4d66-8151-16917461492d"
-          (reference "#PWR072") (unit 1)
-        )
-      )
-      (project "Sensor Hub Board"
-        (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0218") (unit 1)
-        )
-      )
-      (project "Power Board"
-        (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fbb389ee-fd5d-4b29-9eb9-957bc83e8c9f"
-          (reference "#PWR037") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "power:GND") (at 224.79 119.38 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9a5119eb-ee04-48ff-b3e2-ec1955124e14)
-    (property "Reference" "#PWR0240" (at 224.79 125.73 0)
+    (property "Reference" "#PWR0218" (at 224.79 125.73 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 224.79 124.46 0)
@@ -2494,7 +2189,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0240") (unit 1)
+          (reference "#PWR0218") (unit 1)
         )
       )
       (project "Power Board"
@@ -2510,62 +2205,10 @@
     )
   )
 
-  (symbol (lib_id "MSL_Symbols:JST_2.5mm_1x2") (at 124.46 113.03 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid abc1ccf0-4f2c-42d2-b4ba-a306782014c1)
-    (property "Reference" "J204" (at 120.65 105.41 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "JST-XH-2.50mm" (at 120.65 107.95 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" (at 124.46 118.11 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 119.38 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 473721ee-3c18-4ddd-8740-8c3c68a4e9c8))
-    (pin "2" (uuid 8fd93494-29d6-4d73-9897-27373ff0e58e))
-    (instances
-      (project "Sensor Hub Board"
-        (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "J204") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "MSL_Symbols:JST_2.5mm_1x2") (at 100.33 113.03 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid ac889525-0c0b-427e-b397-7fdc556431f2)
-    (property "Reference" "J202" (at 96.52 105.41 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "JST-XH-2.50mm" (at 96.52 107.95 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" (at 100.33 118.11 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 95.25 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 62736588-4a04-4029-b6e9-a1932e143e33))
-    (pin "2" (uuid ac69e94d-8b23-4a8f-af5f-c2d0efed7345))
-    (instances
-      (project "Sensor Hub Board"
-        (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "J202") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "MSL_Symbols:Pluggable_Terminal_01x02") (at 81.28 44.45 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b9dfd007-dd88-4f1d-b544-47928d684b59)
-    (property "Reference" "J207" (at 81.28 39.37 0)
+    (property "Reference" "J203" (at 81.28 39.37 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Pluggable_Terminal_01x02" (at 81.28 41.91 0)
@@ -2582,7 +2225,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "J207") (unit 1)
+          (reference "J203") (unit 1)
         )
       )
     )
@@ -2591,7 +2234,7 @@
   (symbol (lib_id "power:GND") (at 88.9 49.53 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d13f17b3-3d72-423d-82d2-71db87a97b42)
-    (property "Reference" "#PWR0229" (at 88.9 55.88 0)
+    (property "Reference" "#PWR0205" (at 88.9 55.88 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 88.9 54.61 0)
@@ -2607,45 +2250,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0229") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 116.84 116.84 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid d3484621-563f-47e8-a49d-0dbc4a34f05c)
-    (property "Reference" "#PWR072" (at 116.84 123.19 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 116.84 121.92 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 116.84 116.84 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 116.84 116.84 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid a26de72d-3eb4-4f95-9719-d7d81d351eb3))
-    (instances
-      (project "DE10-lite_shield"
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d"
-          (reference "#PWR072") (unit 1)
-        )
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d/64f5d376-489c-4d66-8151-16917461492d"
-          (reference "#PWR072") (unit 1)
-        )
-      )
-      (project "Sensor Hub Board"
-        (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0224") (unit 1)
-        )
-      )
-      (project "Power Board"
-        (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fbb389ee-fd5d-4b29-9eb9-957bc83e8c9f"
-          (reference "#PWR037") (unit 1)
+          (reference "#PWR0205") (unit 1)
         )
       )
     )
@@ -2654,7 +2259,7 @@
   (symbol (lib_id "power:GND") (at 224.79 73.66 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d44dcc72-c022-453f-903a-2b4fc3edbaaf)
-    (property "Reference" "#PWR0239" (at 224.79 80.01 0)
+    (property "Reference" "#PWR0217" (at 224.79 80.01 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 224.79 78.74 0)
@@ -2670,7 +2275,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0239") (unit 1)
+          (reference "#PWR0217") (unit 1)
         )
       )
       (project "Power Board"
@@ -2686,86 +2291,10 @@
     )
   )
 
-  (symbol (lib_id "power:+3V3") (at 116.84 109.22 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid d6432a71-04be-494b-a6df-bb55fbf43a93)
-    (property "Reference" "#PWR027" (at 116.84 113.03 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+3V3" (at 116.84 105.41 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 116.84 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 116.84 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 1c4a1918-663f-433b-a757-3fcbb39d3b6e))
-    (instances
-      (project "DE10-lite_shield"
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d"
-          (reference "#PWR027") (unit 1)
-        )
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d/64f5d376-489c-4d66-8151-16917461492d"
-          (reference "#PWR070") (unit 1)
-        )
-      )
-      (project "Sensor Hub Board"
-        (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0223") (unit 1)
-        )
-      )
-      (project "Power Board"
-        (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fbb389ee-fd5d-4b29-9eb9-957bc83e8c9f"
-          (reference "#PWR036") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+3V3") (at 92.71 109.22 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid d87166ad-ef52-442a-8876-932d22502efa)
-    (property "Reference" "#PWR027" (at 92.71 113.03 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+3V3" (at 92.71 105.41 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 92.71 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 92.71 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid cde75663-a0c2-48ef-86ec-b6d0aaa82b1f))
-    (instances
-      (project "DE10-lite_shield"
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d"
-          (reference "#PWR027") (unit 1)
-        )
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d/64f5d376-489c-4d66-8151-16917461492d"
-          (reference "#PWR070") (unit 1)
-        )
-      )
-      (project "Sensor Hub Board"
-        (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0217") (unit 1)
-        )
-      )
-      (project "Power Board"
-        (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fbb389ee-fd5d-4b29-9eb9-957bc83e8c9f"
-          (reference "#PWR036") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "power:GND") (at 245.11 111.76 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d8c5b156-2b8a-4994-9fd7-9ebd5187dff5)
-    (property "Reference" "#PWR0242" (at 245.11 118.11 0)
+    (property "Reference" "#PWR0220" (at 245.11 118.11 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 245.11 116.84 0)
@@ -2781,7 +2310,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0242") (unit 1)
+          (reference "#PWR0220") (unit 1)
         )
       )
       (project "Power Board"
@@ -2800,7 +2329,7 @@
   (symbol (lib_id "Device:C_Small") (at 176.53 50.8 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d9495033-c2c0-4111-80c0-217734efb680)
-    (property "Reference" "C212" (at 173.99 50.1713 0)
+    (property "Reference" "C203" (at 173.99 50.1713 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 173.99 52.7113 0)
@@ -2817,7 +2346,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C212") (unit 1)
+          (reference "C203") (unit 1)
         )
       )
       (project "Power Board"
@@ -2833,74 +2362,10 @@
     )
   )
 
-  (symbol (lib_id "MSL_Symbols:JST_2.5mm_1x2") (at 35.56 113.03 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid da277d21-72df-4860-a35a-f9ae25718792)
-    (property "Reference" "J203" (at 31.75 105.41 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "JST-XH-2.50mm" (at 31.75 107.95 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" (at 35.56 118.11 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 30.48 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid f7e82fcd-8553-4663-9c33-d33fa67731e5))
-    (pin "2" (uuid f5de7171-a56e-45a4-aab2-b761f7b3f604))
-    (instances
-      (project "Sensor Hub Board"
-        (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "J203") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+5V") (at 27.94 109.22 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid deb5944d-5936-48f5-8cdb-8cfdd01ff86c)
-    (property "Reference" "#PWR026" (at 27.94 113.03 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+5V" (at 27.94 105.41 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 27.94 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 27.94 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 907ec5de-4ba7-4a90-ae5f-80d6e8c43c41))
-    (instances
-      (project "DE10-lite_shield"
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d"
-          (reference "#PWR026") (unit 1)
-        )
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d/64f5d376-489c-4d66-8151-16917461492d"
-          (reference "#PWR033") (unit 1)
-        )
-      )
-      (project "Sensor Hub Board"
-        (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0207") (unit 1)
-        )
-      )
-      (project "Power Board"
-        (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fbb389ee-fd5d-4b29-9eb9-957bc83e8c9f"
-          (reference "#PWR034") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "Device:C_Small") (at 245.11 104.14 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e5ee4917-704d-4a3d-9530-09c4417ab73a)
-    (property "Reference" "C219" (at 247.65 103.5113 0)
+    (property "Reference" "C210" (at 247.65 103.5113 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22u" (at 247.65 106.0513 0)
@@ -2917,7 +2382,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C219") (unit 1)
+          (reference "C210") (unit 1)
         )
       )
       (project "Power Board"
@@ -2936,7 +2401,7 @@
   (symbol (lib_id "Diode:ZMMxx") (at 121.92 50.8 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e70381e8-8890-4cad-b20a-522aa0b67ad2)
-    (property "Reference" "D204" (at 125.73 50.165 90)
+    (property "Reference" "D201" (at 125.73 50.165 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "ZMM10V" (at 125.73 52.705 90)
@@ -2953,7 +2418,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "D204") (unit 1)
+          (reference "D201") (unit 1)
         )
       )
       (project "101 PCB"
@@ -2967,7 +2432,7 @@
   (symbol (lib_id "power:GND") (at 245.11 66.04 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ed47ede4-8910-4e79-a7d1-5c79199dfe22)
-    (property "Reference" "#PWR0241" (at 245.11 72.39 0)
+    (property "Reference" "#PWR0219" (at 245.11 72.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 245.11 71.12 0)
@@ -2983,7 +2448,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0241") (unit 1)
+          (reference "#PWR0219") (unit 1)
         )
       )
       (project "Power Board"
@@ -2999,48 +2464,10 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 27.94 116.84 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid ef0fbe9a-8d56-4af0-9409-900aca1dbd3a)
-    (property "Reference" "#PWR072" (at 27.94 123.19 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 27.94 121.92 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 27.94 116.84 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 27.94 116.84 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 21ddebec-c92e-4044-8d34-1088b007c29d))
-    (instances
-      (project "DE10-lite_shield"
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d"
-          (reference "#PWR072") (unit 1)
-        )
-        (path "/42dcd1c6-b27b-471e-adaa-a184b6e8160d/64f5d376-489c-4d66-8151-16917461492d"
-          (reference "#PWR072") (unit 1)
-        )
-      )
-      (project "Sensor Hub Board"
-        (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0208") (unit 1)
-        )
-      )
-      (project "Power Board"
-        (path "/d8843e0a-fd8a-4193-ba57-f0164156e030/fbb389ee-fd5d-4b29-9eb9-957bc83e8c9f"
-          (reference "#PWR037") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "Device:LED_Small") (at 255.27 104.14 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f4761640-e03f-438e-a0b0-9200abb6e340)
-    (property "Reference" "D206" (at 257.81 103.4415 90)
+    (property "Reference" "D203" (at 257.81 103.4415 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "GREEN" (at 257.81 105.9815 90)
@@ -3057,7 +2484,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "D206") (unit 1)
+          (reference "D203") (unit 1)
         )
       )
       (project "Power Board"
@@ -3076,7 +2503,7 @@
   (symbol (lib_id "power:GND") (at 255.27 73.66 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f4f245d3-6c0a-402a-9e73-9a9ca90c3bf2)
-    (property "Reference" "#PWR0244" (at 255.27 80.01 0)
+    (property "Reference" "#PWR0222" (at 255.27 80.01 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 255.27 78.74 0)
@@ -3092,7 +2519,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "#PWR0244") (unit 1)
+          (reference "#PWR0222") (unit 1)
         )
       )
       (project "Power Board"
@@ -3111,7 +2538,7 @@
   (symbol (lib_id "TPS563202DRLR:TPS563202DRLR") (at 179.07 88.9 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f55713fb-193f-4c43-8de5-ff69836c54da)
-    (property "Reference" "IC203" (at 191.77 82.55 0)
+    (property "Reference" "IC202" (at 191.77 82.55 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TPS563202DRLR" (at 191.77 85.09 0)
@@ -3153,7 +2580,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "IC203") (unit 1)
+          (reference "IC202") (unit 1)
         )
       )
       (project "Power Board"
@@ -3167,7 +2594,7 @@
   (symbol (lib_id "TPS563202DRLR:TPS563202DRLR") (at 179.07 43.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f8dd3d1a-bed0-4847-8502-bc941ce92993)
-    (property "Reference" "IC202" (at 191.77 36.83 0)
+    (property "Reference" "IC201" (at 191.77 36.83 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TPS563202DRLR" (at 191.77 39.37 0)
@@ -3209,7 +2636,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "IC202") (unit 1)
+          (reference "IC201") (unit 1)
         )
       )
       (project "Power Board"
@@ -3223,7 +2650,7 @@
   (symbol (lib_id "Device:C_Small") (at 166.37 50.8 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid fb2b0dbf-90f1-4356-a177-37aa1aa26424)
-    (property "Reference" "C210" (at 163.83 50.1713 0)
+    (property "Reference" "C201" (at 163.83 50.1713 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22u" (at 163.83 52.7113 0)
@@ -3240,7 +2667,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "C210") (unit 1)
+          (reference "C201") (unit 1)
         )
       )
       (project "Power Board"
@@ -3259,7 +2686,7 @@
   (symbol (lib_id "Device:R_Small") (at 255.27 68.58 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid fb923dc6-ea0f-4bb3-979e-e0b9871cc19c)
-    (property "Reference" "R212" (at 257.81 67.945 0)
+    (property "Reference" "R206" (at 257.81 67.945 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "2k2" (at 257.81 70.485 0)
@@ -3276,7 +2703,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "R212") (unit 1)
+          (reference "R206") (unit 1)
         )
       )
       (project "Power Board"
@@ -3295,7 +2722,7 @@
   (symbol (lib_id "Device:L_Small") (at 219.71 99.06 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ffd96de1-161d-4545-9561-441d14885d94)
-    (property "Reference" "L204" (at 219.71 93.98 90)
+    (property "Reference" "L202" (at 219.71 93.98 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "3u3" (at 219.71 96.52 90)
@@ -3312,7 +2739,7 @@
     (instances
       (project "Sensor Hub Board"
         (path "/5318664d-e328-4e84-a383-7318275dc447/2d8a1952-b517-4da6-9eec-185b726181fe"
-          (reference "L204") (unit 1)
+          (reference "L202") (unit 1)
         )
       )
       (project "Power Board"

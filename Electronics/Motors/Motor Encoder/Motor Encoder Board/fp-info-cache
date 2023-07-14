@@ -1,4 +1,4 @@
-21805771020702078
+21878383932016294
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -60718,12 +60718,110 @@ Yellow 5381 Series LED
 2
 2
 MSL Footprints
+1273ASH100MP3
+3131 (8080) T=3.0mm
+Inductor
+0
+2
+2
+MSL Footprints
+29222C
+29332C-1
+Inductor
+0
+2
+2
+MSL Footprints
+29332C
+29332C-1
+Inductor
+0
+2
+2
+MSL Footprints
+AMASS_XT60-M_1x02_P7.20mm_Vertical
+AMASS female XT60, through hole, vertical, https://www.tme.eu/Document/2d152ced3b7a446066e6c419d84bb460/XT60%20SPEC.pdf
+XT60 female vertical
+0
+2
+2
+MSL Footprints
+AMASS_XT60PW-F_1x02_P7.20mm_Horizontal
+Connector XT60 Horizontal PCB Female, https://www.tme.eu/en/Document/9b8d0c5eb7094295f3d3112c214d3ade/XT60PW%20SPEC.pdf
+RC Connector XT60
+0
+4
+4
+MSL Footprints
+AMASS_XT60PW-M_1x02_P7.20mm_Horizontal
+Connector XT60 Horizontal PCB Female, https://www.tme.eu/en/Document/9b8d0c5eb7094295f3d3112c214d3ade/XT60PW%20SPEC.pdf
+RC Connector XT60
+0
+4
+4
+MSL Footprints
 BMI088
 BMI088-2
 Integrated Circuit
 0
 16
 16
+MSL Footprints
+BMI270_BOS
+
+BMI270 
+0
+14
+14
+MSL Footprints
+BMI270_BOS-L
+
+BMI270 
+0
+14
+14
+MSL Footprints
+BMI270_BOS-M
+
+BMI270 
+0
+14
+14
+MSL Footprints
+CSS2H3920K5L00F
+CSS2H-3920K-5L00F-3
+Resistor
+0
+2
+2
+MSL Footprints
+DC_logo_4mm
+
+
+0
+0
+0
+MSL Footprints
+DC_logo_6mm
+
+
+0
+0
+0
+MSL Footprints
+DMP2066UFDE7
+U-DFN2020-6 Type E
+MOSFET (P-Channel)
+0
+8
+8
+MSL Footprints
+DMP3013SFV7
+DMP3013SFV-7-2
+MOSFET (P-Channel)
+0
+9
+9
 MSL Footprints
 DRC10_1P65X2P40_TEX
 
@@ -60746,7 +60844,63 @@ TPS259533DSGR
 9
 9
 MSL Footprints
+EMIF06MSD02N16
+Micro QFN 3.5x1.2 16L
+Filter
+0
+17
+17
+MSL Footprints
+HANRUN_HR913129A
+
+
+0
+14
+14
+MSL Footprints
+HRO_TYPE-C-31-M-12
+
+
+0
+16
+16
+MSL Footprints
 ICRS_7mm
+
+
+0
+0
+0
+MSL Footprints
+ICRS_12mm
+
+
+0
+0
+0
+MSL Footprints
+ICRS_15mm
+
+
+0
+0
+0
+MSL Footprints
+ICRS_20mm
+
+
+0
+0
+0
+MSL Footprints
+ICRS_30mm
+
+
+0
+0
+0
+MSL Footprints
+ICRS_50mm
 
 
 0
@@ -60759,6 +60913,48 @@ ICRS_FC_7mm
 0
 0
 0
+MSL Footprints
+JST_SH_1mm_1x4
+
+
+0
+6
+6
+MSL Footprints
+MEM20750014001A
+MEM2075-00-140-01-A-1
+Connector
+0
+13
+13
+MSL Footprints
+MP28167GQAZ
+QFN-16 (3mmx3mm)_2023
+Integrated Circuit
+0
+16
+16
+MSL Footprints
+MPLAL60504R7
+MPL-AL6050-4R7-1
+Inductor
+0
+2
+2
+MSL Footprints
+Pluggable_terminal-2_P5.08mm
+simple 2-pin terminal block, pitch 5.08mm, revamped version of bornier2
+terminal block bornier2
+0
+2
+2
+MSL Footprints
+Pluggable_terminal-3_P5.08mm
+simple 3-pin terminal block, pitch 5.08mm, revamped version of bornier3
+terminal block bornier3
+0
+3
+3
 MSL Footprints
 QFN50P400X400X100-25N-D
 RGE0024F
@@ -60781,12 +60977,26 @@ Integrated Circuit
 144
 144
 MSL Footprints
+RGE0024J
+
+LM25141RGER 
+0
+30
+26
+MSL Footprints
 SOIC127P600X175-8N
 SOIC-8
 Integrated Circuit
 0
 8
 8
+MSL Footprints
+SON50P200X200X60-9N-D
+DFN8 2 x 2
+Integrated Circuit
+0
+9
+9
 MSL Footprints
 SON50P200X200X80-9N
 DSG0008A
@@ -60795,12 +61005,103 @@ Integrated Circuit
 9
 9
 MSL Footprints
+SOP65P640X120-17N
+PWP0016C
+Integrated Circuit
+0
+17
+17
+MSL Footprints
 SOP65P640X120-24N
 PW0024A
 Integrated Circuit
 0
 24
 24
+MSL Footprints
+SOT65P210X110-5N
+LD59015C25R
+Integrated Circuit
+0
+5
+5
+MSL Footprints
+SOT95P280X145-6N
+SOT-23-6
+Integrated Circuit
+0
+6
+6
+MSL Footprints
+SOTFL50P160X60-6N
+DRL0006A
+Integrated Circuit
+0
+6
+6
+MSL Footprints
+SSM6K513NULF
+SSM6K513NU,LF-4
+MOSFET (N-Channel)
+0
+8
+8
+MSL Footprints
+TRANS_NVMFS5834NLWFT1G
+
+
+0
+5
+5
+MSL Footprints
+TS204225WT160SMTTRMSL
+TS20-42-25-WT-160-SMT-TR-1
+Switch
+0
+4
+4
+MSL Footprints
+Tag-Connect_TC2030-IDC-FP_2x03_P1.27mm_Vertical
+Tag-Connect programming header; http://www.tag-connect.com/Materials/TC2030-IDC.pdf
+tag connect programming header pogo pins
+0
+6
+6
+MSL Footprints
+Toggle_switch
+1-1825137-1-1
+Switch
+0
+3
+3
+MSL Footprints
+UCPD_logo_4mm
+
+
+0
+0
+0
+MSL Footprints
+UCPD_logo_7mm
+
+
+0
+0
+0
+MSL Footprints
+USB405603A
+USB4056-03-A-3
+Connector
+0
+28
+28
+MSL Footprints
+WSON10B_TOS
+
+TCKE800NA_RF 
+0
+11
+11
 Module
 A20_OLINUXINO_LIME2
 A20 Olinuxino LIME2, 1.2GHz, 512-1024MB RAM, Micro-SD, NAND or eMMC, 1000Mbit Ethernet

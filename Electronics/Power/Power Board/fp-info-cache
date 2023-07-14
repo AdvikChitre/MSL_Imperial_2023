@@ -1,4 +1,4 @@
-21873313505751621
+21876694559673915
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -60934,6 +60934,20 @@ Inductor
 0
 2
 2
+MSL Footprints
+Pluggable_terminal-2_P5.08mm
+simple 2-pin terminal block, pitch 5.08mm, revamped version of bornier2
+terminal block bornier2
+0
+2
+2
+MSL Footprints
+Pluggable_terminal-3_P5.08mm
+simple 3-pin terminal block, pitch 5.08mm, revamped version of bornier3
+terminal block bornier3
+0
+3
+3
 MSL Footprints
 QFN50P400X400X100-25N-D
 RGE0024F
