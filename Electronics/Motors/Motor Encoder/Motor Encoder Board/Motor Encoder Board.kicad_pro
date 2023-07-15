@@ -1,6 +1,26 @@
 {
   "board": {
-    "3dviewports": [],
+    "3dviewports": [
+      {
+        "name": "Front view",
+        "ww": 1.0,
+        "wx": -12.430632591247559,
+        "wy": 8.879022598266602,
+        "wz": -10.928214073181152,
+        "xw": 0.0,
+        "xx": 1.0,
+        "xy": 0.0,
+        "xz": 0.0,
+        "yw": 0.0,
+        "yx": 0.0,
+        "yy": 1.0,
+        "yz": 0.0,
+        "zw": 0.0,
+        "zx": 0.0,
+        "zy": 0.0,
+        "zz": 1.0
+      }
+    ],
     "design_settings": {
       "defaults": {
         "board_outline_line_width": 0.09999999999999999,
