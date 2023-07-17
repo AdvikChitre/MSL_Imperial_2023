@@ -1,0 +1,3 @@
+[submodule "Software/CANopenEditor"]
+	path = Software/CANopenEditor
+	url = https://github.com/CANopenNode/CANopenEditor
