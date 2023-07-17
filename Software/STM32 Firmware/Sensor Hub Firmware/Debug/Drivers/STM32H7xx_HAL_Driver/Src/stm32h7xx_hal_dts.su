@@ -1,0 +1,17 @@
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:117:19:HAL_DTS_Init	16	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:226:19:HAL_DTS_DeInit	16	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:263:13:HAL_DTS_MspInit	16	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:278:13:HAL_DTS_MspDeInit	16	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:488:19:HAL_DTS_Start	24	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:541:19:HAL_DTS_Stop	16	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:576:19:HAL_DTS_Start_IT	24	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:640:19:HAL_DTS_Stop_IT	16	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:688:19:HAL_DTS_GetTemperature	40	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:763:6:HAL_DTS_IRQHandler	16	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:843:13:HAL_DTS_EndCallback	16	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:858:13:HAL_DTS_LowCallback	16	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:873:13:HAL_DTS_HighCallback	16	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:888:13:HAL_DTS_AsyncEndCallback	16	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:903:13:HAL_DTS_AsyncLowCallback	16	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:918:13:HAL_DTS_AsyncHighCallback	16	static
+../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dts.c:951:22:HAL_DTS_GetState	16	static

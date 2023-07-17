@@ -1,0 +1,13 @@
+main.c:93:5:main	5
+main.c:183:6:SystemClock_Config	4
+main.c:242:13:MX_DTS_Init	2
+main.c:275:13:MX_FDCAN1_Init	2
+main.c:328:13:MX_I2C1_Init	4
+main.c:376:13:MX_I2C3_Init	4
+main.c:424:13:MX_I2C4_Init	4
+main.c:472:13:MX_SPI4_Init	2
+main.c:520:13:MX_SPI5_Init	2
+main.c:568:13:MX_GPIO_Init	1
+main.c:597:6:StartDefaultTask	1
+main.c:618:6:HAL_TIM_PeriodElapsedCallback	2
+main.c:635:6:Error_Handler	1

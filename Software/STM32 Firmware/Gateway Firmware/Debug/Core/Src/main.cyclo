@@ -1,0 +1,12 @@
+main.c:92:5:main	5
+main.c:184:6:SystemClock_Config	4
+main.c:242:6:PeriphCommonClock_Config	2
+main.c:269:13:MX_DTS_Init	2
+main.c:302:13:MX_FDCAN1_Init	2
+main.c:355:13:MX_FDCAN2_Init	2
+main.c:408:13:MX_SDMMC1_SD_Init	1
+main.c:435:13:MX_TIM14_Init	2
+main.c:466:13:MX_GPIO_Init	1
+main.c:500:6:StartDefaultTask	1
+main.c:524:6:HAL_TIM_PeriodElapsedCallback	2
+main.c:541:6:Error_Handler	1

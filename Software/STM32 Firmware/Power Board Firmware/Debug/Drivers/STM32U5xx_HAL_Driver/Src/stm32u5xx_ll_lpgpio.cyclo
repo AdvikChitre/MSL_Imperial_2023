@@ -1,0 +1,6 @@
+stm32u5xx_ll_lpgpio.h:195:22:LL_LPGPIO_SetPinMode	3
+stm32u5xx_ll_bus.h:1437:22:LL_AHB3_GRP1_ForceReset	1
+stm32u5xx_ll_bus.h:1462:22:LL_AHB3_GRP1_ReleaseReset	1
+stm32u5xx_ll_lpgpio.c:73:13:LL_LPGPIO_DeInit	2
+stm32u5xx_ll_lpgpio.c:103:13:LL_LPGPIO_Init	4
+stm32u5xx_ll_lpgpio.c:140:6:LL_LPGPIO_StructInit	1
