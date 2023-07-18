@@ -1,0 +1,10 @@
+01:18:02 **** Incremental Build of configuration Debug for project Power Board Firmware ****
+make -j16 all 
+arm-none-eabi-size   Power\ Board\ Firmware.elf 
+   text	   data	    bss	    dec	    hex	filename
+  34276	     24	   6120	  40420	   9de4	Power Board Firmware.elf
+Finished building: default.size.stdout
+ 
+
+01:18:03 Build Finished. 0 errors, 0 warnings. (took 1s.524ms)
+

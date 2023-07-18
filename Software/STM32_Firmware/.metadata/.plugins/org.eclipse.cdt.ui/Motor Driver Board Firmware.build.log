@@ -1,0 +1,10 @@
+01:18:01 **** Incremental Build of configuration Debug for project Motor Driver Board Firmware ****
+make -j16 all 
+arm-none-eabi-size   Motor\ Driver\ Board\ Firmware.elf 
+   text	   data	    bss	    dec	    hex	filename
+  70788	    368	  28856	 100012	  186ac	Motor Driver Board Firmware.elf
+Finished building: default.size.stdout
+ 
+
+01:18:01 Build Finished. 0 errors, 0 warnings. (took 628ms)
+

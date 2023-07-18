@@ -1,0 +1,9 @@
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode/301/CO_driver.h:743:24:CO_getUint16	24	static
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode/301/CO_driver.h:747:24:CO_getUint32	24	static
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode/301/CO_ODinterface.h:439:24:OD_getIndex	16	static
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode/301/CO_ODinterface.h:588:21:OD_extension_init	16	static
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode/301/CO_ODinterface.h:664:21:OD_get_u32	32	static
+../CANopenNode/301/CO_TIME.c:39:13:CO_TIME_receive	32	static
+../CANopenNode/301/CO_TIME.c:64:14:OD_write_1012	40	static
+../CANopenNode/301/CO_TIME.c:92:18:CO_TIME_init	56	static
+../CANopenNode/301/CO_TIME.c:180:8:CO_TIME_process	48	static

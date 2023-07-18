@@ -1,0 +1,9 @@
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode/301/CO_driver.h:747:24:CO_getUint32	24	static
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode/301/CO_ODinterface.h:439:24:OD_getIndex	16	static
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode/301/CO_ODinterface.h:588:21:OD_extension_init	16	static
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode/301/CO_ODinterface.h:664:21:OD_get_u32	32	static
+../CANopenNode/301/CO_HBconsumer.c:43:13:CO_HBcons_receive	32	static
+../CANopenNode/301/CO_HBconsumer.c:86:14:OD_write_1016	40	static
+../CANopenNode/301/CO_HBconsumer.c:115:18:CO_HBconsumer_init	40	static
+../CANopenNode/301/CO_HBconsumer.c:181:25:CO_HBconsumer_initEntry	64	static
+../CANopenNode/301/CO_HBconsumer.c:359:6:CO_HBconsumer_process	64	static
