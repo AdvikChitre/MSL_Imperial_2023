@@ -25,7 +25,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "config.h"
+#include "CO_app_STM32.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -129,6 +130,14 @@ int main(void)
   MX_FATFS_Init();
   MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
+
+  CANopenNodeSTM32 canOpenNodeSTM32;
+  canOpenNodeSTM32.CANHandle = &hfdcan1;
+  canOpenNodeSTM32.HWInitFunction = MX_FDCAN1_Init;
+  canOpenNodeSTM32.timerHandle = &htim14;
+  canOpenNodeSTM32.desiredNodeID = CAN_OPEN_ID;
+  canOpenNodeSTM32.baudrate = CAN_OPEN_BAUDRATE;
+  canopen_app_init(&canOpenNodeSTM32);
 
   /* USER CODE END 2 */
 
@@ -509,6 +518,7 @@ void StartDefaultTask(void *argument)
   for(;;)
   {
     osDelay(1);
+    canopen_app_process();
   }
   /* USER CODE END 5 */
 }

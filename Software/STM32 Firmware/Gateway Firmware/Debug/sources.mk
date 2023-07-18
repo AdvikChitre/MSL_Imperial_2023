@@ -22,6 +22,15 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+CANopenNode/301 \
+CANopenNode/303 \
+CANopenNode/304 \
+CANopenNode/305 \
+CANopenNode/309 \
+CANopenNode \
+CANopenNode/extra \
+CANopenNode/storage \
+CANopenNode_STM32 \
 Core/Src \
 Core/Startup \
 Drivers/BSP/Components/lan8742 \

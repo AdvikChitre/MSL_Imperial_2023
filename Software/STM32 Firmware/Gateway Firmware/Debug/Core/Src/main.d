@@ -99,7 +99,39 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h \
  ../USB_DEVICE/App/usb_device.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../USB_DEVICE/Target/usbd_conf.h
+ ../USB_DEVICE/Target/usbd_conf.h ../Core/Inc/config.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode_STM32/CO_app_STM32.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/CANopen.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_driver.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_config.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode_STM32/CO_driver_target.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_ODinterface.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_driver.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_NMT_Heartbeat.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_ODinterface.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_Emergency.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_HBconsumer.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_NMT_Heartbeat.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_Emergency.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_SDOserver.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_SDOclient.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_SDOserver.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_fifo.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_SYNC.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_PDO.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_SYNC.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_TIME.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/303/CO_LEDs.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/304/CO_GFC.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/304/CO_SRDO.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/305/CO_LSSslave.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/305/CO_LSS.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/305/CO_LSSmaster.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/309/CO_gateway_ascii.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_SDOclient.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/305/CO_LSSmaster.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/303/CO_LEDs.h \
+ C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/extra/CO_trace.h
 ../Core/Inc/main.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 ../Core/Inc/stm32h7xx_hal_conf.h:
@@ -206,3 +238,36 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../USB_DEVICE/App/usb_device.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
 ../USB_DEVICE/Target/usbd_conf.h:
+../Core/Inc/config.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode_STM32/CO_app_STM32.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/CANopen.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_driver.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_config.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode_STM32/CO_driver_target.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_ODinterface.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_driver.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_NMT_Heartbeat.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_ODinterface.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_Emergency.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_HBconsumer.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_NMT_Heartbeat.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_Emergency.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_SDOserver.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_SDOclient.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_SDOserver.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_fifo.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_SYNC.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_PDO.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_SYNC.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_TIME.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/303/CO_LEDs.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/304/CO_GFC.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/304/CO_SRDO.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/305/CO_LSSslave.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/305/CO_LSS.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/305/CO_LSSmaster.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/309/CO_gateway_ascii.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/301/CO_SDOclient.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/305/CO_LSSmaster.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/303/CO_LEDs.h:
+C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32\ Firmware/Gateway\ Firmware/CANopenNode/extra/CO_trace.h:

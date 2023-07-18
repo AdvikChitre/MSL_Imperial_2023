@@ -1,0 +1,4 @@
+CO_app_STM32.c:60:1:canopen_app_init	2
+CO_app_STM32.c:114:1:canopen_app_resetCommunication	9
+CO_app_STM32.c:202:1:canopen_app_process	4
+CO_app_STM32.c:231:1:canopen_app_interrupt	3

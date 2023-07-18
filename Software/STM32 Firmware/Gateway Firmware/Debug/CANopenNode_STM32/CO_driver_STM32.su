@@ -1,0 +1,14 @@
+../CANopenNode_STM32/CO_driver_STM32.c:43:1:CO_CANsetConfigurationMode	16	static
+../CANopenNode_STM32/CO_driver_STM32.c:56:1:CO_CANsetNormalMode	16	static
+../CANopenNode_STM32/CO_driver_STM32.c:72:1:CO_CANmodule_init	40	static
+../CANopenNode_STM32/CO_driver_STM32.c:183:1:CO_CANmodule_disable	16	static
+../CANopenNode_STM32/CO_driver_STM32.c:196:1:CO_CANrxBufferInit	32	static,ignoring_inline_asm
+../CANopenNode_STM32/CO_driver_STM32.c:228:1:CO_CANtxBufferInit	32	static
+../CANopenNode_STM32/CO_driver_STM32.c:252:1:prv_send_can_message	24	static
+../CANopenNode_STM32/CO_driver_STM32.c:337:1:CO_CANsend	32	static,ignoring_inline_asm
+../CANopenNode_STM32/CO_driver_STM32.c:368:1:CO_CANclearPendingSyncPDOs	32	static,ignoring_inline_asm
+../CANopenNode_STM32/CO_driver_STM32.c:403:1:CO_CANmodule_process	24	static
+../CANopenNode_STM32/CO_driver_STM32.c:487:1:prv_read_can_received_msg	56	static,ignoring_inline_asm
+../CANopenNode_STM32/CO_driver_STM32.c:587:1:HAL_FDCAN_RxFifo0Callback	16	static
+../CANopenNode_STM32/CO_driver_STM32.c:600:1:HAL_FDCAN_RxFifo1Callback	16	static
+../CANopenNode_STM32/CO_driver_STM32.c:613:1:HAL_FDCAN_TxBufferCompleteCallback	32	static,ignoring_inline_asm

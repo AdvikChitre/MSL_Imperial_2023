@@ -1,0 +1,15 @@
+CO_Emergency.h:642:22:CO_isError	4
+CO_Emergency.h:657:23:CO_getErrorRegister	3
+CO_NMT_Heartbeat.h:318:38:CO_NMT_getInternalState	2
+CO_LSSslave.h:192:30:CO_LSSslave_getState	2
+CANopen.c:323:7:CO_new	19
+CANopen.c:615:6:CO_delete	2
+CANopen.c:834:8:CO_isLSSslaveEnabled	1
+CANopen.c:844:18:CO_CANinit	2
+CANopen.c:867:18:CO_LSSinit	2
+CANopen.c:896:18:CO_CANopenInit	15
+CANopen.c:1206:18:CO_CANopenInitPDO	9
+CANopen.c:1293:20:CO_process	14
+CANopen.c:1409:8:CO_process_SYNC	8
+CANopen.c:1444:6:CO_process_RPDO	3
+CANopen.c:1472:6:CO_process_TPDO	3

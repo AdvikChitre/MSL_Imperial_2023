@@ -1,0 +1,9 @@
+CO_driver.h:747:24:CO_getUint32	1
+CO_ODinterface.h:439:24:OD_getIndex	2
+CO_ODinterface.h:588:21:OD_extension_init	2
+CO_ODinterface.h:664:21:OD_get_u32	1
+CO_HBconsumer.c:43:13:CO_HBcons_receive	2
+CO_HBconsumer.c:86:14:OD_write_1016	8
+CO_HBconsumer.c:115:18:CO_HBconsumer_init	15
+CO_HBconsumer.c:181:25:CO_HBconsumer_initEntry	12
+CO_HBconsumer.c:359:6:CO_HBconsumer_process	18
