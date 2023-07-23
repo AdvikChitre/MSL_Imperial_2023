@@ -51,13 +51,14 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
- ../FATFS/App/fatfs.h ../Middlewares/Third_Party/FatFs/src/ff.h \
+ ../Core/Inc/dts.h ../Core/Inc/main.h ../FATFS/App/fatfs.h \
+ ../Middlewares/Third_Party/FatFs/src/ff.h \
  ../Middlewares/Third_Party/FatFs/src/integer.h ../FATFS/Target/ffconf.h \
  ../FATFS/Target/bsp_driver_sd.h ../FATFS/Target/fatfs_platform.h \
  ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/sd_diskio.h \
- ../LWIP/App/lwip.h \
+ ../Core/Inc/fdcan.h ../LWIP/App/lwip.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/opt.h \
  ../LWIP/Target/lwipopts.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
@@ -97,9 +98,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h \
  ../LWIP/Target/ethernetif.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h \
- ../USB_DEVICE/App/usb_device.h \
+ ../Core/Inc/sdmmc.h ../Core/Inc/tim.h ../USB_DEVICE/App/usb_device.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../USB_DEVICE/Target/usbd_conf.h ../Core/Inc/config.h \
+ ../USB_DEVICE/Target/usbd_conf.h ../Core/Inc/gpio.h ../Core/Inc/config.h \
  C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode_STM32/CO_app_STM32.h \
  C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode/CANopen.h \
  C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode/301/CO_driver.h \
@@ -185,6 +186,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
+../Core/Inc/dts.h:
+../Core/Inc/main.h:
 ../FATFS/App/fatfs.h:
 ../Middlewares/Third_Party/FatFs/src/ff.h:
 ../Middlewares/Third_Party/FatFs/src/integer.h:
@@ -195,6 +198,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Middlewares/Third_Party/FatFs/src/diskio.h:
 ../Middlewares/Third_Party/FatFs/src/ff.h:
 ../FATFS/Target/sd_diskio.h:
+../Core/Inc/fdcan.h:
 ../LWIP/App/lwip.h:
 ../Middlewares/Third_Party/LwIP/src/include/lwip/opt.h:
 ../LWIP/Target/lwipopts.h:
@@ -235,9 +239,12 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h:
 ../LWIP/Target/ethernetif.h:
 ../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h:
+../Core/Inc/sdmmc.h:
+../Core/Inc/tim.h:
 ../USB_DEVICE/App/usb_device.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
 ../USB_DEVICE/Target/usbd_conf.h:
+../Core/Inc/gpio.h:
 ../Core/Inc/config.h:
 C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode_STM32/CO_app_STM32.h:
 C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode/CANopen.h:

@@ -31,33 +31,6 @@ C_SRCS += \
 ../Middlewares/Third_Party/LwIP/src/netif/ppp/utils.c \
 ../Middlewares/Third_Party/LwIP/src/netif/ppp/vj.c 
 
-OBJS += \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/auth.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/ccp.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/chap-md5.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/chap-new.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/chap_ms.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/demand.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/eap.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/ecp.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/eui64.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/fsm.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/ipcp.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/ipv6cp.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/lcp.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/magic.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/mppe.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/multilink.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/ppp.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/pppapi.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/pppcrypt.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/pppoe.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/pppol2tp.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/pppos.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/upap.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/utils.o \
-./Middlewares/Third_Party/LwIP/src/netif/ppp/vj.o 
-
 C_DEPS += \
 ./Middlewares/Third_Party/LwIP/src/netif/ppp/auth.d \
 ./Middlewares/Third_Party/LwIP/src/netif/ppp/ccp.d \
@@ -85,10 +58,37 @@ C_DEPS += \
 ./Middlewares/Third_Party/LwIP/src/netif/ppp/utils.d \
 ./Middlewares/Third_Party/LwIP/src/netif/ppp/vj.d 
 
+OBJS += \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/auth.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/ccp.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/chap-md5.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/chap-new.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/chap_ms.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/demand.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/eap.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/ecp.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/eui64.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/fsm.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/ipcp.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/ipv6cp.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/lcp.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/magic.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/mppe.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/multilink.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/ppp.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/pppapi.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/pppcrypt.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/pppoe.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/pppol2tp.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/pppos.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/upap.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/utils.o \
+./Middlewares/Third_Party/LwIP/src/netif/ppp/vj.o 
+
 
 # Each subdirectory must supply rules for building sources it contributes
 Middlewares/Third_Party/LwIP/src/netif/ppp/%.o Middlewares/Third_Party/LwIP/src/netif/ppp/%.su Middlewares/Third_Party/LwIP/src/netif/ppp/%.cyclo: ../Middlewares/Third_Party/LwIP/src/netif/ppp/%.c Middlewares/Third_Party/LwIP/src/netif/ppp/subdir.mk
-	arm-none-eabi-gcc "$<" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I"C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode_STM32" -I"C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "$@"
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../micro_ros_stm32cubemx_utils/microros_static_library_ide/libmicroros/include -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I"C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode_STM32" -I"C:/Users/bens1/Documents/Uni/Robotics/MSL/MSL_Imperial_2023/Software/STM32_Firmware/Gateway_Firmware/CANopenNode" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "$@"
 
 clean: clean-Middlewares-2f-Third_Party-2f-LwIP-2f-src-2f-netif-2f-ppp
 

@@ -1,0 +1,5 @@
+slipif.c:207:1:slipif_rxbyte	17
+slipif.c:172:1:slipif_output_v4	9
+slipif.c:330:1:slipif_loop_thread	4
+slipif.c:360:1:slipif_init	4
+slipif.c:426:1:slipif_poll	6

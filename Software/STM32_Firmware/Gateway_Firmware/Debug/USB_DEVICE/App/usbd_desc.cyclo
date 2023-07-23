@@ -1,9 +1,0 @@
-usbd_desc.c:221:11:USBD_HS_DeviceDescriptor	1
-usbd_desc.c:234:11:USBD_HS_LangIDStrDescriptor	1
-usbd_desc.c:247:11:USBD_HS_ProductStrDescriptor	2
-usbd_desc.c:266:11:USBD_HS_ManufacturerStrDescriptor	1
-usbd_desc.c:279:11:USBD_HS_SerialStrDescriptor	1
-usbd_desc.c:300:11:USBD_HS_ConfigStrDescriptor	2
-usbd_desc.c:319:11:USBD_HS_InterfaceStrDescriptor	2
-usbd_desc.c:352:13:Get_SerialNum	2
-usbd_desc.c:378:13:IntToUnicode	3

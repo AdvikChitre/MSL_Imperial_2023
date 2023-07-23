@@ -1,2 +1,0 @@
-lwip.c:60:6:MX_LWIP_Init	2
-lwip.c:119:13:ethernet_link_status_updated	1

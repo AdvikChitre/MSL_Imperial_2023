@@ -1,0 +1,10 @@
+04:12:49 **** Incremental Build of configuration Debug for project micro_ros_test ****
+make -j16 all 
+docker pull microros/micro_ros_static_library_builder:galactic && docker run --rm -v C:\Users\bens1\Documents\Uni\Robotics\MSL\MSL_Imperial_2023\Software\STM32_Firmware\micro_ros_test:/project --env MICROROS_USE_EMBEDDEDRTPS=ON --env MICROROS_LIBRARY_FOLDER=micro_ros_stm32cubemx_utils/microros_static_library_ide microros/micro_ros_static_library_builder:galactic
+error during connect: This error may indicate that the docker daemon is not running.: Post "http://%2F%2F.%2Fpipe%2Fdocker_engine/v1.24/images/create?fromImage=microros%2Fmicro_ros_static_library_builder&tag=galactic": open //./pipe/docker_engine: The system cannot find the file specified.
+make[1]: *** [makefile:115: pre-build] Error 1
+make: *** [makefile:88: all] Error 2
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+
+04:12:51 Build Failed. 2 errors, 0 warnings. (took 1s.797ms)
+

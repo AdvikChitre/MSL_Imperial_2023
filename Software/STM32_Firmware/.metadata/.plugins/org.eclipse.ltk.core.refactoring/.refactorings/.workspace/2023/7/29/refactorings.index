@@ -7,3 +7,5 @@
 1689642122487	Rename resource 'Power Board Firmware'
 1689642133011	Delete resource 'Sensor Hub Firmware'
 1689642159163	Rename resource 'Sensor Hub Firmware'
+1689988863062	Delete resource 'Gateway_Firmware/Core/Src/taskCAN'
+1689990225259	Delete resource 'Gateway_Firmware/Core/Src/taskCAN.c'
