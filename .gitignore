@@ -6,7 +6,7 @@
 /Electronics/Sensor Hub/Sensor Hub Board/Sensor Hub Board-backups/*
 /Software/STM32_Firmware/micro_ros_stm32cubemx_utils
 /Software/STM32_Firmware/.metadata
-Software/STM32_Firmware/.metadata/*
+/Software/STM32_Firmware/.metadata/*
 /ROS/microros_ws/build
 /ROS/microros_ws/install
 /ROS/microros_ws/log
