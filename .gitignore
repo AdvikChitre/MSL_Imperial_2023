@@ -10,3 +10,4 @@
 /ROS/microros_ws/build
 /ROS/microros_ws/install
 /ROS/microros_ws/log
+Software/STM32_Firmware/.metadata/*
